@@ -82,4 +82,13 @@ int encoderInches2Counts(float inches);
 void motorLeftDriveSet(int speed);
 void motorRightDriveSet(int speed);
 
+#define SECTOR1
+#define SECTOR2
+#define SECTOR3
+#define SECTOR4
+#define SECTOR5
+#define SECTOR6
+#define SECTOR7     
+
+
 #endif // ROBOT_H
