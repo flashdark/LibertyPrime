@@ -44,8 +44,7 @@ void liftControl () {
 }
 
 void armControl () {
-   // TBD add code
-   // create defines for quadrants and power values
+   if(joystickGetDigital(JOY_MASTER,BTN6U))
 }
 
 // drivecontrol reads the analog stick value and assigns it to the drive motors
