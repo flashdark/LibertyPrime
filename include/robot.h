@@ -5,7 +5,7 @@
 
 // analog ports
 #define SELECT_MODE_POT 1
-#define MOBIL_GOAL_POT 2
+#define MOBILE_GOAL_POT 2
 #define PWR_EXP_PORT 3
 #define DISPLAY_MODE_POT 4
 
@@ -26,7 +26,7 @@
 
 #define MOBILE_GOAL_MOTOR 1
 
-#define ARM_MOTOR   4 // Y-Cable 
+#define ARM_MOTOR   4 // Y-Cable
 #define CLAW_MOTOR  9 //
 #define LIFT_MOTOR  8 // Y-Cable via Power Expander
 
@@ -34,8 +34,8 @@
 #define JOY_MASTER 1          // the main controller (not the partner controller)
 #define STK1_RIGHT_X 1        // returns values of -127 to 127 (Back to Forward)
 #define STK2_RIGHT_Y 2        // returns values of -127 to 127 (Left to Right)
-#define STK3_LEFT_X 4         // returns values of -127 to 127 (Back to Forward)
-#define STK4_LEFT_Y 3         // returns values of -127 to 127 (Left to Right)
+#define STK4_LEFT_X 4         // returns values of -127 to 127 (Back to Forward)
+#define STK3_LEFT_Y 3         // returns values of -127 to 127 (Left to Right)
 #define BTN5_LEFT_TRIGGER 5   // JOY_UP and JOY_DOWN
 #define BTN6_RIGHT_TRIGGER 6  // JOY_UP and JOY_DOWN
 #define BTN7_LEFT_THUMB 7     // JOY_LEFT, JOY_RIGHT, JOY_UP and JOY_DOWN

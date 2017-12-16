@@ -24,16 +24,60 @@ unsigned g_selectedAutonomous = 0;
 // Must be done prior to autonomous mode,
 ///////////////////////////////////////////////////////////////////////////////
 void getAutonMode() {
-  // when converting from RobotC 
-  // 1) read Selection POT status once
-  // 2) change if-if-if... to if-else if-else if... just need < term
-  // 3) don't distinguish between match and skill auton here 
-  //    use the STRING_AUTON_# define in robot.h to indicate that
-  // 4) probably should use defines for POT values and store them in robot.h
-  // 5) remove list when done
+  lcdSetBacklight(uart2, true);
+  int modePotValue = analogRead(SELECT_MODE_POT);
+  g_selectedAutonomous = 0;
 
-
-  // TBD Add Code
+  // 1st choice
+  if (modePotValue <= 5) {
+    lcdSetText(uart2, 1, STRING_AUTON_1);
+    g_selectedAutonomous = 1;
+  }
+  // 2nd choice
+  else if (modePotValue <= 345) {
+    lcdSetText(uart2, 1, STRING_AUTON_2);
+    g_selectedAutonomous = 2;
+  }
+  // 3rd choice
+  else if (modePotValue <= 905) {
+    lcdSetText(uart2, 1, STRING_AUTON_3);
+    g_selectedAutonomous = 3;
+  }
+  // 4th choice
+  else if (modePotValue <= 1410) {
+    lcdSetText(uart2, 1, STRING_AUTON_4);
+    g_selectedAutonomous = 4;
+  }
+  // 5th choice
+  else if (modePotValue <= 1880) {
+    lcdSetText(uart2, 1, STRING_AUTON_5);
+    g_selectedAutonomous = 5;
+  }
+  // 6th choice
+  else if (modePotValue <= 2430) {
+    lcdSetText(uart2, 1, STRING_AUTON_6);
+    g_selectedAutonomous = 6;
+  }
+  // 7th choice
+  else if (modePotValue <= 3025) {
+    lcdSetText(uart2, 1, STRING_AUTON_7);
+    g_selectedAutonomous = 7;
+  }
+  // 8th choice
+  else if (modePotValue <= 3685) {
+    lcdSetText(uart2, 1, STRING_AUTON_8);
+    g_selectedAutonomous = 8;
+  }
+  // 9th choice
+  else if (modePotValue <= 4075) {
+    lcdSetText(uart2, 1, STRING_AUTON_9);
+    g_selectedAutonomous = 9;
+  }
+  // 10th choice
+  else if (modePotValue > 4076) {
+    lcdSetText(uart2, 1, STRING_AUTON_A);
+    g_selectedAutonomous = 10;
+  }
 } // end getAutonMode
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -44,11 +88,39 @@ void getAutonMode() {
 // called from initialize and opcontrol
 ///////////////////////////////////////////////////////////////////////////////
 void displayRobotStatus() {
+  char mainBattery[16], backupBattery[16];
 
-  // 1) ADD When Left and Middle button pressed
-  //    display raw value from autonModePot for calibrating auton selection
-  // 2) Convert the rest of the RobotC Status code
+  // When Left and Middle button pressed
+  // display raw value from autonModePot for calibrating auton selection
+  if ((lcdReadButtons(uart2) & LCD_BTN_LEFT) &&
+      (lcdReadButtons(uart2) & LCD_BTN_CENTER)) {
+    // TBD
 
+    // Short delay for the LCD refresh rate
+    taskDelay(100);
+  } else if (lcdReadButtons(uart2) & LCD_BTN_LEFT) {
+    lcdSetBacklight(uart2, true); // Turn on LCD Backlight
+
+    // Display the Primary Robot battery voltage
+    sprintf(mainBattery, "M:%1.2fV, E: %1.2fV", powerLevelMain() / 1000.0,
+            analogRead(PWR_EXP_PORT) / 280.0);
+    lcdSetText(uart2, 1, mainBattery);
+
+    // Display the Backup battery voltage
+    sprintf(backupBattery, "B:%1.2fV", powerLevelBackup() / 1000.0);
+    lcdSetText(uart2, 2, backupBattery);
+
+    // Short delay for the LCD refresh rate
+    taskDelay(100);
+  } else if (lcdReadButtons(uart2) & LCD_BTN_CENTER) {
+    lcdSetBacklight(uart2, false); // Turn off LCD Backlight
+    taskDelay(100);
+  }
+  // Right button calls this function from usercontrol() or during initialize.
+  else if ((lcdReadButtons(uart2) & LCD_BTN_RIGHT) || !isEnabled()) {
+    getAutonMode();
+    taskDelay(100);
+  }
 } // end displayRobotStatus()
 
 /*
@@ -72,5 +144,40 @@ void displayRobotStatus() {
 */
 
 void autonomous() {
-  // Convert AUTON SWITCH code from RobotC  
+  switch (g_selectedAutonomous) {
+  case 1:
+    auton1();
+    break;
+  case 2:
+    auton2();
+    break;
+  case 3:
+    auton3();
+    break;
+  case 4:
+    auton4();
+    break;
+  case 5:
+    auton5();
+    break;
+  case 6:
+    auton6();
+    break;
+  case 7:
+    auton7();
+    break;
+  case 8:
+    auton8();
+    break;
+  case 9: // Skills Auton
+    auton9();
+    break;
+  case 10:
+    autonA();
+    break;
+  default:
+    lcdSetText(uart2, 1, "No Valid Choice");
+    lcdSetText(uart2, 2, "   Was Made");
+    break;
+  } // switch
 }

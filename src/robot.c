@@ -10,7 +10,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // Convert Inches to Counts of the integrated encoder module
-// Integrated Encoder has 627.2 counts per revolution
+// Encoder has 627.2 counts per revolution
 // Circumference of wheel is 12.56637
 // used to move robot in auton
 ///////////////////////////////////////////////////////////////////////////////
@@ -22,54 +22,43 @@ int iemInches2Counts(float inches)
 
 ///////////////////////////////////////////////////////////////////////////////
 // Convert Counts to Inches of the integrated encoder module
-// Integrated Encoder has 627.2 counts per revolution
+// Encoder has 627.2 counts per revolution
 // Circumference of wheel is 12.56637
 // TBD: used to calibrate drive on different fields, but need a button to hit
 // fence so we know robot has moved full distance. Get count then from move,
 // convert to inches, calibrate distance for next move.
 ///////////////////////////////////////////////////////////////////////////////
-//int iemCounts2Inches(int counts)
+//int iemCounts2Inches(int nCounts)
 //{
 //  // divide the circumference of the wheel by one revolution of counts
-//	return 12.56637/627.2 * counts;
+//	return 12.56637/627.2 * nCounts;
 //}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Convert Inches to Counts of the optical encoder module
-// Optical Encoder has 360 counts per revolution
+// Encoder has 360 counts per revolution
 // Circumference of wheel is 4*3.14=12.56637
 // used to move robot in auton
 ///////////////////////////////////////////////////////////////////////////////
 int encoderInchesToCounts(float inches)
 {
- return (int)(360/12.56637 * inches);
+ return (int)(360/(12.56637) * inches);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// Convert Counts to Inches of the integrated encoder module
-// Optical Encoder has 360 counts per revolution
-// Circumference of wheel is 12.56637
-// TBD: used to calibrate drive on different fields, but need a button to hit
-// fence so we know robot has moved full distance. Get count then from move,
-// convert to inches, calibrate distance for next move.
+//
 ///////////////////////////////////////////////////////////////////////////////
-//int encoderCounts2Inches(int counts)
-//{
-//  // divide the circumference of the wheel by one revolution of counts
-//	return 12.56637/360 * counts;
-//}
-///////////////////////////////////////////////////////////////////////////////
-// TBD comment 
-///////////////////////////////////////////////////////////////////////////////
-void motorLeftDriveSet (int speed)
+void motorLeftDriveSet (int power)
 {
- // TBD code
+  motorSet(LEFT_DRIVE_FRONT_MOTOR, LEFT_DRIVE_REVERSED * power);
+  motorSet(LEFT_DRIVE_REAR_MOTOR, LEFT_DRIVE_REVERSED * power);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// TBD comment 
+//
 ///////////////////////////////////////////////////////////////////////////////
-void motorRightDriveSet (int speed)
+void motorRightDriveSet (int power)
 {
- // TBD code
+  motorSet(RIGHT_DRIVE_FRONT_MOTOR, RIGHT_DRIVE_REVERSED * power);
+  motorSet(RIGHT_DRIVE_REAR_MOTOR, RIGHT_DRIVE_REVERSED * power);
 }

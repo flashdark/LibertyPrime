@@ -14,24 +14,24 @@
 #include "robot.h"
 
 /*
-   Runs the user operator control code. This function will be started in its 
-   own task with the default priority and stack size whenever the robot is 
-   enabled via the Field Management System or the VEX Competition Switch in 
-   the operator control mode. If the robot is disabled or communications is 
-   lost, the operator control task will be stopped by the kernel. Re-enabling 
+   Runs the user operator control code. This function will be started in its
+   own task with the default priority and stack size whenever the robot is
+   enabled via the Field Management System or the VEX Competition Switch in
+   the operator control mode. If the robot is disabled or communications is
+   lost, the operator control task will be stopped by the kernel. Re-enabling
    the robot will restart the task, not resume it from where it left off.
- 
-   If no VEX Competition Switch or Field Management system is plugged in, the 
-   VEX Cortex will run the operator control task. Be warned that this will 
-   also occur if the VEX Cortex is tethered directly to a computer via the 
+
+   If no VEX Competition Switch or Field Management system is plugged in, the
+   VEX Cortex will run the operator control task. Be warned that this will
+   also occur if the VEX Cortex is tethered directly to a computer via the
    USB A to A cable without any VEX Joystick attached.
-  
-   Code running in this task can take almost any action, as the VEX Joystick 
-   is available and the scheduler is operational. However, proper use of 
-   delay() or taskDelayUntil() is highly recommended to give other tasks 
+
+   Code running in this task can take almost any action, as the VEX Joystick
+   is available and the scheduler is operational. However, proper use of
+   delay() or taskDelayUntil() is highly recommended to give other tasks
    (including system tasks such as updating LCDs) time to run.
- 
-   This task should never exit; it should end with some kind of infinite loop, 
+
+   This task should never exit; it should end with some kind of infinite loop,
    even if empty.
  */
 
@@ -41,17 +41,33 @@ void clawControl () {
 
 void liftControl () {
    // TBD add code
- }
+}
 
 void armControl () {
    // TBD add code
    // create defines for quadrants and power values
 }
 
+// drivecontrol reads the analog stick value and assigns it to the drive motors
+// the left stick controls left drive and right stick controls right drive
+// If the stick's Y-axis is greater than the threshold
+//  ...the motors are assigned the stick's analog value
+// Else the readings are within the threshold, so
+// ...the motors are stopped with a power level of 0
 void driveControl () {
-   // TBD add code
-   // use the motorLeftDriveSet and motorRightDriveSet from robot.c
-   // use the defines to make the code readable
+  int powerLeft = joystickGetAnalog(JOY_MASTER, STK3_LEFT_Y);
+  if (abs(powerLeft) > STICK_THRESHOLD) {
+    motorLeftDriveSet(powerLeft);
+  } else {
+    motorLeftDriveSet(0);
+  }
+
+  int powerRight = joystickGetAnalog(JOY_MASTER, STK2_RIGHT_Y);
+  if (abs(powerRight) > STICK_THRESHOLD) {
+    motorRightDriveSet(powerRight);
+  } else {
+    motorRightDriveSet(0);
+  }
 }
 
 
