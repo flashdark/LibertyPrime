@@ -10,9 +10,15 @@
 #define DISPLAY_MODE_POT 4
 
 // digital ports
-#define LEFT_DRIVE_ENCODER 1
-#define RIGHT_DRIVE_ENCODER 2
-#define LIFT_ENCODER 3
+#define LEFT_DRIVE_ENCODER_TOP 7
+#define LEFT_DRIVE_ENCODER_BOTTOM 8
+#define RIGHT_DRIVE_ENCODER_TOP 1
+#define RIGHT_DRIVE_ENCODER_BOTTOM 2
+
+
+#define LIFT_ENCODER 5
+#define ARM_ENCODER_TOP 3
+#define ARM_ENCODER_BOTTOM 4
 
 // split motors across the 3 PTC's 1-5, 6-10, and Pwr Exp.
 // motor port definitions
@@ -47,9 +53,11 @@
 #define STICK_THRESHOLD 15
 
 #define BTN_LIFT BTN5_LEFT_TRIGGER
-#define BTN_ARM  BTN6_RIGHT_TRIGGER
-#define BTN_CLAW BTN7_LEFT_THUMB
-#define BTN_MGOAL BTN8_RIGHT_THUMB
+#define BTN_ARM_UP  JOY_UP
+#define BTN_ARM_DOWN JOY_DOWN
+#define BTN_CLAW_OPEN JOY_LEFT
+#define BTN_CLAW_CLOSE JOY_RIGHT
+#define BTN_MGOAL JOY_RIGHT
 
 // Autonomous Definitions for LCD Display
 #define STRING_AUTON_1 "M1 Cone+SG"

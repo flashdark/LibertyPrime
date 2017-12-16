@@ -44,7 +44,21 @@ void liftControl () {
 }
 
 void armControl () {
-   if(joystickGetDigital(JOY_MASTER,BTN6U))
+  int state = 0;
+   if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_DOWN) || joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_DOWN)) && state == 0)
+   {
+     motorSet(ARM_MOTOR,50);
+     state = 1;
+   }
+
+   if(state == 1)
+   {
+     if (encoderGet(ArmEncoder) <= SECTOR1)
+     {
+       motorSet(ArmMotor,0);
+     }
+
+   }
 }
 
 // drivecontrol reads the analog stick value and assigns it to the drive motors
