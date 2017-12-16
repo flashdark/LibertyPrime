@@ -44,7 +44,10 @@ void initializeIO() {
 
 void initialize() {
   lcdInit(uart2);
-  Encoder ArmEncoder =  encoderInit(ARM_ENCODER_TOP,ARM_ENCODER_BOTTOM,false);
+   ArmEncoder =  encoderInit(ARM_ENCODER_TOP,ARM_ENCODER_BOTTOM,false);
+   LiftEncoder = encoderInit(LIFT_ENCODER_TOP,LIFT_ENCODER_BOTTOM,false);
+   RightDriveEncoder = encoderInit(RIGHT_DRIVE_ENCODER_TOP,RIGHT_DRIVE_ENCODER_BOTTOM,false);
+   
 
   while (!isEnabled()) {
     displayRobotStatus();

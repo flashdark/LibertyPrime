@@ -55,7 +55,12 @@ void armControl () {
    {
      if (encoderGet(ArmEncoder) <= SECTOR1)
      {
-       motorSet(ArmMotor,0);
+       motorSet(ARM_MOTOR,0);
+     }
+
+     if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)
+     {
+       motorSet(ARM_MOTOR,-15)
      }
 
    }

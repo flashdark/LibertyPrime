@@ -1,24 +1,35 @@
+#include <API.h>
 #ifndef ROBOT_H // this is a header guard used to avoid the problem of double inclusion
 #define ROBOT_H
 
-//
+
+
+
+
 
 // analog ports
 #define SELECT_MODE_POT 1
 #define MOBILE_GOAL_POT 2
 #define PWR_EXP_PORT 3
+
 #define DISPLAY_MODE_POT 4
+
 
 // digital ports
 #define LEFT_DRIVE_ENCODER_TOP 7
 #define LEFT_DRIVE_ENCODER_BOTTOM 8
 #define RIGHT_DRIVE_ENCODER_TOP 1
 #define RIGHT_DRIVE_ENCODER_BOTTOM 2
-
-
-#define LIFT_ENCODER 5
+#define LIFT_ENCODER_TOP 5
+#define LIFT_ENCODER_BOTTOM 6
 #define ARM_ENCODER_TOP 3
 #define ARM_ENCODER_BOTTOM 4
+
+//class object creation
+Encoder ArmEncoder;
+Encoder LiftEncoder;
+Encoder LeftDriveEncoder;
+Encoder RightDriveEncoder;
 
 // split motors across the 3 PTC's 1-5, 6-10, and Pwr Exp.
 // motor port definitions
