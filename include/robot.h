@@ -33,10 +33,10 @@ Encoder RightDriveEncoder;
 
 // split motors across the 3 PTC's 1-5, 6-10, and Pwr Exp.
 // motor port definitions
-#define LEFT_DRIVE_FRONT_MOTOR 2    // via Power Expander
-#define LEFT_DRIVE_REAR_MOTOR 3     // Y-Cable
-#define RIGHT_DRIVE_FRONT_MOTOR 6   // via Power Expander
-#define RIGHT_DRIVE_REAR_MOTOR 7    // Y-Cable
+#define LEFT_DRIVE_FRONT_MOTOR 9    // via Power Expander
+#define LEFT_DRIVE_REAR_MOTOR 8     // Y-Cable
+#define RIGHT_DRIVE_FRONT_MOTOR 5   // via Power Expander
+#define RIGHT_DRIVE_REAR_MOTOR 3    // Y-Cable
 
 #define LEFT_DRIVE_REVERSED 1       // 1=Not Reversed, -1=Reversed
 #define RIGHT_DRIVE_REVERSED -1     // 1=Not Reversed, -1=Reversed

@@ -51,19 +51,19 @@ void armControl () {
      state = 1;
    }
 
-   if(state == 1)
-   {
-     if (encoderGet(ArmEncoder) <= SECTOR1)
-     {
-       motorSet(ARM_MOTOR,0);
-     }
-
-     if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)
-     {
-       motorSet(ARM_MOTOR,-15)
-     }
-
-   }
+  //  if(state == 1)
+  //  {
+  //    if (encoderGet(ArmEncoder) <= SECTOR1)
+  //    {
+  //      motorSet(ARM_MOTOR,0);
+  //    }
+   //
+  //    if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)
+  //    {
+  //      motorSet(ARM_MOTOR,-15)
+  //    }
+   //
+  //  }
 }
 
 // drivecontrol reads the analog stick value and assigns it to the drive motors
@@ -76,6 +76,7 @@ void driveControl () {
   int powerLeft = joystickGetAnalog(JOY_MASTER, STK3_LEFT_Y);
   if (abs(powerLeft) > STICK_THRESHOLD) {
     motorLeftDriveSet(powerLeft);
+    delay(20);
   } else {
     motorLeftDriveSet(0);
   }
