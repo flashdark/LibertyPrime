@@ -11,8 +11,8 @@ void auton3()
 
   }
 
-  motorLeftDriveSet(75);
-  motorRightDriveSet(75);
+  motorLeftDriveSet(-10);
+  motorRightDriveSet(-10);
 
   while ((encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST1*(SCALER+.09))) && (encoderGet(RightDriveEncoder) < encoderInchesToCounts(DIST1*(SCALER-.1))))
   {

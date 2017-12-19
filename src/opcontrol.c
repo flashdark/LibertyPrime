@@ -88,15 +88,20 @@ void driveControl () {
   } else {
     motorRightDriveSet(0);
   }
+  char buffer[16];
+  sprintf(buffer,"%d",powerLeft);
+  lcdSetText(uart2,1,buffer);
+  sprintf(buffer,"%d",powerRight);
+  lcdSetText(uart2, 2,buffer);
 
 }
 
 
 void operatorControl() {
   while (1) {
-    char buffer[16];
-    sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
-    lcdSetText(uart2,1,buffer);
+    //char buffer[16];
+    //sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
+    //lcdSetText(uart2,1,buffer);
     delay(20);
     driveControl();
     armControl();
