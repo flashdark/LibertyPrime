@@ -13,6 +13,7 @@
 #include "main.h"
 #include "robot.h"
 
+
 /*
    Runs the user operator control code. This function will be started in its
    own task with the default priority and stack size whenever the robot is
@@ -87,11 +88,16 @@ void driveControl () {
   } else {
     motorRightDriveSet(0);
   }
+
 }
 
 
 void operatorControl() {
   while (1) {
+    char buffer[16];
+    sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
+    lcdSetText(uart2,1,buffer);
+    delay(20);
     driveControl();
     armControl();
     liftControl();

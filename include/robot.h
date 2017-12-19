@@ -97,9 +97,9 @@ void auton9();
 void autonA();
 
 int iemInches2Counts(float inches);
-int encoderInches2Counts(float inches);
-void motorLeftDriveSet(int speed);
-void motorRightDriveSet(int speed);
+int encoderInchesToCounts(float inches);
+void motorLeftDriveSet (int power);
+void motorRightDriveSet (int power);
 
 //TODO add sector values
 
