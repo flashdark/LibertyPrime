@@ -43,6 +43,7 @@ int iemInches2Counts(float inches)
 int encoderInchesToCounts(float inches)
 {
  return (int)(360/(12.56637) * inches);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////

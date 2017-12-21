@@ -89,9 +89,9 @@ void driveControl () {
     motorRightDriveSet(0);
   }
   char buffer[16];
-  sprintf(buffer,"%d",powerLeft);
+  sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
   lcdSetText(uart2,1,buffer);
-  sprintf(buffer,"%d",powerRight);
+  sprintf(buffer,"%d",encoderGet(RightDriveEncoder));
   lcdSetText(uart2, 2,buffer);
 
 }
