@@ -9,7 +9,7 @@
 
 // analog ports
 #define SELECT_MODE_POT 1
-#define MOBILE_GOAL_POT 2
+#define MOBILE_GOAL_POT 6
 #define PWR_EXP_PORT 3
 
 #define DISPLAY_MODE_POT 4

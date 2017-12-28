@@ -35,7 +35,37 @@
    This task should never exit; it should end with some kind of infinite loop,
    even if empty.
  */
+void mobileGoalControl()
+{
+  int mobileGoalPower = 50;
+  int mobileHoldPower = 30;
+  bool leftpressed = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT);
+  bool rightpressed = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT);
+  if(leftpressed)
+  {
+    motorSet(MOBILE_GOAL_MOTOR,mobileGoalPower);
+  }
+  else if(rightpressed)
+  {
+    motorSet(MOBILE_GOAL_MOTOR,-mobileGoalPower);
 
+  }
+  else
+  {
+    if(analogRead(MOBILE_GOAL_POT) >= 80)
+    {
+      motorSet(MOBILE_GOAL_MOTOR,-mobileHoldPower);
+    }
+    else
+    {
+      motorSet(MOBILE_GOAL_MOTOR,0);
+    }
+  }
+  char buffer[16];
+  sprintf(buffer,"%d",analogRead(MOBILE_GOAL_POT));
+  lcdSetText(uart2,1,buffer);
+
+}
 void clawControl () {
    // TBD add code
 }
@@ -77,10 +107,12 @@ void driveControl () {
   int powerLeft = joystickGetAnalog(JOY_MASTER, STK3_LEFT_Y);
   if (abs(powerLeft) > STICK_THRESHOLD) {
     motorLeftDriveSet(powerLeft);
-    delay(20);
+    //delay(20); -gw delay should be run with any branch
   } else {
     motorLeftDriveSet(0);
   }
+
+  delay(20);
 
   int powerRight = joystickGetAnalog(JOY_MASTER, STK2_RIGHT_Y);
   if (abs(powerRight) > STICK_THRESHOLD) {
@@ -88,11 +120,11 @@ void driveControl () {
   } else {
     motorRightDriveSet(0);
   }
-  char buffer[16];
-  sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
-  lcdSetText(uart2,1,buffer);
-  sprintf(buffer,"%d",encoderGet(RightDriveEncoder));
-  lcdSetText(uart2, 2,buffer);
+  // char buffer[16];
+  // sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
+  // lcdSetText(uart2,1,buffer);
+  // sprintf(buffer,"%d",encoderGet(RightDriveEncoder));
+  // lcdSetText(uart2, 2,buffer);
 
 }
 
@@ -104,9 +136,11 @@ void operatorControl() {
     //lcdSetText(uart2,1,buffer);
     delay(20);
     driveControl();
+    mobileGoalControl();
     armControl();
     liftControl();
     clawControl();
+
     delay(20);
 
 
