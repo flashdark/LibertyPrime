@@ -52,7 +52,7 @@ void mobileGoalControl()
   }
   else
   {
-    if(analogRead(MOBILE_GOAL_POT) >= 340)
+    if(analogRead(MOBILE_GOAL_POT) >= 20)
     {
       motorSet(MOBILE_GOAL_MOTOR,-mobileHoldPower);
     }
