@@ -43,6 +43,7 @@ void initializeIO() {
  */
 
 void initialize() {
+  setTeamName("5090Z");// -gw needed to be competition legal
   lcdInit(uart2);
    ArmEncoder =  encoderInit(ARM_ENCODER_TOP,ARM_ENCODER_BOTTOM,false);
    LiftEncoder = encoderInit(LIFT_ENCODER_TOP,LIFT_ENCODER_BOTTOM,false);

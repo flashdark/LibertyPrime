@@ -13,6 +13,10 @@
 #include "main.h"
 #include "robot.h"
 
+//debug defines
+#define MOBILE_GOAL_DEBUG
+//#define DRIVE_POWER_DEBUG
+//#define DRIVE_ENCODER_POSITION_DEBUG
 
 /*
    Runs the user operator control code. This function will be started in its
@@ -61,17 +65,18 @@ void mobileGoalControl()
       motorSet(MOBILE_GOAL_MOTOR,0);
     }
   }
+  #ifdef MOBILE_GOAL_DEBUG
+
   char buffer[16];
   sprintf(buffer,"%d",analogRead(MOBILE_GOAL_POT));
   lcdSetText(uart2,1,buffer);
-
+#endif
 }
-void clawControl () {
+void intakeControl () {
    // TBD add code
 }
 
 void liftControl () {
-   // TODO add code
    int liftPower = 127;
    bool liftup = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_UP);
    bool liftdown = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_DOWN);
@@ -136,32 +141,39 @@ void driveControl () {
   } else {
     motorRightDriveSet(0);
   }
-  // char buffer[16];
-  // sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
-  // lcdSetText(uart2,1,buffer);
-  // sprintf(buffer,"%d",encoderGet(RightDriveEncoder));
-  // lcdSetText(uart2, 2,buffer);
+  #ifdef DRIVE_ENCODER_POSITION_DEBUG
+  char buffer[16];
+  sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
+  lcdSetText(uart2,1,buffer);
+  sprintf(buffer,"%d",encoderGet(RightDriveEncoder));
+  lcdSetText(uart2, 2,buffer);
+  #endif
 
+#ifdef DRIVE_POWER_DEBUG
+char buffer[16];
+sprintf(buffer,"%d",LeftDriveEncoder.velocity());//-gw calculates actual power motors are running at
+lcdSetText(uart2,1,buffer);
+sprintf(buffer,"%d",RightDriveEncoder.velocity());//-gw calculates actual power motors are running at
+lcdSetText(uart2, 2,buffer);
+#endif
 }
 
 
 void operatorControl() {
   while (1) {
-    //char buffer[16];
-    //sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
-    //lcdSetText(uart2,1,buffer);
+
     delay(20);
     driveControl();
     mobileGoalControl();
     armControl();
     liftControl();
-    clawControl();
+    intakeControl();
 
     delay(20);
 
 
     // If any LCD button is pressed from operatorControl, display Robot status.
-    // This is useful since operatorControl is run if not in competition mode.
+    // This is useful since operatorControl is run if not in autonomous mode.
     while (lcdReadButtons(uart2))
     {
       displayRobotStatus();
