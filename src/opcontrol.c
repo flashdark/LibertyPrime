@@ -37,7 +37,7 @@
  */
 void mobileGoalControl()
 {
-  int mobileGoalPower = 50;
+  int mobileGoalPower = 100;
   int mobileHoldPower = 30;
   bool leftpressed = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT);
   bool rightpressed = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT);
@@ -52,7 +52,7 @@ void mobileGoalControl()
   }
   else
   {
-    if(analogRead(MOBILE_GOAL_POT) >= 80)
+    if(analogRead(MOBILE_GOAL_POT) >= 340)
     {
       motorSet(MOBILE_GOAL_MOTOR,-mobileHoldPower);
     }
@@ -71,7 +71,23 @@ void clawControl () {
 }
 
 void liftControl () {
-   // TBD add code
+   // TODO add code
+   int liftPower = 127;
+   bool liftup = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_UP);
+   bool liftdown = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_DOWN);
+   if (liftup)
+   {
+     motorSet(LIFT_MOTOR,liftPower);
+   }
+   else if (liftdown)
+   {
+     motorSet(LIFT_MOTOR,-liftPower);
+   }
+
+   else
+   {
+     motorSet(LIFT_MOTOR,0);
+   }
 }
 
 void armControl () {

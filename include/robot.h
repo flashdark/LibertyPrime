@@ -45,7 +45,7 @@ Encoder RightDriveEncoder;
 
 #define ARM_MOTOR   4 // Y-Cable
 #define CLAW_MOTOR  9 //
-#define LIFT_MOTOR  8 // Y-Cable via Power Expander
+#define LIFT_MOTOR  7 // Y-Cable via Power Expander
 
 // define readable names for joystick buttons
 #define JOY_MASTER 1          // the main controller (not the partner controller)
