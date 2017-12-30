@@ -17,7 +17,7 @@
 #define MOBILE_GOAL_DEBUG
 //#define DRIVE_POWER_DEBUG
 //#define DRIVE_ENCODER_POSITION_DEBUG
-
+//#define ARM_SECTOR_DEBUG
 /*
    Runs the user operator control code. This function will be started in its
    own task with the default priority and stack size whenever the robot is
@@ -96,26 +96,81 @@ void liftControl () {
 }
 
 void armControl () {
-  int state = 0;
-   if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_DOWN) || joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_DOWN)) && state == 0)
-   {
-     motorSet(ARM_MOTOR,50);
-     state = 1;
-   }
+  //TODO add code
+  int power = 0,state = 0,sector,armPower = -50,target;
 
-  //  if(state == 1)
-  //  {
-  //    if (encoderGet(ArmEncoder) <= SECTOR1)
-  //    {
-  //      motorSet(ARM_MOTOR,0);
-  //    }
-   //
-  //    if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)
-  //    {
-  //      motorSet(ARM_MOTOR,-15)
-  //    }
-   //
-  //  }
+  if ( (joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER, JOY_UP) || joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER, JOY_DOWN)) && state == 0) //state 0 driver control
+	{
+		power = (joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER, JOY_UP*armPower) - (joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER, JOY_UP*armPower)));
+    motorSet(ARM_MOTOR,power);
+		state = 1;
+	}
+	if (joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB, JOY_UP)) //release power to get to stacking position
+	{
+		power = 0;
+		state = 0;
+	}
+
+	if ( !((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER, JOY_UP) || joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER, JOY_DOWN))) ) //if released hold immediately
+	{
+		state = 2; //goto hold power
+	}
+
+
+	if (state == 2) // hold power
+	{
+
+	target = encoderGet(ArmEncoder);
+	if (target < 0) // reset if negative
+	{
+		encoderReset(ArmEncoder);
+	}
+	if (target > 0 && target < 40)//Sector A
+	{
+		power = 0; //kill power
+		sector = 1;
+	}
+	if(target > 40 && target < 91)//Sector B
+	{
+		power = 15; //hold in sector power
+		sector = 2;
+	}
+	if (target > 91 && target < 147)//Sector C
+	{
+		power = -13; //hold in sector power
+		sector = 3;
+	}
+
+	if (target > 147 && target < 219)//Sector D
+	{
+		power = -15; //hold in sector power
+		sector = 4;
+	}
+	if (target > 219 && target < 300)//Sector E
+	{
+		power = -20; //hold in sector power
+		//power = 0;
+		sector = 5;
+	}
+	if (target > 300 && target < 397)//Sector F
+	{
+		power = 15; //hold in sector power
+		//power = 0;
+		sector = 6;
+	}
+	if (target > 397 && target < 437)//Sector G
+	{
+		//power = 10;
+		sector = 7;
+	}
+	motorSet(ARM_MOTOR, power);
+	state = 0;
+}
+#ifdef ARM_SECTOR_DEBUG
+char buff[16];
+sprintf(buff, "%d",sector);
+lcdSetText(uart2, 1, buff);
+#endif
 }
 
 // drivecontrol reads the analog stick value and assigns it to the drive motors
