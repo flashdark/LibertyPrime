@@ -42,7 +42,7 @@
 void mobileGoalControl()
 {
   int mobileGoalPower = 100;
-  int mobileHoldPower = 30;
+  int mobileHoldPower = 20;
   bool leftpressed = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT);
   bool rightpressed = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT);
   if(leftpressed)
@@ -56,7 +56,7 @@ void mobileGoalControl()
   }
   else
   {
-    if(analogRead(MOBILE_GOAL_POT) >= 20)
+    if((analogRead(MOBILE_GOAL_POT) < 1300 )&& (analogRead(MOBILE_GOAL_POT) >= 160))
     {
       motorSet(MOBILE_GOAL_MOTOR,-mobileHoldPower);
     }
