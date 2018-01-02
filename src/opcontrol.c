@@ -18,6 +18,7 @@
 //#define DRIVE_POWER_DEBUG
 //#define DRIVE_ENCODER_POSITION_DEBUG
 #define ARM_POSITION_DEBUG
+// #define ARM_SECTOR_DEBUG
 /*
    Runs the user operator control code. This function will be started in its
    own task with the default priority and stack size whenever the robot is
@@ -43,8 +44,8 @@ void mobileGoalControl()
 {
   int mobileGoalPower = 100;
   int mobileHoldPower = 20;
-  bool leftpressed = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT);
-  bool rightpressed = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT);
+  bool leftpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT);
+  bool rightpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);
   if(leftpressed)
   {
     motorSet(MOBILE_GOAL_MOTOR,mobileGoalPower);
@@ -72,8 +73,28 @@ void mobileGoalControl()
   lcdSetText(uart2,1,buffer);
 #endif
 }
+
 void intakeControl () {
-   // TBD add code
+  int openPower = 127;
+  int closePower = 127;
+  int closeHoldPower = 50;
+  bool closing = false;
+   if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT))
+   {
+     motorSet(CLAW_MOTOR,openPower);
+     closing = false;
+
+   }
+   else if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT))
+   {
+     motorSet(CLAW_MOTOR,closePower);
+     closing = true;
+   }
+   else if(closing == true && (!(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT)) || !(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT))))
+   {
+     for(int i=0;i<5;i++);
+     motorSet(CLAW_MOTOR,closeHoldPower);
+   }
 }
 
 void liftControl () {
@@ -97,6 +118,7 @@ void liftControl () {
 
 void armControl () {
   int state = 0;
+  int sector = 0;
    if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_DOWN) || joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_DOWN)) && state == 0)
    {
      motorSet(ARM_MOTOR,50);
@@ -108,37 +130,45 @@ void armControl () {
      if (encoderGet(ArmEncoder) <= SECTOR1)
      {
        motorSet(ARM_MOTOR,0);
+       sector = 0;
      }
 
      if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)
      {
        motorSet(ARM_MOTOR,-15);
+       sector = 1;
      }
 
      if (encoderGet(ArmEncoder) >= SECTOR2 && encoderGet(ArmEncoder) <= SECTOR3)
      {
        motorSet(ARM_MOTOR,-13);
+       sector = 2;
      }
      if (encoderGet(ArmEncoder) >= SECTOR3 && encoderGet(ArmEncoder) <= SECTOR4)
      {
        motorSet(ARM_MOTOR,-15);
+       sector = 3;
      }
      if (encoderGet(ArmEncoder) >= SECTOR4 && encoderGet(ArmEncoder) <= SECTOR5)
      {
        motorSet(ARM_MOTOR,-20);
+       sector = 4;
      }
      if (encoderGet(ArmEncoder) >= SECTOR5 && encoderGet(ArmEncoder) <= SECTOR6)
      {
        motorSet(ARM_MOTOR,15);
+       sector = 5;
      }
      if (encoderGet(ArmEncoder) >= SECTOR6 && encoderGet(ArmEncoder) <= SECTOR7)
      {
        motorSet(ARM_MOTOR,-15);
+       sector = 6;
      }
 
      if (encoderGet(ArmEncoder) >= SECTOR7)
      {
        motorSet(ARM_MOTOR,0);
+       sector = 7;
      }
   state = 0;
 
@@ -147,6 +177,12 @@ void armControl () {
   char b[16];
   sprintf(b,"%d",encoderGet(ArmEncoder));
   lcdSetText(uart2,1,b);
+  #endif
+
+  #ifdef ARM_SECTOR_DEBUG
+  char b[16];
+  sprintf(b,"%d",sector);
+  lcdSetText(uart2,1,b)
   #endif
 }
 
