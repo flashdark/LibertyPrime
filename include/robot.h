@@ -103,13 +103,13 @@ void motorRightDriveSet (int power);
 
 //TODO add sector values
 
-#define SECTOR1
-#define SECTOR2
-#define SECTOR3
-#define SECTOR4
-#define SECTOR5
-#define SECTOR6
-#define SECTOR7
+#define SECTOR1 51
+#define SECTOR2 144
+#define SECTOR3 216
+#define SECTOR5 268
+#define SECTOR4 328
+#define SECTOR6 404
+#define SECTOR7 437
 
 
 #endif // ROBOT_H
