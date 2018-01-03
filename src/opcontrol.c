@@ -43,7 +43,7 @@ int counter = 0;
  */
 void mobileGoalControl()
 {
-  int mobileGoalPower = 100;
+  int mobileGoalPower = 100;  // xxx % power
   int mobileHoldPower = 20;
   bool leftpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT); // check Button 8L is pressed
   bool rightpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);// check Button 8R is pressed
@@ -54,7 +54,6 @@ void mobileGoalControl()
   else if(rightpressed)
   {
     motorSet(MOBILE_GOAL_MOTOR,-mobileGoalPower);//extend mobile goal
-
   }
   else
   {
@@ -64,7 +63,7 @@ void mobileGoalControl()
     }
     else
     {
-      motorSet(MOBILE_GOAL_MOTOR,0);//clear power to avoid PTC
+      motorSet(MOBILE_GOAL_MOTOR,0); //set power to zero to avoid PTC
     }
   }
   #ifdef MOBILE_GOAL_DEBUG
@@ -79,12 +78,12 @@ void intakeControl () {
   int openPower = 100; //using 80 percent power to open
   int closePower = 100;//using 80 percent power to close
   int closeHoldPower = 50;//using 40 percent power to hold
+  static int holdCounter = 0;
 
    if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT)) //open claw if button 7L is pressed
    {
      motorSet(CLAW_MOTOR,openPower);//apply open power
      counter = 0;//reset close hold power counter
-
    }
    else if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT))
    {
