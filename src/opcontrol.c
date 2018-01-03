@@ -12,8 +12,8 @@
 
 #include "main.h"
 #include "robot.h"
+#include "config.h"
 
-int counter = 0;
 //debug defines
 //#define MOBILE_GOAL_DEBUG
 //#define DRIVE_POWER_DEBUG
@@ -43,8 +43,8 @@ int counter = 0;
  */
 void mobileGoalControl()
 {
-  int mobileGoalPower = 100;  // xxx % power
-  int mobileHoldPower = 20;
+  int mobileGoalPower = MOBILE_GOAL_POWER;  // 80% power
+  int mobileHoldPower = MOBILE_GOAL_HOLD_POWER; //16% power
   bool leftpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT); // check Button 8L is pressed
   bool rightpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);// check Button 8R is pressed
   if(leftpressed)
@@ -75,22 +75,22 @@ void mobileGoalControl()
 }
 
 void intakeControl () {
-  int openPower = 100; //using 80 percent power to open
-  int closePower = 100;//using 80 percent power to close
-  int closeHoldPower = 50;//using 40 percent power to hold
+  int openPower = CLAW_OPEN_POWER; //using 80 percent power to open
+  int closePower = CLAW_CLOSE_POWER;//using 80 percent power to close
+  int closeHoldPower = CLAW_HOLD_POWER;//using 40 percent power to hold
   static int holdCounter = 0;
 
    if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT)) //open claw if button 7L is pressed
    {
      motorSet(CLAW_MOTOR,openPower);//apply open power
-     counter = 0;//reset close hold power counter
+     holdCounter = 0;//reset close hold power counter
    }
    else if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT))
    {
-     if (counter < 5) //if we have been closing for less than 5 cycles apply just max power
+     if (holdCounter < 5) //if we have been closing for less than 5 cycles apply just max power
      {
        motorSet(CLAW_MOTOR,closePower);
-				counter++;//increment counter
+				holdCounter++;//increment counter
      }
      else //otherwise apply hold power
      {
@@ -102,7 +102,7 @@ void intakeControl () {
 
 
 void liftControl () {
-   int liftPower = 127;//maximum power to lift
+   int liftPower = LIFT_POWER;//maximum power to lift
    bool liftup = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_UP);//check if button 5U was pressed
    bool liftdown = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_DOWN);//check if button 5D was pressed
    if (liftup)//if lifting up
@@ -121,18 +121,18 @@ void liftControl () {
 }
 
 void armControl () {
-  int state = 0;//puts code in user controlled mode
+  int state = USER_CONTROL_STATE;//puts code in user controlled mode
   int sector = 0;//arm position is divided into 7 sectors. These determin e the amount of hold power to be applied
-   if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN)) && state == 0)//test if button 6D was pressed
+   if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN)))//test if button 6D was pressed
    {
      motorSet(ARM_MOTOR,50);//move arm down
-     state = 1;//move to hold power state
+     state = HOLD_POWER_STATE;//move to hold power state
    }
 
-   else if (joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_UP) && state == 0)//test if button 6U was presed
+   else if (joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_UP))//test if button 6U was presed
    {
      motorSet(ARM_MOTOR,-50);//move arm up
-     state = 1;//move to hold power state
+     state = HOLD_POWER_STATE;//move to hold power state
    }
 
    if(state == 1)
@@ -180,7 +180,6 @@ void armControl () {
        motorSet(ARM_MOTOR,0);
        sector = 7;
      }
-  state = 0;
 
    }
   #ifdef ARM_POSITION_DEBUG
