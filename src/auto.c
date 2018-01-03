@@ -26,6 +26,9 @@ unsigned g_selectedAutonomous = 0;
 void getAutonMode() {
   lcdSetBacklight(uart2, true);
   int modePotValue = analogRead(SELECT_MODE_POT);
+  char buff[16];
+  sprintf(buff,"%d",modePotValue);
+  lcdSetText(uart2,2,buff);
   g_selectedAutonomous = 0;
 
   // 1st choice

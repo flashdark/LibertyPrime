@@ -2,9 +2,9 @@
 #include "robot.h"
 void auton5()
 {
-  motorLeftDriveSet(50);
-  motorRightDriveSet(50);
-  while ((encoderGet(LeftDriveEncoder) < encoderInchesToCounts(46)) && (encoderGet(RightDriveEncoder) < encoderInchesToCounts(46)))
+  motorLeftDriveSet(25);
+  motorRightDriveSet(25);
+  while ((encoderGet(LeftDriveEncoder) > -encoderInchesToCounts(6)) && (encoderGet(RightDriveEncoder) > -encoderInchesToCounts(6)))
   {
 
   }
