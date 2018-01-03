@@ -13,6 +13,7 @@
 #include "main.h"
 #include "robot.h"
 
+int counter = 0;
 //debug defines
 //#define MOBILE_GOAL_DEBUG
 //#define DRIVE_POWER_DEBUG
@@ -44,26 +45,26 @@ void mobileGoalControl()
 {
   int mobileGoalPower = 100;
   int mobileHoldPower = 20;
-  bool leftpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT);
-  bool rightpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);
+  bool leftpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT); // check Button 8L is pressed
+  bool rightpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);// check Button 8R is pressed
   if(leftpressed)
   {
-    motorSet(MOBILE_GOAL_MOTOR,mobileGoalPower);
+    motorSet(MOBILE_GOAL_MOTOR,mobileGoalPower); //retract mobile goal
   }
   else if(rightpressed)
   {
-    motorSet(MOBILE_GOAL_MOTOR,-mobileGoalPower);
+    motorSet(MOBILE_GOAL_MOTOR,-mobileGoalPower);//extend mobile goal
 
   }
   else
   {
-    if((analogRead(MOBILE_GOAL_POT) < 1300 )&& (analogRead(MOBILE_GOAL_POT) >= 160))
+    if((analogRead(MOBILE_GOAL_POT) < 1300 )&& (analogRead(MOBILE_GOAL_POT) >= 160))//boundaries where hold power should be applied
     {
-      motorSet(MOBILE_GOAL_MOTOR,-mobileHoldPower);
+      motorSet(MOBILE_GOAL_MOTOR,-mobileHoldPower); // apply hold power to stabilize mobile goal lift
     }
     else
     {
-      motorSet(MOBILE_GOAL_MOTOR,0);
+      motorSet(MOBILE_GOAL_MOTOR,0);//clear power to avoid PTC
     }
   }
   #ifdef MOBILE_GOAL_DEBUG
@@ -75,97 +76,107 @@ void mobileGoalControl()
 }
 
 void intakeControl () {
-  int openPower = 127;
-  int closePower = 127;
-  int closeHoldPower = 50;
-  bool closing = false;
-   if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT))
+  int openPower = 100; //using 80 percent power to open
+  int closePower = 100;//using 80 percent power to close
+  int closeHoldPower = 50;//using 40 percent power to hold
+
+   if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT)) //open claw if button 7L is pressed
    {
-     motorSet(CLAW_MOTOR,openPower);
-     closing = false;
+     motorSet(CLAW_MOTOR,openPower);//apply open power
+     counter = 0;//reset close hold power counter
 
    }
    else if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT))
    {
-     motorSet(CLAW_MOTOR,closePower);
-     closing = true;
+     if (counter < 5) //if we have been closing for less than 5 cycles apply just max power
+     {
+       motorSet(CLAW_MOTOR,closePower);
+				counter++;//increment counter
+     }
+     else //otherwise apply hold power
+     {
+       motorSet(CLAW_MOTOR,closeHoldPower);//applying close hold power
+     }
    }
-   else if(closing == true && (!(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT)) || !(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT))))
-   {
-     for(int i=0;i<5;i++);
-     motorSet(CLAW_MOTOR,closeHoldPower);
+
    }
-}
+
 
 void liftControl () {
-   int liftPower = 127;
-   bool liftup = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_UP);
-   bool liftdown = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_DOWN);
-   if (liftup)
+   int liftPower = 127;//maximum power to lift
+   bool liftup = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_UP);//check if button 5U was pressed
+   bool liftdown = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_DOWN);//check if button 5D was pressed
+   if (liftup)//if lifting up
    {
-     motorSet(LIFT_MOTOR,liftPower);
+     motorSet(LIFT_MOTOR,liftPower);//go up
    }
-   else if (liftdown)
+   else if (liftdown)//if moving down
    {
-     motorSet(LIFT_MOTOR,-liftPower);
+     motorSet(LIFT_MOTOR,-liftPower);//go down
    }
 
    else
    {
-     motorSet(LIFT_MOTOR,0);
+     motorSet(LIFT_MOTOR,0);//otherwise release power to ease strain on motors
    }
 }
 
 void armControl () {
-  int state = 0;
-  int sector = 0;
-   if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_DOWN) || joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_DOWN)) && state == 0)
+  int state = 0;//puts code in user controlled mode
+  int sector = 0;//arm position is divided into 7 sectors. These determin e the amount of hold power to be applied
+   if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN)) && state == 0)//test if button 6D was pressed
    {
-     motorSet(ARM_MOTOR,50);
-     state = 1;
+     motorSet(ARM_MOTOR,50);//move arm down
+     state = 1;//move to hold power state
+   }
+
+   else if (joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_UP) && state == 0)//test if button 6U was presed
+   {
+     motorSet(ARM_MOTOR,-50);//move arm up
+     state = 1;//move to hold power state
    }
 
    if(state == 1)
    {
-     if (encoderGet(ArmEncoder) <= SECTOR1)
+     if (encoderGet(ArmEncoder) <= SECTOR1)//if arm encoder is less than start of hold power then release hold power and it is in sector0
      {
        motorSet(ARM_MOTOR,0);
        sector = 0;
      }
 
-     if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)
+     if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)//if arm encoder is between sectors 1 and 2, apply neccesary hold power for this region
      {
        motorSet(ARM_MOTOR,-15);
        sector = 1;
      }
 
-     if (encoderGet(ArmEncoder) >= SECTOR2 && encoderGet(ArmEncoder) <= SECTOR3)
+     if (encoderGet(ArmEncoder) >= SECTOR2 && encoderGet(ArmEncoder) <= SECTOR3)//if arm encoder is between sectors 2 and 3, apply neccesary hold power for this region
      {
        motorSet(ARM_MOTOR,-13);
        sector = 2;
      }
-     if (encoderGet(ArmEncoder) >= SECTOR3 && encoderGet(ArmEncoder) <= SECTOR4)
+     if (encoderGet(ArmEncoder) >= SECTOR3 && encoderGet(ArmEncoder) <= SECTOR4)//if arm encoder is between sectors 3 and 4, apply neccesary hold power for this region
      {
        motorSet(ARM_MOTOR,-15);
        sector = 3;
      }
-     if (encoderGet(ArmEncoder) >= SECTOR4 && encoderGet(ArmEncoder) <= SECTOR5)
+     if (encoderGet(ArmEncoder) >= SECTOR4 && encoderGet(ArmEncoder) <= SECTOR5)//if arm encoder is between sectors 4 and 5, apply neccesary hold power for this region
      {
        motorSet(ARM_MOTOR,-20);
        sector = 4;
      }
-     if (encoderGet(ArmEncoder) >= SECTOR5 && encoderGet(ArmEncoder) <= SECTOR6)
+     if (encoderGet(ArmEncoder) >= SECTOR5 && encoderGet(ArmEncoder) <= SECTOR6)//if arm encoder is between sectors 5 and 6, apply neccesary hold power for this region
      {
        motorSet(ARM_MOTOR,15);
        sector = 5;
      }
-     if (encoderGet(ArmEncoder) >= SECTOR6 && encoderGet(ArmEncoder) <= SECTOR7)
+     if (encoderGet(ArmEncoder) >= SECTOR6 && encoderGet(ArmEncoder) <= SECTOR7)//if arm encoder is between sectors 6 and 7, apply neccesary hold power for this region
      {
        motorSet(ARM_MOTOR,-15);
        sector = 6;
      }
 
-     if (encoderGet(ArmEncoder) >= SECTOR7)
+     if (encoderGet(ArmEncoder) >= SECTOR7)//if arm encoder greater than max value for hold position, release hold power
      {
        motorSet(ARM_MOTOR,0);
        sector = 7;
