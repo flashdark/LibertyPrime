@@ -17,8 +17,8 @@
 //debug defines
 //#define MOBILE_GOAL_DEBUG
 //#define DRIVE_POWER_DEBUG
-//#define DRIVE_ENCODER_POSITION_DEBUG
-#define ARM_POSITION_DEBUG
+#define DRIVE_ENCODER_POSITION_DEBUG
+//#define ARM_POSITION_DEBUG
 // #define ARM_SECTOR_DEBUG
 /*
    Runs the user operator control code. This function will be started in its

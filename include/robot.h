@@ -44,7 +44,7 @@ Encoder RightDriveEncoder;
 #define MOBILE_GOAL_MOTOR 1
 
 #define ARM_MOTOR   4 // Y-Cable
-#define CLAW_MOTOR  9 //
+#define CLAW_MOTOR  6 //
 #define LIFT_MOTOR  7 // Y-Cable via Power Expander
 
 // define readable names for joystick buttons
