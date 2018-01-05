@@ -72,9 +72,9 @@ Encoder RightDriveEncoder;
 
 // Autonomous Definitions for LCD Display
 #define STRING_AUTON_1 "Cone+SG"
-#define STRING_AUTON_2 "SG+MGoal Left"
-#define STRING_AUTON_3 "M Goal Left "
-#define STRING_AUTON_4 "Block 20"
+#define STRING_AUTON_2 "10 Test"
+#define STRING_AUTON_3 "20 Test"
+#define STRING_AUTON_4 "30 Test"
 #define STRING_AUTON_5 "#5 "
 #define STRING_AUTON_6 "D Test 1"
 #define STRING_AUTON_7 "D Test 2 "

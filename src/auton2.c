@@ -1,11 +1,14 @@
 #include <API.H>
 #include "robot.h"
-
+#define DIST 36
 void auton2()
 {
-  motorLeftDriveSet(100);
-  motorRightDriveSet(100);
-  delay(300);
+  motorLeftDriveSet(10);
+  motorRightDriveSet(10);
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)) )
+  {
+
+  }
   motorLeftDriveSet(0);
   motorRightDriveSet(0);
 }

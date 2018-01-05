@@ -1,10 +1,19 @@
 #include <API.H>
 #include "robot.h"
 #define SCALER .7
-#define DIST1 43
+#define DIST 36
 void auton3()
 {
-  char buffer[16];
+  motorLeftDriveSet(20);
+  motorRightDriveSet(20);
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)) )
+  {
+
+  }
+  motorLeftDriveSet(0);
+  motorRightDriveSet(0);
+
+  //char buffer[16];
   // motorLeftDriveSet(100);
   // motorRightDriveSet(100);
   // while ((encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST1*SCALER)) && (encoderGet(RightDriveEncoder) < encoderInchesToCounts(DIST1*SCALER)))
@@ -39,15 +48,15 @@ void auton3()
   // }
   //
   //
-  motorLeftDriveSet(20);
-  motorRightDriveSet(20);
-  sprintf(buffer,"%d",encoderInchesToCounts(72));
-  lcdSetText(uart2,1,buffer);
-  while ((encoderGet(LeftDriveEncoder) < encoderInchesToCounts(72)) && (encoderGet(RightDriveEncoder) < encoderInchesToCounts(72)))
-  {
-    sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
-    lcdSetText(uart2,2,buffer);
-  }
-  motorLeftDriveSet(0);
-  motorRightDriveSet(0);
+  // motorLeftDriveSet(20);
+  // motorRightDriveSet(20);
+  // sprintf(buffer,"%d",encoderInchesToCounts(72));
+  // lcdSetText(uart2,1,buffer);
+  // while ((encoderGet(LeftDriveEncoder) < encoderInchesToCounts(72)) && (encoderGet(RightDriveEncoder) < encoderInchesToCounts(72)))
+  // {
+  //   sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
+  //   lcdSetText(uart2,2,buffer);
+  // }
+  // motorLeftDriveSet(0);
+  // motorRightDriveSet(0);
 }

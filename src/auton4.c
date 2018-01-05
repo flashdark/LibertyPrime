@@ -1,13 +1,14 @@
 #include <API.H>
 #include "robot.h"
+#define DIST 36
 void auton4()
 {
-motorLeftDriveSet(20);
-motorRightDriveSet(20);
-while ((encoderGet(LeftDriveEncoder) < encoderInchesToCounts(72)) && (encoderGet(RightDriveEncoder) < encoderInchesToCounts(72)))
-{
+  motorLeftDriveSet(30);
+  motorRightDriveSet(30);
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)) )
+  {
 
-}
-motorLeftDriveSet(0);
-motorRightDriveSet(0);
+  }
+  motorLeftDriveSet(0);
+  motorRightDriveSet(0);
 }
