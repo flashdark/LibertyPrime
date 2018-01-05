@@ -147,41 +147,63 @@ void displayRobotStatus() {
 */
 
 void autonomous() {
-  auton5();
-  // switch (g_selectedAutonomous) {
-  // case 1:
-  //   auton1();
-  //   break;
-  // case 2:
-  //   auton2();
-  //   break;
-  // case 3:
-  //   auton3();
-  //   break;
-  // case 4:
-  //   auton4();
-  //   break;
-  // case 5:
-  //   auton5();
-  //   break;
-  // case 6:
-  //   auton6();
-  //   break;
-  // case 7:
-  //   auton7();
-  //   break;
-  // case 8:
-  //   auton8();
-  //   break;
-  // case 9: // Skills Auton
-  //   auton9();
-  //   break;
-  // case 10:
-  //   autonA();
-  //   break;
-  // default:
-  //   lcdSetText(uart2, 1, "No Valid Choice");
-  //   lcdSetText(uart2, 2, "   Was Made");
-  //   break;
-  // } // switch
+  getAutonMode();
+  char buf[17];
+  sprintf(buf,"%d",g_selectedAutonomous);
+  //lcdSetText(uart2,2,buf);
+  switch (g_selectedAutonomous) {
+  case 1:
+    auton1();
+    //sprintf(buf,"A1 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 2:
+    auton2();
+    //sprintf(buf,"A2 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 3:
+    auton3();
+    //sprintf(buf,"A3 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 4:
+    auton4();
+    //sprintf(buf,"A4 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 5:
+    auton5();
+    //sprintf(buf,"A5 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 6:
+    auton6();
+
+    break;
+  case 7:
+    auton7();
+    //sprintf(buf,"A7 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 8:
+    auton8();
+    //sprintf(buf,"A8 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 9: // Skills Auton
+    auton9();
+    //sprintf(buf,"A9 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 10:
+    autonA();
+    //sprintf(buf,"A10 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  default:
+    lcdSetText(uart2, 1, "No Valid Choice");
+    lcdSetText(uart2, 2, "   Was Made");
+    break;
+  } // switch
 }

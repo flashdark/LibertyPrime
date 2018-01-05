@@ -16,10 +16,10 @@
 
 
 // digital ports
-#define LEFT_DRIVE_ENCODER_TOP 7
-#define LEFT_DRIVE_ENCODER_BOTTOM 8
-#define RIGHT_DRIVE_ENCODER_TOP 1
-#define RIGHT_DRIVE_ENCODER_BOTTOM 2
+#define LEFT_DRIVE_ENCODER_TOP 8 // should yield positive counts for forward motion
+#define LEFT_DRIVE_ENCODER_BOTTOM 7
+#define RIGHT_DRIVE_ENCODER_TOP 2
+#define RIGHT_DRIVE_ENCODER_BOTTOM 1
 #define LIFT_ENCODER_TOP 5
 #define LIFT_ENCODER_BOTTOM 6
 #define ARM_ENCODER_TOP 3
@@ -33,10 +33,10 @@ Encoder RightDriveEncoder;
 
 // split motors across the 3 PTC's 1-5, 6-10, and Pwr Exp.
 // motor port definitions
-#define LEFT_DRIVE_FRONT_MOTOR 9    // via Power Expander
-#define LEFT_DRIVE_REAR_MOTOR 8     // Y-Cable
-#define RIGHT_DRIVE_FRONT_MOTOR 5   // via Power Expander
-#define RIGHT_DRIVE_REAR_MOTOR 3    // Y-Cable
+#define LEFT_DRIVE_FRONT_MOTOR 2    // via Power Expander
+#define LEFT_DRIVE_REAR_MOTOR 3     // Y-Cable
+#define RIGHT_DRIVE_FRONT_MOTOR 6   // via Power Expander
+#define RIGHT_DRIVE_REAR_MOTOR 7    // Y-Cable
 
 #define LEFT_DRIVE_REVERSED 1       // 1=Not Reversed, -1=Reversed
 #define RIGHT_DRIVE_REVERSED -1     // 1=Not Reversed, -1=Reversed
@@ -44,8 +44,8 @@ Encoder RightDriveEncoder;
 #define MOBILE_GOAL_MOTOR 1
 
 #define ARM_MOTOR   4 // Y-Cable
-#define CLAW_MOTOR  6 //
-#define LIFT_MOTOR  7 // Y-Cable via Power Expander
+#define CLAW_MOTOR  9 //
+#define LIFT_MOTOR  8 // Y-Cable via Power Expander
 
 // define readable names for joystick buttons
 #define JOY_MASTER 1          // the main controller (not the partner controller)
@@ -76,10 +76,10 @@ Encoder RightDriveEncoder;
 #define STRING_AUTON_3 "M Goal Left "
 #define STRING_AUTON_4 "Block 20"
 #define STRING_AUTON_5 "#5 "
-#define STRING_AUTON_6 "#6 "
-#define STRING_AUTON_7 "#7 "
-#define STRING_AUTON_8 "#8 "
-#define STRING_AUTON_9 "#9 "
+#define STRING_AUTON_6 "D Test 1"
+#define STRING_AUTON_7 "D Test 2 "
+#define STRING_AUTON_8 "D Test 3 "
+#define STRING_AUTON_9 "D Test 4 "
 #define STRING_AUTON_A "#A "
 
 extern unsigned g_selectedAutonomous; // getAutonMode is the only function that sets this global variable
