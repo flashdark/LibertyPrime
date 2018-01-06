@@ -1,54 +1,48 @@
 #include <API.H>
 #include "robot.h"
 #define DIST 72
-#define DECEL_DIST (DIST/12)
+#define DECEL_DIST DIST/12
+#define OK_TO_BRAKE 15
+extern int speed;
+static int mp = 0;
+
 void auton9()
 {
-  int spd =0;
-  motorLeftDriveSet(127);
-  motorRightDriveSet(127);
+static int maxspeed = 0;
+
+  motorLeftDriveSet(100);
+  motorRightDriveSet(100);
   while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-400) )
   {
-    //spd =
-    // if (spd > OK_TO_BRAKE)
-    //           {
-    //             *pMp = -10 * (spd / 10);
-    //           }
-    //           else
-    //           {
-    //            *pMp = 20;
-    //          }
+      if (speed > maxspeed)
+      {
+        maxspeed = speed;
+
+      }
   }
-  motorLeftDriveSet(-15);
-  motorRightDriveSet(-15);
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-300) )
+
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-375) )
   {
 
-  }
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-250) )
-  {
+    //speed =
+    if (speed > OK_TO_BRAKE)
+    {
+      //char buf[17];
+      mp = -2 * (speed / 4.5);
+    }
 
-  }
-  motorLeftDriveSet(-10);
-  motorRightDriveSet(-10);
 
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-200) )
-  {
-
-  }
-  motorLeftDriveSet(-5);
-  motorRightDriveSet(-5);
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-200) )
-  {
+    motorLeftDriveSet(mp);
+    motorRightDriveSet(mp);
 
   }
 
-  motorLeftDriveSet(25);
-  motorRightDriveSet(25);
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-200) )
-  {
+  mp = 20;
+  motorLeftDriveSet(mp);
+  motorRightDriveSet(mp);
 
-  }
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)) );
   motorLeftDriveSet(0);
   motorRightDriveSet(0);
+
 }

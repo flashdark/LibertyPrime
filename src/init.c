@@ -41,7 +41,14 @@ void initializeIO() {
    the pre_auton() in other environments can be implemented in this task if
    desired.
  */
-
+ void getSpeed()
+ {
+   static int lastcounts = 0;
+   int a = encoderGet(LeftDriveEncoder);
+   speed = encoderGet(LeftDriveEncoder) - lastcounts;
+   lastcounts = a;
+ }
+ 
 void initialize() {
   setTeamName("5090Z");// -gw needed to be competition legal
   lcdInit(uart2);
