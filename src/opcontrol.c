@@ -75,30 +75,21 @@ void mobileGoalControl()
 }
 
 void intakeControl () {
-  int openPower = CLAW_OPEN_POWER; //using 80 percent power to open
-  int closePower = CLAW_CLOSE_POWER;//using 80 percent power to close
-  int closeHoldPower = CLAW_HOLD_POWER;//using 40 percent power to hold
-  static int holdCounter = 0;
 
    if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT)) //open claw if button 7L is pressed
    {
-     motorSet(CLAW_MOTOR,openPower);//apply open power
-     holdCounter = 0;//reset close hold power counter
+     motorSet(CLAW_MOTOR,100);//apply open power
+     //holdCounter = 0;//reset close hold power counter
    }
    else if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT))
    {
-     if (holdCounter < 5) //if we have been closing for less than 5 cycles apply just max power
-     {
-       motorSet(CLAW_MOTOR,closePower);
-				holdCounter++;//increment counter
+    motorSet(CLAW_MOTOR,-100);
      }
-     else //otherwise apply hold power
-     {
-       motorSet(CLAW_MOTOR,closeHoldPower);//applying close hold power
-     }
-   }
 
+     else{
+     motorSet(CLAW_MOTOR,0);
    }
+ }
 
 
 void liftControl () {
