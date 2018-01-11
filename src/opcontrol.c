@@ -15,9 +15,9 @@
 #include "config.h"
 
 //debug defines
-//#define MOBILE_GOAL_DEBUG
+#define MOBILE_GOAL_DEBUG
 //#define DRIVE_POWER_DEBUG
-#define DRIVE_ENCODER_POSITION_DEBUG
+//#define DRIVE_ENCODER_POSITION_DEBUG
 //#define ARM_POSITION_DEBUG
 // #define ARM_SECTOR_DEBUG
 /*
@@ -78,12 +78,12 @@ void intakeControl () {
 
    if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT)) //open claw if button 7L is pressed
    {
-     motorSet(CLAW_MOTOR,100);//apply open power
+     motorSet(CLAW_MOTOR,127);//apply open power
      //holdCounter = 0;//reset close hold power counter
    }
    else if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT))
    {
-    motorSet(CLAW_MOTOR,-100);
+    motorSet(CLAW_MOTOR,-65);
      }
 
      else{
@@ -112,67 +112,82 @@ void liftControl () {
 }
 
 void armControl () {
-  int state = USER_CONTROL_STATE;//puts code in user controlled mode
-  int sector = 0;//arm position is divided into 7 sectors. These determin e the amount of hold power to be applied
-   if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN)))//test if button 6D was pressed
-   {
-     motorSet(ARM_MOTOR,50);//move arm down
-     state = HOLD_POWER_STATE;//move to hold power state
-   }
 
-   else if (joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_UP))//test if button 6U was presed
-   {
-     motorSet(ARM_MOTOR,-50);//move arm up
-     state = HOLD_POWER_STATE;//move to hold power state
-   }
+  if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_UP))
+  {
+    motorSet(ARM_MOTOR,-50);
+  }
 
-   if(state == 1)
-   {
-     if (encoderGet(ArmEncoder) <= SECTOR1)//if arm encoder is less than start of hold power then release hold power and it is in sector0
-     {
-       motorSet(ARM_MOTOR,0);
-       sector = 0;
-     }
+  else if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN))
+  {
+    motorSet(ARM_MOTOR,50);
+  }
+  else
+  {
+    motorSet(ARM_MOTOR,0);
+  }
 
-     if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)//if arm encoder is between sectors 1 and 2, apply neccesary hold power for this region
-     {
-       motorSet(ARM_MOTOR,-15);
-       sector = 1;
-     }
+  // int state = USER_CONTROL_STATE;//puts code in user controlled mode
+  // int sector = 0;//arm position is divided into 7 sectors. These determin e the amount of hold power to be applied
+  //  if((joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN)))//test if button 6D was pressed
+  //  {
+  //    motorSet(ARM_MOTOR,50);//move arm down
+  //    state = HOLD_POWER_STATE;//move to hold power state
+  //  }
+  //
+  //  else if (joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,BTN_ARM_UP))//test if button 6U was presed
+  //  {
+  //    motorSet(ARM_MOTOR,-50);//move arm up
+  //    state = HOLD_POWER_STATE;//move to hold power state
+  //  }
+  //
+  //  if(state == 1)
+  //  {
+  //    if (encoderGet(ArmEncoder) <= SECTOR1)//if arm encoder is less than start of hold power then release hold power and it is in sector0
+  //    {
+  //      motorSet(ARM_MOTOR,0);
+  //      sector = 0;
+  //    }
+  //
+  //    if (encoderGet(ArmEncoder) >= SECTOR1 && encoderGet(ArmEncoder) <= SECTOR2)//if arm encoder is between sectors 1 and 2, apply neccesary hold power for this region
+  //    {
+  //      motorSet(ARM_MOTOR,-15);
+  //      sector = 1;
+  //    }
+  //
+  //    if (encoderGet(ArmEncoder) >= SECTOR2 && encoderGet(ArmEncoder) <= SECTOR3)//if arm encoder is between sectors 2 and 3, apply neccesary hold power for this region
+  //    {
+  //      motorSet(ARM_MOTOR,-13);
+  //      sector = 2;
+  //    }
+  //    if (encoderGet(ArmEncoder) >= SECTOR3 && encoderGet(ArmEncoder) <= SECTOR4)//if arm encoder is between sectors 3 and 4, apply neccesary hold power for this region
+  //    {
+  //      motorSet(ARM_MOTOR,-15);
+  //      sector = 3;
+  //    }
+  //    if (encoderGet(ArmEncoder) >= SECTOR4 && encoderGet(ArmEncoder) <= SECTOR5)//if arm encoder is between sectors 4 and 5, apply neccesary hold power for this region
+  //    {
+  //      motorSet(ARM_MOTOR,-20);
+  //      sector = 4;
+  //    }
+  //    if (encoderGet(ArmEncoder) >= SECTOR5 && encoderGet(ArmEncoder) <= SECTOR6)//if arm encoder is between sectors 5 and 6, apply neccesary hold power for this region
+  //    {
+  //      motorSet(ARM_MOTOR,15);
+  //      sector = 5;
+  //    }
+  //    if (encoderGet(ArmEncoder) >= SECTOR6 && encoderGet(ArmEncoder) <= SECTOR7)//if arm encoder is between sectors 6 and 7, apply neccesary hold power for this region
+  //    {
+  //      motorSet(ARM_MOTOR,-15);
+  //      sector = 6;
+  //    }
+  //
+  //    if (encoderGet(ArmEncoder) >= SECTOR7)//if arm encoder greater than max value for hold position, release hold power
+  //    {
+  //      motorSet(ARM_MOTOR,0);
+  //      sector = 7;
+  //    }
 
-     if (encoderGet(ArmEncoder) >= SECTOR2 && encoderGet(ArmEncoder) <= SECTOR3)//if arm encoder is between sectors 2 and 3, apply neccesary hold power for this region
-     {
-       motorSet(ARM_MOTOR,-13);
-       sector = 2;
-     }
-     if (encoderGet(ArmEncoder) >= SECTOR3 && encoderGet(ArmEncoder) <= SECTOR4)//if arm encoder is between sectors 3 and 4, apply neccesary hold power for this region
-     {
-       motorSet(ARM_MOTOR,-15);
-       sector = 3;
-     }
-     if (encoderGet(ArmEncoder) >= SECTOR4 && encoderGet(ArmEncoder) <= SECTOR5)//if arm encoder is between sectors 4 and 5, apply neccesary hold power for this region
-     {
-       motorSet(ARM_MOTOR,-20);
-       sector = 4;
-     }
-     if (encoderGet(ArmEncoder) >= SECTOR5 && encoderGet(ArmEncoder) <= SECTOR6)//if arm encoder is between sectors 5 and 6, apply neccesary hold power for this region
-     {
-       motorSet(ARM_MOTOR,15);
-       sector = 5;
-     }
-     if (encoderGet(ArmEncoder) >= SECTOR6 && encoderGet(ArmEncoder) <= SECTOR7)//if arm encoder is between sectors 6 and 7, apply neccesary hold power for this region
-     {
-       motorSet(ARM_MOTOR,-15);
-       sector = 6;
-     }
 
-     if (encoderGet(ArmEncoder) >= SECTOR7)//if arm encoder greater than max value for hold position, release hold power
-     {
-       motorSet(ARM_MOTOR,0);
-       sector = 7;
-     }
-
-   }
   #ifdef ARM_POSITION_DEBUG
   char b[16];
   sprintf(b,"%d",encoderGet(ArmEncoder));
@@ -182,7 +197,7 @@ void armControl () {
   #ifdef ARM_SECTOR_DEBUG
   char b[16];
   sprintf(b,"%d",sector);
-  lcdSetText(uart2,1,b)
+  lcdSetText(uart2,1,b);
   #endif
 }
 

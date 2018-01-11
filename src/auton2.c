@@ -3,9 +3,9 @@
 #define DIST 36
 void auton2()
 {
-  motorLeftDriveSet(10);
-  motorRightDriveSet(10);
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)) )
+  motorLeftDriveSet(100);
+  motorRightDriveSet(-100);
+  while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(7.85))
   {
 
   }
