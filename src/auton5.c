@@ -1,30 +1,51 @@
 #include <API.H>
 #include "robot.h"
 
-#define DIST 36
-#define SCALER .8
-#define POWER_STEP_1 .2
-#define POWER_STEP_2 .15
 void auton5()
 {
+  motorSet(CLAW_MOTOR,-100);
+  delay(50);
+  motorSet(CLAW_MOTOR,0);
   motorLeftDriveSet(50);
   motorRightDriveSet(50);
-  while( (encoderGet(LeftDriveEncoder) > -encoderInchesToCounts(DIST*SCALER)) && (encoderGet(RightDriveEncoder) > -encoderInchesToCounts(DIST*SCALER)) )
-  {
-
-  }
-  motorLeftDriveSet(50*POWER_STEP_1);
-  motorRightDriveSet(50*POWER_STEP_1);
-  while( (encoderGet(LeftDriveEncoder) > -encoderInchesToCounts(DIST*.1)) && (encoderGet(RightDriveEncoder) > -encoderInchesToCounts(DIST*.1)) )
-  {
-
-  }
-  motorLeftDriveSet(50*POWER_STEP_2);
-  motorRightDriveSet(50*POWER_STEP_2);
-  while( (encoderGet(LeftDriveEncoder) > -encoderInchesToCounts(DIST)) && (encoderGet(RightDriveEncoder) > -encoderInchesToCounts(DIST)) )
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(10)) )
   {
 
   }
   motorLeftDriveSet(0);
   motorRightDriveSet(0);
+  motorSet(LIFT_MOTOR,100);
+  while( encoderGet(LiftEncoder) < 37)
+  {
+
+  }
+  motorSet(LIFT_MOTOR,0);
+  motorSet(ARM_MOTOR,50);
+  while (encoderGet(ArmEncoder) < 150);
+  motorSet(ARM_MOTOR,0);
+  motorSet(LIFT_MOTOR,-50);
+  while( encoderGet(LiftEncoder) > 27)
+  {
+
+  }
+  motorSet(LIFT_MOTOR,0);
+  motorSet(CLAW_MOTOR,60);
+  delay(100);
+  motorSet(CLAW_MOTOR,0);
+  motorSet(LIFT_MOTOR,100);
+  while( encoderGet(LiftEncoder) < 37)
+  {
+
+  }
+  motorSet(LIFT_MOTOR,0);
+  motorLeftDriveSet(-50);
+  motorRightDriveSet(-50);
+  while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(11)) )
+  {
+
+  }
+  motorLeftDriveSet(0);
+  motorRightDriveSet(0);
+
+
 }

@@ -15,10 +15,11 @@
 #include "config.h"
 
 //debug defines
-#define MOBILE_GOAL_DEBUG
+//#define MOBILE_GOAL_DEBUG
+//#define LIFT_DEBUG
 //#define DRIVE_POWER_DEBUG
 //#define DRIVE_ENCODER_POSITION_DEBUG
-//#define ARM_POSITION_DEBUG
+#define ARM_POSITION_DEBUG
 // #define ARM_SECTOR_DEBUG
 /*
    Runs the user operator control code. This function will be started in its
@@ -109,6 +110,11 @@ void liftControl () {
    {
      motorSet(LIFT_MOTOR,0);//otherwise release power to ease strain on motors
    }
+   #ifdef LIFT_DEBUG
+   char buf[17];
+   sprintf(buf,"%d",encoderGet(LiftEncoder));
+   lcdSetText(uart2,1,buf);
+   #endif
 }
 
 void armControl () {
