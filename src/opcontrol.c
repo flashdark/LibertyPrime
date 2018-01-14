@@ -87,9 +87,10 @@ void intakeControl () {
     motorSet(CLAW_MOTOR,-65);
      }
 
-     else{
-     motorSet(CLAW_MOTOR,0);
-   }
+     else if (joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_UP))
+     {
+       motorSet(CLAW_MOTOR,0);
+     }
  }
 
 
@@ -108,7 +109,7 @@ void liftControl () {
 
    else
    {
-     motorSet(LIFT_MOTOR,0);//otherwise release power to ease strain on motors
+     motorSet(LIFT_MOTOR,20);//otherwise release power to ease strain on motors
    }
    #ifdef LIFT_DEBUG
    char buf[17];
