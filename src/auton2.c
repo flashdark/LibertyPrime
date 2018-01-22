@@ -87,7 +87,22 @@ motorRightDriveSet(50);
 // {
 // turning at 100
 //
-while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-6))
+while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-10))
+{
+
+}
+motorLeftDriveSet(0);
+motorRightDriveSet(0);
+delay(100);
+encoderReset(LeftDriveEncoder);
+motorLeftDriveSet(-50);
+motorRightDriveSet(50);
+
+// while(encoderGet(LeftDriveEncodner) >= encoderInchesToCounts(-7.85))
+// {
+// turning at 100
+//
+while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-18))
 {
 
 }
