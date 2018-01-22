@@ -148,6 +148,7 @@ void displayRobotStatus() {
 
 void autonomous() {
   TaskHandle th = taskRunLoop(getSpeed,20);
+  
   getAutonMode();
   char buf[17];
   sprintf(buf,"%d",g_selectedAutonomous);

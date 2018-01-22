@@ -84,6 +84,7 @@ Encoder RightDriveEncoder;
 
 extern unsigned g_selectedAutonomous; // getAutonMode is the only function that sets this global variable
 void getSpeed();
+void stack();
 int speed;
 void getAutonMode();
 void displayRobotStatus();

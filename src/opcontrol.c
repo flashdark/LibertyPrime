@@ -16,10 +16,10 @@
 
 //debug defines
 //#define MOBILE_GOAL_DEBUG
-//#define LIFT_DEBUG
+#define LIFT_DEBUG
 //#define DRIVE_POWER_DEBUG
 //#define DRIVE_ENCODER_POSITION_DEBUG
-#define ARM_POSITION_DEBUG
+//#define ARM_POSITION_DEBUG
 // #define ARM_SECTOR_DEBUG
 /*
    Runs the user operator control code. This function will be started in its
@@ -64,8 +64,15 @@ void mobileGoalControl()
     }
     else
     {
+      if (joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP))
+      {
+        motorSet(MOBILE_GOAL_MOTOR,50);
+      }
+      else
+      {
       motorSet(MOBILE_GOAL_MOTOR,0); //set power to zero to avoid PTC
     }
+  }
   }
   #ifdef MOBILE_GOAL_DEBUG
 
@@ -76,21 +83,30 @@ void mobileGoalControl()
 }
 
 void intakeControl () {
-
+static bool close;
    if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT)) //open claw if button 7L is pressed
    {
      motorSet(CLAW_MOTOR,127);//apply open power
+     close = false;
      //holdCounter = 0;//reset close hold power counter
    }
    else if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT))
    {
     motorSet(CLAW_MOTOR,-65);
+    close = true;
      }
 
-     else if (joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_UP))
+     else
      {
+       if (close == true)
+       {
+          motorSet(CLAW_MOTOR,-10);
+       }
+       else
+       {
        motorSet(CLAW_MOTOR,0);
      }
+   }
  }
 
 
@@ -109,7 +125,7 @@ void liftControl () {
 
    else
    {
-     motorSet(LIFT_MOTOR,20);//otherwise release power to ease strain on motors
+     motorSet(LIFT_MOTOR,0);//otherwise release power to ease strain on motors
    }
    #ifdef LIFT_DEBUG
    char buf[17];
@@ -117,17 +133,16 @@ void liftControl () {
    lcdSetText(uart2,1,buf);
    #endif
 }
-
 void armControl () {
 
   if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_UP))
   {
-    motorSet(ARM_MOTOR,-50);
+    motorSet(ARM_MOTOR,75);
   }
 
   else if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN))
   {
-    motorSet(ARM_MOTOR,50);
+    motorSet(ARM_MOTOR,-75);
   }
   else
   {

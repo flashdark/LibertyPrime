@@ -48,10 +48,32 @@ void initializeIO() {
    speed = encoderGet(LeftDriveEncoder) - lastcounts;
    lastcounts = a;
  }
- 
+
+ void stack()
+ {
+   static bool active = false;
+   if (joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_UP) && active == false)
+   {
+     active = true;
+     motorSet(ARM_MOTOR,50);
+     motorSet(LIFT_MOTOR,50);
+     while( encoderGet(LiftEncoder) < 37)
+     {
+
+     }
+     while (encoderGet(ArmEncoder) > 113){}
+     motorSet(ARM_MOTOR,0);
+     delay(100);
+     motorSet(LIFT_MOTOR,0);
+     delay(100);
+     active = false;
+   }
+ }
+
 void initialize() {
   setTeamName("5090Z");// -gw needed to be competition legal
   lcdInit(uart2);
+  TaskHandle sh = taskRunLoop(stack,20);
    ArmEncoder =  encoderInit(ARM_ENCODER_TOP,ARM_ENCODER_BOTTOM,false);
    LiftEncoder = encoderInit(LIFT_ENCODER_TOP,LIFT_ENCODER_BOTTOM,false);
    LeftDriveEncoder = encoderInit(LEFT_DRIVE_ENCODER_TOP,LEFT_DRIVE_ENCODER_BOTTOM,false);
