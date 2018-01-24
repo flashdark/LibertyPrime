@@ -5,7 +5,7 @@ void auton2()
 {
   motorSet(CLAW_MOTOR,-100);
   delay(250);
-  motorSet(CLAW_MOTOR,0);
+  motorSet(CLAW_MOTOR,-10);
   motorSet(LIFT_MOTOR,100);
   while( encoderGet(LiftEncoder) < 17)
   {
@@ -54,60 +54,51 @@ while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(28) )  )
 {
 
 }
+motorLeftDriveSet(0);
+motorRightDriveSet(0);
+delay(250);
+encoderReset(LeftDriveEncoder);
+delay(100);
 motorLeftDriveSet(-50);
 motorRightDriveSet(50);
+while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-15))
+{
 
-// while(encoderGet(LeftDriveEncodner) >= encoderInchesToCounts(-7.85))
+}
+motorLeftDriveSet(0);
+motorRightDriveSet(0);
+delay(100);
+// motorLeftDriveSet(-50);
+// motorRightDriveSet(-50);
+// while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-36))
 // {
-// turning at 100
 //
-delay(100);
-while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(24))
-{
+// }
+// motorLeftDriveSet(0);
+// motorRightDriveSet(0);
 
-}
-motorLeftDriveSet(0);
-motorRightDriveSet(0);
-delay(100);
-encoderReset(LeftDriveEncoder);
-motorLeftDriveSet(-50);
-motorRightDriveSet(-50);
-while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-36))
-{
-
-}
-motorLeftDriveSet(0);
-motorRightDriveSet(0);
-delay(100);
-encoderReset(LeftDriveEncoder);
-motorLeftDriveSet(-50);
-motorRightDriveSet(50);
-
-// while(encoderGet(LeftDriveEncodner) >= encoderInchesToCounts(-7.85))
+// encoderReset(LeftDriveEncoder);
+// motorLeftDriveSet(-50);
+// motorRightDriveSet(50);
+//
+// while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-18))
 // {
-// turning at 100
 //
-while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-10))
-{
-
-}
-motorLeftDriveSet(0);
-motorRightDriveSet(0);
-delay(100);
-encoderReset(LeftDriveEncoder);
-motorLeftDriveSet(-50);
-motorRightDriveSet(50);
-
-// while(encoderGet(LeftDriveEncodner) >= encoderInchesToCounts(-7.85))
+// }
+// motorLeftDriveSet(0);
+// motorRightDriveSet(0);
+// delay(100);
+// encoderReset(LeftDriveEncoder);
+// motorLeftDriveSet(-50);
+// motorRightDriveSet(50);
+//
+// while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-18))
 // {
-// turning at 100
 //
-while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-18))
-{
+// }
+// motorLeftDriveSet(0);
+// motorRightDriveSet(0);
 
-}
-motorLeftDriveSet(0);
-motorRightDriveSet(0);
 
   //motorSet(MOBILE_GOAL_MOTOR,-100);
   //encoderReset(LeftDriveEncoder);

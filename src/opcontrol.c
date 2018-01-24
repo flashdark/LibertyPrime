@@ -15,8 +15,8 @@
 #include "config.h"
 
 //debug defines
-//#define MOBILE_GOAL_DEBUG
-#define LIFT_DEBUG
+#define MOBILE_GOAL_DEBUG
+//#define LIFT_DEBUG
 //#define DRIVE_POWER_DEBUG
 //#define DRIVE_ENCODER_POSITION_DEBUG
 //#define ARM_POSITION_DEBUG
@@ -56,32 +56,27 @@ void mobileGoalControl()
   {
     motorSet(MOBILE_GOAL_MOTOR,-mobileGoalPower);//extend mobile goal
   }
-  else
+  else if (joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP) && (analogRead(MOBILE_GOAL_POT) >= 475))
   {
-    if((analogRead(MOBILE_GOAL_POT) < 1300 )&& (analogRead(MOBILE_GOAL_POT) >= 160))//boundaries where hold power should be applied
-    {
-      motorSet(MOBILE_GOAL_MOTOR,-mobileHoldPower); // apply hold power to stabilize mobile goal lift
-    }
-    else
-    {
-      if (joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP))
-      {
-        motorSet(MOBILE_GOAL_MOTOR,50);
-      }
-      else
-      {
-      motorSet(MOBILE_GOAL_MOTOR,0); //set power to zero to avoid PTC
-    }
-  }
-  }
-  #ifdef MOBILE_GOAL_DEBUG
+      motorSet(MOBILE_GOAL_MOTOR,65);
 
+  }
+    else{
+      if((analogRead(MOBILE_GOAL_POT) < 1300 )&& (analogRead(MOBILE_GOAL_POT) >= 160))
+      {
+        motorSet(MOBILE_GOAL_MOTOR,-mobileHoldPower);
+      }//boundaries where hold power should be applied
+       // apply hold power to stabilize mobile goal lift
+      else{motorSet(MOBILE_GOAL_MOTOR,0);}
+
+    }
+
+  #ifdef MOBILE_GOAL_DEBUG
   char buffer[16];
   sprintf(buffer,"%d",analogRead(MOBILE_GOAL_POT));
   lcdSetText(uart2,1,buffer);
 #endif
 }
-
 void intakeControl () {
 static bool close;
    if(joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT)) //open claw if button 7L is pressed
