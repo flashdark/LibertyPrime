@@ -45,7 +45,7 @@ void auton5()
   motorSet(LIFT_MOTOR,0);//stop lifting up
   motorLeftDriveSet(-50);//back away from goal
   motorRightDriveSet(-50);
-  motorSet(CLAW_MOTOR,0);
+  motorSet(CLAW_MOTOR,0);//stop trying to release cone
   while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(11)) )
   {
 
