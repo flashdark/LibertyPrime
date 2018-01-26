@@ -15,10 +15,10 @@
 #include "config.h"
 
 //debug defines
-#define MOBILE_GOAL_DEBUG
+//#define MOBILE_GOAL_DEBUG
 //#define LIFT_DEBUG
 //#define DRIVE_POWER_DEBUG
-//#define DRIVE_ENCODER_POSITION_DEBUG
+#define DRIVE_ENCODER_POSITION_DEBUG
 //#define ARM_POSITION_DEBUG
 // #define ARM_SECTOR_DEBUG
 /*
@@ -132,12 +132,12 @@ void armControl () {
 
   if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_UP))
   {
-    motorSet(ARM_MOTOR,75);
+    motorSet(ARM_MOTOR,75);//up
   }
 
   else if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN))
   {
-    motorSet(ARM_MOTOR,-75);
+    motorSet(ARM_MOTOR,-75);//down
   }
   else
   {

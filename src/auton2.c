@@ -1,6 +1,10 @@
 #include <API.H>
 #include "robot.h"
-#define DIST 36
+#define DIST 60
+#define DIST2 -52
+#define OK_TO_BRAKE 10
+extern int speed;
+static int mp = 50;
 void auton2()
 {
 
@@ -16,9 +20,69 @@ void auton2()
   motorSet(MOBILE_GOAL_MOTOR,-100);//deploy mobile goal
   motorLeftDriveSet(50);//drive forward
   motorRightDriveSet(50);//drive forward
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(51) )  )
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-400) )
   {
+      static int offset = 0;
+      if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 15  )
+      {
+        offset += 10;
+      }
 
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 10  )
+      {
+        offset += 5;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 5  )
+      {
+        offset += 2;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -5  )
+      {
+        offset -= 2;
+      }
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -10  )
+
+      {
+        offset -= 5;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -15  )
+      {
+        offset -= 10;
+      }
+
+
+      else if ( (encoderGet(LeftDriveEncoder) >= -5) && (encoderGet(LeftDriveEncoder) <= 5) )
+      {
+        offset = 0;
+      }
+
+      if ( (offset > 500))
+      {
+        offset = 500;
+      }
+      else if (offset < -500)
+      {
+        offset = -500;
+      }
+
+    //motorLeftDriveSet(mp+offset);
+    motorRightDriveSet(mp-offset/50);
+
+  }
+
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-375) )
+  {
+    //speed =
+    if (speed > OK_TO_BRAKE)
+    {
+      //char buf[17];
+      mp = -2 * (speed / 4.5);
+    }
+    motorLeftDriveSet(mp);
+    motorRightDriveSet(mp);
   }
   motorLeftDriveSet(0);//stop
   motorRightDriveSet(0);//stop
@@ -51,7 +115,7 @@ motorSet(LIFT_MOTOR,0);//stop lifting
 delay(100);
 motorLeftDriveSet(-100);//drive backwards
 motorRightDriveSet(-100);//drive backwards
-while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(28) )  )
+while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(29) )  )
 {
 
 }
@@ -62,53 +126,135 @@ encoderReset(LeftDriveEncoder);//reset encoder
 delay(100);
 motorLeftDriveSet(-50);//turn left
 motorRightDriveSet(50);//turn left
-while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-15))
+while(encoderGet(LeftDriveEncoder) >= -250)
 {
 
 }
 motorLeftDriveSet(0);//stop driving
 motorRightDriveSet(0);//stop driving
 delay(100);
-// motorLeftDriveSet(-50);
-// motorRightDriveSet(-50);
-// while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-36))
-// {
-//
-// }
-// motorLeftDriveSet(0);
-// motorRightDriveSet(0);
+motorLeftDriveSet(-50);//drive backwards toward stationary goal
+motorRightDriveSet(-50);
+mp = -50;
+while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(DIST2)+400) )
+{
+    static int offset = 0;
+    if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 15  )
+    {
+      offset += 10;
+    }
 
-// encoderReset(LeftDriveEncoder);
-// motorLeftDriveSet(-50);
-// motorRightDriveSet(50);
-//
-// while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-18))
-// {
-//
-// }
-// motorLeftDriveSet(0);
-// motorRightDriveSet(0);
-// delay(100);
-// encoderReset(LeftDriveEncoder);
-// motorLeftDriveSet(-50);
-// motorRightDriveSet(50);
-//
-// while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(-18))
-// {
-//
-// }
-// motorLeftDriveSet(0);
-// motorRightDriveSet(0);
+    else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 10  )
+    {
+      offset += 5;
+    }
+
+    else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 5  )
+    {
+      offset += 2;
+    }
+
+    else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -5  )
+    {
+      offset -= 2;
+    }
+    else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -10  )
+
+    {
+      offset -= 5;
+    }
+
+    else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -15  )
+    {
+      offset -= 10;
+    }
 
 
-  //motorSet(MOBILE_GOAL_MOTOR,-100);
-  //encoderReset(LeftDriveEncoder);
-  // motorLeftDriveSet(-50);
-  // motorRightDriveSet(-50);
-  // while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(-7) )  )
-  // {
-  //
-  // }
-  // motorLeftDriveSet(0);
-  // motorRightDriveSet(0);
+    else if ( (encoderGet(LeftDriveEncoder) >= -5) && (encoderGet(LeftDriveEncoder) <= 5) )
+    {
+      offset = 0;
+    }
+
+    if ( (offset > 500))
+    {
+      offset = 500;
+    }
+    else if (offset < -500)
+    {
+      offset = -500;
+    }
+
+  //motorLeftDriveSet(mp+offset);
+  motorRightDriveSet(mp-offset/50);
+
+}
+
+while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(DIST2)+375) )
+{
+  //speed =
+  if (speed > OK_TO_BRAKE)
+  {
+    //char buf[17];
+    mp = -2 * (speed / 4.5);
+  }
+  motorLeftDriveSet(mp);
+  motorRightDriveSet(mp);
+}
+motorLeftDriveSet(0);//stop
+motorRightDriveSet(0);//stop
+delay(250);
+encoderReset(LeftDriveEncoder);//reset encoder
+motorLeftDriveSet(-50);//pivot left
+motorRightDriveSet(50);//pivot left
+while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-21))
+{
+
+}
+motorLeftDriveSet(0);//stop driving
+motorRightDriveSet(0);//stop driving
+delay(250);
+encoderReset(LeftDriveEncoder);//reset encoder
+delay(100);
+motorLeftDriveSet(50);//turn left
+motorRightDriveSet(50);//turn left
+while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(8))
+{
+
+}
+motorLeftDriveSet(0);//stop driving
+motorRightDriveSet(0);//stop driving
+delay(250);
+encoderReset(LeftDriveEncoder);//reset encoder
+delay(100);
+motorLeftDriveSet(-50);//turn left
+motorRightDriveSet(-50);//turn left
+while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-4))
+{
+
+}
+motorSet(LIFT_MOTOR,100);//lift up
+while( encoderGet(LiftEncoder) < 17)
+{
+
+}
+motorSet(LIFT_MOTOR,20);
+delay(100);
+motorLeftDriveSet(0);//stop driving
+motorRightDriveSet(0);//stop driving
+
+delay(250);
+encoderReset(LeftDriveEncoder);//reset encoder
+delay(100);
+
+motorLeftDriveSet(100);//turn left
+motorRightDriveSet(100);//turn left
+while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(30))
+{
+
+}
+motorSet(MOBILE_GOAL_MOTOR,-100);//deploy mobile goal
+motorLeftDriveSet(0);//stop driving
+motorRightDriveSet(0);//stop driving
+
+
 }
