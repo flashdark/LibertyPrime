@@ -10,7 +10,7 @@ void auton5()
   motorSet(CLAW_MOTOR,-10);//apply hold power
   motorLeftDriveSet(50);//drive forward at half power
   motorRightDriveSet(50);//drive forward at half power
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(15.5) )  )//drive to stationary goal
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(15.75) )  )//drive to stationary goal
   {
 
   }
@@ -25,7 +25,7 @@ void auton5()
   motorSet(LIFT_MOTOR,20);//apply hold power to stabilize lift
   delay(300);
   motorSet(ARM_MOTOR,-25);//start deploying arm
-  while (encoderGet(ArmEncoder) < 86){}//deploy arm
+  while (encoderGet(ArmEncoder) < 110){}//deploy arm
   motorSet(ARM_MOTOR,0);//stop deploying arm
   delay(100);
   motorSet(LIFT_MOTOR,-50);//lower cone onto stationary goal

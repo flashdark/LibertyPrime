@@ -16,8 +16,9 @@ void auton2()
   {
 
   }
-  motorSet(LIFT_MOTOR,0);
+  motorSet(LIFT_MOTOR,20);
   motorSet(MOBILE_GOAL_MOTOR,-100);//deploy mobile goal
+  delay(20);
   motorLeftDriveSet(50);//drive forward
   motorRightDriveSet(50);//drive forward
   while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-400) )
@@ -92,6 +93,8 @@ void auton2()
 
   }
   motorSet(MOBILE_GOAL_MOTOR,0);//stop pulling in
+  delay(20);
+  motorSet(LIFT_MOTOR,0);
   motorSet(ARM_MOTOR,-25);
   while (encoderGet(ArmEncoder) < 64){}
   motorSet(ARM_MOTOR,0);
@@ -217,7 +220,7 @@ encoderReset(LeftDriveEncoder);//reset encoder
 delay(100);
 motorLeftDriveSet(50);//turn left
 motorRightDriveSet(50);//turn left
-while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(8))
+while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(10))
 {
 
 }
@@ -228,7 +231,7 @@ encoderReset(LeftDriveEncoder);//reset encoder
 delay(100);
 motorLeftDriveSet(-50);//turn left
 motorRightDriveSet(-50);//turn left
-while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-4))
+while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-3))
 {
 
 }
@@ -248,13 +251,18 @@ delay(100);
 
 motorLeftDriveSet(100);//turn left
 motorRightDriveSet(100);//turn left
-while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(30))
+while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(10))
 {
 
 }
 motorSet(MOBILE_GOAL_MOTOR,-100);//deploy mobile goal
+delay(100);
+motorLeftDriveSet(-100);//turn left
+motorRightDriveSet(-100);//turn left
+delay(100);
 motorLeftDriveSet(0);//stop driving
 motorRightDriveSet(0);//stop driving
-
+delay(100);
+motorSet(MOBILE_GOAL_MOTOR,0);
 
 }
