@@ -251,15 +251,10 @@ delay(100);
 
 motorLeftDriveSet(100);//turn left
 motorRightDriveSet(100);//turn left
-while(encoderGet(LeftDriveEncoder) <= encoderInchesToCounts(10))
-{
-
-}
+delay(1200);
 motorSet(MOBILE_GOAL_MOTOR,-100);//deploy mobile goal
-delay(100);
-motorLeftDriveSet(-100);//turn left
-motorRightDriveSet(-100);//turn left
-delay(100);
+delay(250);
+motorSet(MOBILE_GOAL_MOTOR,100);
 motorLeftDriveSet(0);//stop driving
 motorRightDriveSet(0);//stop driving
 delay(100);
