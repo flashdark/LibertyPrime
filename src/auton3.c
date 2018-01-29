@@ -177,7 +177,7 @@ delay(100);
 //turn to score mobile goal
 motorLeftDriveSet(50);//turn left
 motorRightDriveSet(-50);//turn left
-while(encoderGet(LeftDriveEncoder) <= 250)
+while(encoderGet(LeftDriveEncoder) <= 260)
 {
 
 }

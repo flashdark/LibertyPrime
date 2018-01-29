@@ -209,7 +209,7 @@ delay(250);
 encoderReset(LeftDriveEncoder);//reset encoder
 motorLeftDriveSet(-50);//pivot left
 motorRightDriveSet(50);//pivot left
-while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-21))
+while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-20))
 {
 
 }
@@ -231,7 +231,7 @@ encoderReset(LeftDriveEncoder);//reset encoder
 delay(100);
 motorLeftDriveSet(-50);//turn left
 motorRightDriveSet(-50);//turn left
-while(encoderGet(LeftDriveEncoder) >= encoderInchesToCounts(-3))
+while(encoderGet(LeftDriveEncoder) >= -250)
 {
 
 }

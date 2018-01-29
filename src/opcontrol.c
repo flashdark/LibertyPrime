@@ -132,12 +132,12 @@ void armControl () {
 
   if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_UP))
   {
-    motorSet(ARM_MOTOR,75);//up
+    motorSet(ARM_MOTOR,90);//up
   }
 
   else if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN))
   {
-    motorSet(ARM_MOTOR,-75);//down
+    motorSet(ARM_MOTOR,-90);//down
   }
   else
   {
