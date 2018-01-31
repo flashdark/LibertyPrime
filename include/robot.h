@@ -98,7 +98,7 @@ void auton7();
 void auton8();
 void auton9();
 void autonA();
-void driveto50();
+void AccelerateToX(int power);
 
 int iemInches2Counts(float inches);
 int encoderInchesToCounts(float inches);

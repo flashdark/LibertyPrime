@@ -26,7 +26,7 @@ void auton3()
 
 
   //drive forward towards mobile goal
-driveto50();
+AccelerateToX(50);
 
   while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-400) )//stop at mobile goal
   {
