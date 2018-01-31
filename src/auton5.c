@@ -8,9 +8,8 @@ void auton5()
   motorSet(CLAW_MOTOR,-100);//pull in cone
   delay(250);
   motorSet(CLAW_MOTOR,-10);//apply hold power
-  motorLeftDriveSet(50);//drive forward at half power
-  motorRightDriveSet(50);//drive forward at half power
-  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(15.75) )  )//drive to stationary goal
+  driveto50();
+  while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(18) )  )//drive to stationary goal 15.75
   {
 
   }

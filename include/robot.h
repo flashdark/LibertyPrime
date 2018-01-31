@@ -77,7 +77,7 @@ Encoder RightDriveEncoder;
 #define STRING_AUTON_4 "30 Test"
 #define STRING_AUTON_5 "#5 "
 #define STRING_AUTON_6 "D Test 1"
-#define STRING_AUTON_7 "D Test 2 "
+#define STRING_AUTON_7 "T Steer Test "
 #define STRING_AUTON_8 "D Test 3 "
 #define STRING_AUTON_9 "D Test 4 "
 #define STRING_AUTON_A "#A "
@@ -98,6 +98,7 @@ void auton7();
 void auton8();
 void auton9();
 void autonA();
+void driveto50();
 
 int iemInches2Counts(float inches);
 int encoderInchesToCounts(float inches);

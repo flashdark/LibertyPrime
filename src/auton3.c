@@ -1,6 +1,6 @@
 #include <API.H>
 #include "robot.h"
-#define DIST 60
+#define DIST 65
 #define DIST2 -52
 #define OK_TO_BRAKE 10
 extern int speed;
@@ -26,8 +26,7 @@ void auton3()
 
 
   //drive forward towards mobile goal
-  motorLeftDriveSet(50);
-  motorRightDriveSet(50);
+driveto50();
 
   while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)-400) )//stop at mobile goal
   {

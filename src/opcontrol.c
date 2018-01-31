@@ -56,9 +56,15 @@ void mobileGoalControl()
   {
     motorSet(MOBILE_GOAL_MOTOR,-mobileGoalPower);//extend mobile goal
   }
-  else if (joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP) && (analogRead(MOBILE_GOAL_POT) >= 475))
+  else if (joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP))
   {
-      motorSet(MOBILE_GOAL_MOTOR,65);
+      if(analogRead(MOBILE_GOAL_POT) >= 475){
+      motorSet(MOBILE_GOAL_MOTOR,55);
+    }
+    else
+    {
+      motorSet(MOBILE_GOAL_MOTOR,-100);
+    }
 
   }
     else{
@@ -132,12 +138,12 @@ void armControl () {
 
   if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_UP))
   {
-    motorSet(ARM_MOTOR,90);//up
+    motorSet(ARM_MOTOR,127);//up
   }
 
   else if(joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN))
   {
-    motorSet(ARM_MOTOR,-90);//down
+    motorSet(ARM_MOTOR,-127);//down
   }
   else
   {
