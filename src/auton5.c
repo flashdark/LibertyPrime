@@ -36,7 +36,8 @@ void auton5()
   motorSet(CLAW_MOTOR,0);//release intake power
   delay(100);
   motorSet(CLAW_MOTOR,100);//drop cone
-  motorSet(LIFT_MOTOR,50);//lift up to finish releasing the cone
+  delay(100);
+  motorSet(LIFT_MOTOR,40);//lift up to finish releasing the cone
   while( encoderGet(LiftEncoder) < 37)
   {
 
