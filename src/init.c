@@ -11,79 +11,45 @@
  */
 
 #include "main.h"
-#include "robot.h"
 
 /*
-   Runs pre-initialization code. This function will be started in kernel mode
-   one time while the VEX Cortex is starting up. As the scheduler is still
-   paused, most API functions will fail.
-
-   The purpose of this function is solely to set the default pin modes
-   (pinMode()) and port states (digitalWrite()) of limit switches, push
-   buttons, and solenoids. It can also safely configure a UART port
-   (usartOpen()) but cannot set up an LCD (lcdInit()).
+ * Runs pre-initialization code. This function will be started in kernel mode one time while the
+ * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.
+ *
+ * The purpose of this function is solely to set the default pin modes (pinMode()) and port
+ * states (digitalWrite()) of limit switches, push buttons, and solenoids. It can also safely
+ * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
-
 void initializeIO() {
 }
 
 /*
-   Runs user initialization code. This function will be started in its own
-   task with the default priority and stack size once when the robot is
-   starting up. It is possible that the VEXnet communication link may not be
-   fully established at this time, so reading from the VEX Joystick may fail.
-
-   This function should initialize most sensors (gyro, encoders, ultrasonics),
-   LCDs, global variables, and IMEs.
-
-   This function must exit relatively promptly, or the operatorControl() and
-   autonomous() tasks will not start. An autonomous mode selection menu like
-   the pre_auton() in other environments can be implemented in this task if
-   desired.
+ * Runs user initialization code. This function will be started in its own task with the default
+ * priority and stack size once when the robot is starting up. It is possible that the VEXnet
+ * communication link may not be fully established at this time, so reading from the VEX
+ * Joystick may fail.
+ *
+ * This function should initialize most sensors (gyro, encoders, ultrasonics), LCDs, global
+ * variables, and IMEs.
+ *
+ * This function must exit relatively promptly, or the operatorControl() and autonomous() tasks
+ * will not start. An autonomous mode selection menu like the pre_auton() in other environments
+ * can be implemented in this task if desired.
  */
- void getSpeed()
- {
-   static int lastcounts = 0;
-   int a = encoderGet(LeftDriveEncoder);
-   speed = encoderGet(LeftDriveEncoder) - lastcounts;
-   lastcounts = a;
- }
-
- void stack()
- {
-   static bool active = false;
-   if (joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_UP) && active == false)
-   {
-     active = true;
-     motorSet(ARM_MOTOR,50);
-     motorSet(LIFT_MOTOR,50);
-     while( encoderGet(LiftEncoder) < 37)
-     {
-
-     }
-     while (encoderGet(ArmEncoder) > 113){}
-     motorSet(ARM_MOTOR,0);
-     delay(100);
-     motorSet(LIFT_MOTOR,0);
-     delay(100);
-     active = false;
-   }
- }
-
 void initialize() {
-  setTeamName("5090Z");// -gw needed to be competition legal
-  lcdInit(uart2);
-  TaskHandle sh = taskRunLoop(stack,20);
-   ArmEncoder =  encoderInit(ARM_ENCODER_TOP,ARM_ENCODER_BOTTOM,false);
+   lcdInit(uart2);
+  ArmEncoder =  encoderInit(ARM_ENCODER_TOP,ARM_ENCODER_BOTTOM,false);
    LiftEncoder = encoderInit(LIFT_ENCODER_TOP,LIFT_ENCODER_BOTTOM,false);
    LeftDriveEncoder = encoderInit(LEFT_DRIVE_ENCODER_TOP,LEFT_DRIVE_ENCODER_BOTTOM,false);
    RightDriveEncoder = encoderInit(RIGHT_DRIVE_ENCODER_TOP,RIGHT_DRIVE_ENCODER_BOTTOM,false);
    encoderReset(LeftDriveEncoder);
    encoderReset(RightDriveEncoder);
-
-  while (!isEnabled()) {
-    displayRobotStatus();
-    taskDelay(100);
-  }
-  lcdSetBacklight(uart2, false);
+  TaskHandle mgt = taskRunLoop(MobileGoalControl,20);
+  TaskHandle dt = taskRunLoop(DriverControl,20);
+  TaskHandle at = taskRunLoop(ArmControl,10);
+  TaskHandle lt = taskRunLoop(LiftControl,30);
+  TaskHandle it = taskRunLoop(IntakeControl,20);
+  TaskHandle adt = taskRunLoop(driveforward,20);
+  // TaskHandle mat = taskRunLoop(movearm,20);
+  // TaskHandle mlt = taskRunLoop(movelift,20);
 }

@@ -158,12 +158,12 @@ motorRightDriveSet(0);//stop driving
 
 delay(200);
 encoderReset(LeftDriveEncoder);//reset encoder preparing for turn
-delay(100);
+delay(20);
 
 
 motorLeftDriveSet(50);
 motorRightDriveSet(-50);
-while(encoderGet(LeftDriveEncoder) <= 450)
+while(encoderGet(LeftDriveEncoder) <= 550) //larger value = more turn
 {
 
 }
@@ -186,23 +186,23 @@ motorRightDriveSet(0);//stop driving
 
 delay(200);
 encoderReset(LeftDriveEncoder);//reset encoder before turn
-delay(100);
+delay(20);
 
 //turn to score mobile goal
 motorLeftDriveSet(50);//turn left
 motorRightDriveSet(-50);//turn left
-while(encoderGet(LeftDriveEncoder) <= 300)
+while(encoderGet(LeftDriveEncoder) <= 350)
 {
 
 }
 motorLeftDriveSet(0);//stop driving
 motorRightDriveSet(0);//stop driving
-delay(100);
+delay(20);
 
 //drive to scoring zone
-motorLeftDriveSet(60);
-motorRightDriveSet(60);
-while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(22) )  )
+motorLeftDriveSet(50);
+motorRightDriveSet(50);
+while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(23) )  )
 {
 
 }
@@ -220,7 +220,7 @@ delay(1000);
 motorLeftDriveSet(-100);//stop driving
 motorRightDriveSet(-100);//stop driving
 
-while( (encoderGet(LeftDriveEncoder) > encoderInchesToCounts(-.5) )  )
+while( (encoderGet(LeftDriveEncoder) > -10 )  )
 {
 
 }

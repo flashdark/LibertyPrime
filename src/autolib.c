@@ -1,5 +1,23 @@
-#include "robot.h"
-#include <API.h>
+#include "main.h"
+void turnClockwise(int counts)
+{
+
+}
+
+void turnCclwise(int counts)
+{
+
+}
+
+void driveForward(int counts, int power)
+{
+
+}
+
+void driveBackward(int counts, int power)
+{
+
+}
 
 void AccelerateToX(int power)
 {
@@ -65,4 +83,10 @@ void AccelerateToX(int power)
     motorRightDriveSet(120);
     delay(20);
   }
+}
+
+
+void DriveStraight(int distance)
+{
+
 }
