@@ -4,10 +4,10 @@ extern int liftdist;
 extern int lmp;
 extern int armdist;
 extern int amp;
+
 void drivestraight(int counts)
 {
-
-  if( (encoderGet(LeftDriveEncoder) < counts) )//stop at mobile goal
+  if( (encoderGet(LeftDriveEncoder) < counts-400) )//stop at mobile goal
   {
     //go straight algorithm
       static int offset = 0;
@@ -85,5 +85,30 @@ if (encoderGet(ArmEncoder) <= armdist)
 else
 {
   motorSet(ARM_MOTOR,0);
+}
+}
+
+void decelerate(int counts)
+{
+  int mp = 0;
+  while( (encoderGet(LeftDriveEncoder) < counts-375) )
+  {
+  //speed =
+  if (speed > OK_TO_BRAKE)
+  {
+    //char buf[17];
+    mp = -2 * (speed / 4.5);
+  }
+  motorLeftDriveSet(mp);
+  motorRightDriveSet(mp);
+}
+
+mp = 20;
+motorLeftDriveSet(mp);
+motorRightDriveSet(mp);
+
+while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)) );
+motorLeftDriveSet(0);
+motorRightDriveSet(0);
 }
 }
