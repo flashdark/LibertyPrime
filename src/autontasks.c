@@ -4,15 +4,10 @@ extern int liftdist;
 extern int lmp;
 extern int armdist;
 extern int amp;
-extern int dist;
-void accelerate()
+void drivestraight(int counts)
 {
-  AccelerateToX(dmp);
-}
 
-void drivestraight()
-{
-  if( (encoderGet(LeftDriveEncoder) < dist-400) )//stop at mobile goal
+  if( (encoderGet(LeftDriveEncoder) < counts) )//stop at mobile goal
   {
     //go straight algorithm
       static int offset = 0;
@@ -60,7 +55,9 @@ void drivestraight()
       {
         offset = -500;
       }
-
+      // char buffer[16];
+      // sprintf(buffer,"%d D>",offset);
+      // lcdSetText(uart2, 1,buffer);
     motorRightDriveSet(dmp-offset/50);
 
   }
@@ -89,10 +86,4 @@ else
 {
   motorSet(ARM_MOTOR,0);
 }
-}
-
-void driveforward()
-
-{
-  drivestraight();
 }

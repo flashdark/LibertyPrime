@@ -1,5 +1,7 @@
 #include "main.h"
-void turnClockwise(int counts)
+  char buffer[16];
+  void turnClockwise(int counts)
+
 {
 
 }
@@ -9,8 +11,18 @@ void turnCclwise(int counts)
 
 }
 
-void driveForward(int counts, int power)
+void driveforward(int counts, int power)
 {
+
+  sprintf(buffer,"%d  A",encoderGet(LeftDriveEncoder));
+  lcdSetText(uart2, 1,buffer);
+AccelerateToX(power);
+sprintf(buffer,"%d  D",encoderGet(LeftDriveEncoder));
+lcdSetText(uart2, 1,buffer);
+drivestraight(counts);
+delay(1000);
+motorLeftDriveSet(0);
+motorRightDriveSet(0);
 
 }
 
@@ -83,10 +95,4 @@ void AccelerateToX(int power)
     motorRightDriveSet(120);
     delay(20);
   }
-}
-
-
-void DriveStraight(int distance)
-{
-
 }

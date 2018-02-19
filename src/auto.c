@@ -8,9 +8,7 @@ int dist = 0;
 
 
 void autonomous() {
-dist = 250;
-AccelerateToX(50);
-delay(100);
+driveforward(500,50);
 
 
 }

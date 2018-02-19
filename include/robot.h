@@ -110,7 +110,7 @@ void motorLeftDriveSet(int power);
 void motorRightDriveSet(int power);
 void drivebackward();
 void AccelerateToX(int power);
-void driveforward();
+void driveforward(int counts, int power);
 void turnCclwise(int counts);
 void turnClockwise(int counts);
 void drivestraight();

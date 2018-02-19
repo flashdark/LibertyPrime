@@ -61,6 +61,10 @@ case 4:
 
 void DriverControl()
 {
+  char buffer[16];
+  sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
+  lcdSetText(uart2, 1,buffer);
+
     if (abs(powerLeft) > STICK_THRESHOLD && powerLeft < 60) {
       //motorLeftDriveSet(powerLeft/3);
       motorLeftDriveSet(powerLeft);
