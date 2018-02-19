@@ -85,7 +85,6 @@ Encoder RightDriveEncoder;
 extern unsigned g_selectedAutonomous; // getAutonMode is the only function that sets this global variable
 void getSpeed();
 void stack();
-int speed;
 void getAutonMode();
 void displayRobotStatus();
 void auton1();
@@ -99,21 +98,24 @@ void auton8();
 void auton9();
 void autonA();
 void AccelerateToX(int power);
-
+void readButtons();
+void MobileGoalControl();
+void DriverControl();
+void LiftControl();
+void ArmControl();
+void IntakeControl();
 int iemInches2Counts(float inches);
 int encoderInchesToCounts(float inches);
-void motorLeftDriveSet (int power);
-void motorRightDriveSet (int power);
-
+void motorLeftDriveSet(int power);
+void motorRightDriveSet(int power);
+void drivebackward();
+void AccelerateToX(int power);
+void driveforward();
+void turnCclwise(int counts);
+void turnClockwise(int counts);
+void drivestraight();
+void movelift();
+void movearm();
 //TODO add sector values
-
-#define SECTOR1 51
-#define SECTOR2 144
-#define SECTOR3 216
-#define SECTOR5 268
-#define SECTOR4 328
-#define SECTOR6 404
-#define SECTOR7 437
-
 
 #endif // ROBOT_H

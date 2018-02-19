@@ -19,7 +19,7 @@
  * PROS contains FreeRTOS (http://www.freertos.org) whose source code may be
  * obtained from http://sourceforge.net/projects/freertos/files/ or on request.
  */
-
+#include "robot.h"
 #ifndef MAIN_H_
 
 // This prevents multiple inclusion, which isn't bad for this file but is good practice

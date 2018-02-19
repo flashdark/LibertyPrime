@@ -111,7 +111,7 @@ void LiftControl()
 {
   if (liftup)//if lifting up
      {
-       motorSet(LIFT_MOTOR,100);//go up
+       motorSet(LIFT_MOTOR,120);//go up
      }
      else if (liftdown)//if moving down
      {
