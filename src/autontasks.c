@@ -104,6 +104,7 @@ void decelerate(int counts)
     }
     motorLeftDriveSet(mp);
     motorRightDriveSet(mp);
+    delay(20);
   }
 
   mp = 20;
