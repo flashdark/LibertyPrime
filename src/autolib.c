@@ -8,7 +8,11 @@
 
 void turnCclwise(int counts)
 {
-
+  motorLeftDriveSet(-50);
+  motorRightDriveSet(50);
+  while(encoderGet(LeftDriveEncoder) > counts){}
+  motorLeftDriveSet(0);
+  motorRightDriveSet(0);
 }
 
 void driveforward(int counts, int power)
@@ -16,14 +20,14 @@ void driveforward(int counts, int power)
 
   sprintf(buffer,"%d  A",encoderGet(LeftDriveEncoder));
   lcdSetText(uart2, 1,buffer);
-AccelerateToX(power);
-sprintf(buffer,"%d  D",encoderGet(LeftDriveEncoder));
-lcdSetText(uart2, 1,buffer);
-drivestraight(counts);
-delay(1000);
-motorLeftDriveSet(0);
-motorRightDriveSet(0);
-
+  AccelerateToX(power);
+  sprintf(buffer,"%d  D",encoderGet(LeftDriveEncoder));
+  lcdSetText(uart2, 1,buffer);
+  while (encoderGet(LeftDriveEncoder) < counts-400)
+  {
+  drivestraight();
+  }
+  decelerate(counts);
 }
 
 void driveBackward(int counts, int power)
