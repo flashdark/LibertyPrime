@@ -116,6 +116,7 @@ void turnClockwise(int counts);
 void drivestraight();
 void movelift();
 void movearm();
+void getSpeed();
 void decelerate(int counts);
 //TODO add sector values
 

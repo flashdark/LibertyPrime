@@ -49,6 +49,7 @@ void initialize() {
   TaskHandle at = taskRunLoop(ArmControl,10);
   TaskHandle lt = taskRunLoop(LiftControl,30);
   TaskHandle it = taskRunLoop(IntakeControl,20);
+  TaskHandle spd = taskRunLoop(getSpeed,20);
   // TaskHandle mat = taskRunLoop(movearm,20);
   // TaskHandle mlt = taskRunLoop(movelift,20);
 }

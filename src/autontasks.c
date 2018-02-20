@@ -1,10 +1,14 @@
 #include "main.h"
+
+#define OK_TO_BRAKE 10
+
 extern int dmp;
 extern int liftdist;
 extern int lmp;
 extern int armdist;
 extern int amp;
 
+int speed = 0;
 void drivestraight(int counts)
 {
   if( (encoderGet(LeftDriveEncoder) < counts-400) )//stop at mobile goal
@@ -94,21 +98,29 @@ void decelerate(int counts)
   while( (encoderGet(LeftDriveEncoder) < counts-375) )
   {
   //speed =
-  if (speed > OK_TO_BRAKE)
-  {
+    if (speed > OK_TO_BRAKE)
+    {
     //char buf[17];
-    mp = -2 * (speed / 4.5);
+      mp = -2 * (speed / 4.5);
+    }
+    motorLeftDriveSet(mp);
+    motorRightDriveSet(mp);
   }
+
+  mp = 20;
   motorLeftDriveSet(mp);
   motorRightDriveSet(mp);
+
+  while( encoderGet(LeftDriveEncoder) < counts ){delay(20);}
+  motorLeftDriveSet(0);
+  motorRightDriveSet(0);
 }
 
-mp = 20;
-motorLeftDriveSet(mp);
-motorRightDriveSet(mp);
 
-while( (encoderGet(LeftDriveEncoder) < encoderInchesToCounts(DIST)) );
-motorLeftDriveSet(0);
-motorRightDriveSet(0);
-}
+void getSpeed()
+{
+  static int lastcounts = 0;
+  int a = encoderGet(LeftDriveEncoder);
+  speed = encoderGet(LeftDriveEncoder) - lastcounts;
+  lastcounts = a;
 }
