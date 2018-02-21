@@ -2,11 +2,6 @@
 #ifndef ROBOT_H // this is a header guard used to avoid the problem of double inclusion
 #define ROBOT_H
 
-
-
-
-
-
 // analog ports
 #define SELECT_MODE_POT 1
 #define MOBILE_GOAL_POT 6
@@ -82,6 +77,20 @@ Encoder RightDriveEncoder;
 #define STRING_AUTON_9 "D Test 4 "
 #define STRING_AUTON_A "#A "
 
+
+//driver related methods
+void readButtons();
+void MobileGoalControl();
+void DriverControl();
+void LiftControl();
+void ArmControl();
+void IntakeControl();
+int iemInches2Counts(float inches);
+int encoderInchesToCounts(float inches);
+void motorLeftDriveSet(int power);
+void motorRightDriveSet(int power);
+
+//auto related methods
 extern unsigned g_selectedAutonomous; // getAutonMode is the only function that sets this global variable
 void getSpeed();
 void stack();
@@ -97,17 +106,6 @@ void auton7();
 void auton8();
 void auton9();
 void autonA();
-void AccelerateToX(int power);
-void readButtons();
-void MobileGoalControl();
-void DriverControl();
-void LiftControl();
-void ArmControl();
-void IntakeControl();
-int iemInches2Counts(float inches);
-int encoderInchesToCounts(float inches);
-void motorLeftDriveSet(int power);
-void motorRightDriveSet(int power);
 void drivebackward();
 void AccelerateBackward(int power);
 void AccelerateForward(int power);
@@ -117,16 +115,16 @@ void turnClockwise(int counts);
 void drivestraight();
 void movelift();
 void movearm();
-void getSpeed();
 void decelerate(int counts);
+void autoMobileGoal();
+void deploymobilegoal();
+void retractmobilegoal();
 
 //task related methods
 void suspenddrivertasks();
 void suspendautotasks();
 void enableautotasks();
 void enabledrivertasks();
-
 void TaskManager(TaskHandle th,int operation);
-//TODO add sector values
 
 #endif // ROBOT_H

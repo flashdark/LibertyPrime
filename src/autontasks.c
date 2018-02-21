@@ -2,67 +2,14 @@
 
 #define OK_TO_BRAKE 10
 
-extern int dmp;
+
 extern int liftdist;
 extern int lmp;
 extern int armdist;
 extern int amp;
+extern int mgs;
 
 int speed = 0;
-void drivestraight(int counts)
-{
-  if( (encoderGet(LeftDriveEncoder) < counts-400) )//stop at mobile goal
-  {
-    //go straight algorithm
-      static int offset = 0;
-      if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 15  )
-      {
-        offset += 10;
-      }
-
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 10  )
-      {
-        offset += 5;
-      }
-
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 5  )
-      {
-        offset += 2;
-      }
-
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -5  )
-      {
-        offset -= 2;
-      }
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -10  )
-
-      {
-        offset -= 5;
-      }
-
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -15  )
-      {
-        offset -= 10;
-      }
-
-
-      else if ( (encoderGet(LeftDriveEncoder) >= -5) && (encoderGet(LeftDriveEncoder) <= 5) )
-      {
-        offset = 0;
-      }
-
-      if ( (offset > 500))
-      {
-        offset = 500;
-      }
-      else if (offset < -500)
-      {
-        offset = -500;
-      }
-    motorRightDriveSet(dmp-offset/50);
-
-  }
-}
 
 void movelift()
 {
@@ -113,26 +60,7 @@ void decelerate(int counts)
   motorRightDriveSet(0);
 }
 
-void deploymobilegoal()
-{
-  motorSet(MOBILE_GOAL_MOTOR,-127);
-  if(analogRead(MOBILE_GOAL_POT) < 1515){
 
-  }
-  else
-  {
-  motorSet(MOBILE_GOAL_MOTOR,0);
-  }
-}
-
-void retractmobilegoal()
-{
-  if(analogRead(MOBILE_GOAL_POT) > 9) {motorSet(MOBILE_GOAL_MOTOR,127); }
-  else
-  {
-  motorSet(MOBILE_GOAL_MOTOR,0);
-  }
-}
 
 void getSpeed()
 {
@@ -140,4 +68,23 @@ void getSpeed()
   int a = encoderGet(LeftDriveEncoder);
   speed = encoderGet(LeftDriveEncoder) - lastcounts;
   lastcounts = a;
+}
+
+void autoMobileGoal()
+{
+  switch(mgs)
+  {
+    case 0:
+            motorSet(MOBILE_GOAL_MOTOR,0);
+            break;
+    case 1:
+            deploymobilegoal();
+            mgs = 0;
+            break;
+    case 2:
+            retractmobilegoal();
+            mgs = 0;
+            break;
+
+  }
 }

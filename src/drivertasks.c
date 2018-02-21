@@ -154,22 +154,3 @@ static bool close;
      }
    }
  }
-
-
-void TaskManager(TaskHandle th,int operation)
-{
-  switch(operation)
-  {
-    case 0:
-          taskResume(th);
-          break;
-    case 1:
-          taskSuspend(th);
-          break;
-    case 2:
-          taskDelete(th);
-          break;
-    default:
-            break;
-  }
-}

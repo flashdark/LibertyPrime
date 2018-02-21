@@ -20,6 +20,7 @@ TaskHandle it;
 TaskHandle spd;
 TaskHandle mat;
 TaskHandle mlt;
+TaskHandle amgt;
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
  * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.
@@ -58,7 +59,8 @@ void initialize() {
    lt = taskRunLoop(LiftControl,20);
    it = taskRunLoop(IntakeControl,16);
    spd = taskRunLoop(getSpeed,1);
-   mat = taskRunLoop(movearm,20);
-   mlt = taskRunLoop(movelift,20);
+   mat = taskRunLoop(movearm,15);
+   mlt = taskRunLoop(movelift,10);
+   amgt = taskRunLoop(autoMobileGoal,20);
 
 }

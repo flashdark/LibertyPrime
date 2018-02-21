@@ -5,6 +5,7 @@ int lmp = 0;
 int armdist = 0;
 int amp = 0;
 int dist = 0;
+int mgs = 0;
 
 extern TaskHandle mgt;
 extern TaskHandle dt;

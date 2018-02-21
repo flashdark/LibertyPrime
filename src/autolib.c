@@ -1,14 +1,6 @@
 #include "main.h"
 
-
-extern TaskHandle mgt;
-extern TaskHandle dt;
-extern TaskHandle at;
-extern TaskHandle lt;
-extern TaskHandle it;
-extern TaskHandle spd;
-extern TaskHandle mat;
-extern TaskHandle mlt;
+extern int dmp;
 
   void turnClockwise(int counts)
 
@@ -182,33 +174,78 @@ void AccelerateBackward(int power)
   }
 }
 
-
-void suspenddrivertasks()
+void deploymobilegoal()
 {
-  TaskManager(mgt,1);
-  TaskManager(dt,1);
-  TaskManager(at,1);
-  TaskManager(lt,1);
-  TaskManager(it,1);
+  motorSet(MOBILE_GOAL_MOTOR,-127);
+  if(analogRead(MOBILE_GOAL_POT) < 1515){
+
+  }
+  else
+  {
+  motorSet(MOBILE_GOAL_MOTOR,0);
+  }
 }
 
-void suspendautotasks()
+void retractmobilegoal()
 {
-  TaskManager(mat,1);
-  TaskManager(mlt,1);
+  if(analogRead(MOBILE_GOAL_POT) > 9) {motorSet(MOBILE_GOAL_MOTOR,127); }
+  else
+  {
+  motorSet(MOBILE_GOAL_MOTOR,0);
+  }
 }
 
-void enableautotasks()
+void drivestraight(int counts)
 {
-  TaskManager(mat,0);
-  TaskManager(mlt,0);
-}
+  if( (encoderGet(LeftDriveEncoder) < counts-400) )//stop at mobile goal
+  {
+    //go straight algorithm
+      static int offset = 0;
+      if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 15  )
+      {
+        offset += 10;
+      }
 
-void enabledrivertasks()
-{
-  TaskManager(mgt,0);
-  TaskManager(dt,0);
-  TaskManager(at,0);
-  TaskManager(lt,0);
-  TaskManager(it,0);
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 10  )
+      {
+        offset += 5;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 5  )
+      {
+        offset += 2;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -5  )
+      {
+        offset -= 2;
+      }
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -10  )
+
+      {
+        offset -= 5;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -15  )
+      {
+        offset -= 10;
+      }
+
+
+      else if ( (encoderGet(LeftDriveEncoder) >= -5) && (encoderGet(LeftDriveEncoder) <= 5) )
+      {
+        offset = 0;
+      }
+
+      if ( (offset > 500))
+      {
+        offset = 500;
+      }
+      else if (offset < -500)
+      {
+        offset = -500;
+      }
+    motorRightDriveSet(dmp-offset/50);
+
+  }
 }
