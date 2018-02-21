@@ -22,6 +22,7 @@ extern TaskHandle mlt;
 void autonomous() {
 suspenddrivertasks();
 enableautotasks();
+mgs = 1;
 //driveforward(1800,120);
 delay(1000);
 encoderReset(LeftDriveEncoder);

@@ -23,12 +23,12 @@ void turnCclwise(int counts)
 
 void driveforward(int counts, int power)
 {
-  AccelerateForward(power);
+  AccelerateForward(power); //accelerateion to prevent torque steer
   while (encoderGet(LeftDriveEncoder) < counts-400)
   {
-    drivestraight();
+    drivestraight();//adjustment code
   }
-  decelerate(counts);
+  decelerate(counts);//slow down to prevent overshooting
 }
 
 void driveBackward(int counts, int power)
