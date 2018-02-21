@@ -9,9 +9,10 @@ extern int armdist;
 extern int amp;
 
 int speed = 0;
-void drivestraight()
+void drivestraight(int counts)
 {
-
+  if( (encoderGet(LeftDriveEncoder) < counts-400) )//stop at mobile goal
+  {
     //go straight algorithm
       static int offset = 0;
       if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 15  )
@@ -58,13 +59,10 @@ void drivestraight()
       {
         offset = -500;
       }
-      // char buffer[16];
-      // sprintf(buffer,"%d D>",offset);
-      // lcdSetText(uart2, 1,buffer);
     motorRightDriveSet(dmp-offset/50);
 
   }
-
+}
 
 void movelift()
 {
@@ -104,7 +102,6 @@ void decelerate(int counts)
     }
     motorLeftDriveSet(mp);
     motorRightDriveSet(mp);
-    delay(20);
   }
 
   mp = 20;

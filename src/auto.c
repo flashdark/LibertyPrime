@@ -5,10 +5,18 @@ int lmp = 0;
 int armdist = 0;
 int amp = 0;
 int dist = 0;
-
+extern int ts;
 
 void autonomous() {
-driveforward(500,50);
+ts = 1;
+//driveforward(1800,120);
+delay(1000);
+encoderReset(LeftDriveEncoder);
+ts = 2;
+
+
+//turnClockwise(700)
+//turnCclwise(560);
 
 
 }
