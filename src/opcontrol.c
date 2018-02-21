@@ -19,6 +19,8 @@ bool relcone = false;
 int ts = 0;
 
 void operatorControl() {
+	suspendautotasks();
+	enabledrivertasks();
 	while (1)
 {
 	readButtons();

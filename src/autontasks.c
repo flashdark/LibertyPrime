@@ -113,6 +113,26 @@ void decelerate(int counts)
   motorRightDriveSet(0);
 }
 
+void deploymobilegoal()
+{
+  motorSet(MOBILE_GOAL_MOTOR,-127);
+  if(analogRead(MOBILE_GOAL_POT) < 1515){
+
+  }
+  else
+  {
+  motorSet(MOBILE_GOAL_MOTOR,0);
+  }
+}
+
+void retractmobilegoal()
+{
+  if(analogRead(MOBILE_GOAL_POT) > 9) {motorSet(MOBILE_GOAL_MOTOR,127); }
+  else
+  {
+  motorSet(MOBILE_GOAL_MOTOR,0);
+  }
+}
 
 void getSpeed()
 {

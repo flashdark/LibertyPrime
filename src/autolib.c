@@ -1,5 +1,15 @@
 #include "main.h"
-  char buffer[16];
+
+
+extern TaskHandle mgt;
+extern TaskHandle dt;
+extern TaskHandle at;
+extern TaskHandle lt;
+extern TaskHandle it;
+extern TaskHandle spd;
+extern TaskHandle mat;
+extern TaskHandle mlt;
+
   void turnClockwise(int counts)
 
 {
@@ -31,12 +41,7 @@ void driveforward(int counts, int power)
 
 void driveBackward(int counts, int power)
 {
-
-    sprintf(buffer,"%d  A",encoderGet(LeftDriveEncoder));
-    lcdSetText(uart2, 1,buffer);
     AccelerateBackward(power);
-    sprintf(buffer,"%d  D",encoderGet(LeftDriveEncoder));
-    lcdSetText(uart2, 1,buffer);
     while (encoderGet(LeftDriveEncoder) > counts-400)
     {
       drivestraight();
@@ -175,4 +180,35 @@ void AccelerateBackward(int power)
     motorRightDriveSet(-120);
     delay(20);
   }
+}
+
+
+void suspenddrivertasks()
+{
+  TaskManager(mgt,1);
+  TaskManager(dt,1);
+  TaskManager(at,1);
+  TaskManager(lt,1);
+  TaskManager(it,1);
+}
+
+void suspendautotasks()
+{
+  TaskManager(mat,1);
+  TaskManager(mlt,1);
+}
+
+void enableautotasks()
+{
+  TaskManager(mat,0);
+  TaskManager(mlt,0);
+}
+
+void enabledrivertasks()
+{
+  TaskManager(mgt,0);
+  TaskManager(dt,0);
+  TaskManager(at,0);
+  TaskManager(lt,0);
+  TaskManager(it,0);
 }

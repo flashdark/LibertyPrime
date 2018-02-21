@@ -119,6 +119,14 @@ void movelift();
 void movearm();
 void getSpeed();
 void decelerate(int counts);
+
+//task related methods
+void suspenddrivertasks();
+void suspendautotasks();
+void enableautotasks();
+void enabledrivertasks();
+
+void TaskManager(TaskHandle th,int operation);
 //TODO add sector values
 
 #endif // ROBOT_H

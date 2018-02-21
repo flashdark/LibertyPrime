@@ -12,6 +12,14 @@
 
 #include "main.h"
 
+TaskHandle mgt;
+TaskHandle dt;
+TaskHandle at;
+TaskHandle lt;
+TaskHandle it;
+TaskHandle spd;
+TaskHandle mat;
+TaskHandle mlt;
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
  * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.
@@ -44,12 +52,13 @@ void initialize() {
    RightDriveEncoder = encoderInit(RIGHT_DRIVE_ENCODER_TOP,RIGHT_DRIVE_ENCODER_BOTTOM,false);
    encoderReset(LeftDriveEncoder);
    encoderReset(RightDriveEncoder);
-  TaskHandle mgt = taskRunLoop(MobileGoalControl,20);
-  TaskHandle dt = taskRunLoop(DriverControl,20);
-  TaskHandle at = taskRunLoop(ArmControl,10);
-  TaskHandle lt = taskRunLoop(LiftControl,30);
-  TaskHandle it = taskRunLoop(IntakeControl,20);
-  TaskHandle spd = taskRunLoop(getSpeed,20);
-  // TaskHandle mat = taskRunLoop(movearm,20);
-  // TaskHandle mlt = taskRunLoop(movelift,20);
+   mgt = taskRunLoop(MobileGoalControl,10);
+   dt = taskRunLoop(DriverControl,15);
+   at = taskRunLoop(ArmControl,5);
+   lt = taskRunLoop(LiftControl,20);
+   it = taskRunLoop(IntakeControl,16);
+   spd = taskRunLoop(getSpeed,1);
+   mat = taskRunLoop(movearm,20);
+   mlt = taskRunLoop(movelift,20);
+
 }
