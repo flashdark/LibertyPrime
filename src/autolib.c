@@ -34,11 +34,11 @@ void driveforward(int counts, int power)
 void driveBackward(int counts, int power)
 {
     AccelerateBackward(power);
-    while (encoderGet(LeftDriveEncoder) > counts-400)
+    while(encoderGet(LeftDriveEncoder) > -counts + 400)
     {
-      drivestraight();
+      drivestraightBack(counts);
     }
-    decelerate(counts);
+    decelerateBack(counts);
   }
 
 
@@ -229,6 +229,61 @@ void drivestraight(int counts)
       else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -15  )
       {
         offset -= 10;
+      }
+
+
+      else if ( (encoderGet(LeftDriveEncoder) >= -5) && (encoderGet(LeftDriveEncoder) <= 5) )
+      {
+        offset = 0;
+      }
+
+      if ( (offset > 500))
+      {
+        offset = 500;
+      }
+      else if (offset < -500)
+      {
+        offset = -500;
+      }
+    motorRightDriveSet(dmp-offset/50);
+
+  }
+}
+
+void drivestraightBack(int counts)
+{
+  if( (encoderGet(LeftDriveEncoder) > -counts+400) )//stop at mobile goal
+  {
+    //go straight algorithm
+      static int offset = 0;
+      if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -15  )
+      {
+        offset -= 10;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -10  )
+      {
+        offset -= 5;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -5  )
+      {
+        offset -= 2;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -5  )
+      {
+        offset += 2;
+      }
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -10  )
+
+      {
+        offset += 5;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -15  )
+      {
+        offset += 10;
       }
 
 

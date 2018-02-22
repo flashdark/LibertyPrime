@@ -23,13 +23,17 @@ void autonomous() {
 suspenddrivertasks();
 enableautotasks();
 mgs = 1;
-//driveforward(1800,120);
-delay(1000);
+driveforward(1350,120);
 encoderReset(LeftDriveEncoder);
 
+mgs = 2;
+delay(100);
+turnCclwise(50);
+//driveBackward(1350,-40);
+//turnClockwise(700);
 
-//turnClockwise(700)
-//turnCclwise(560);
-
+//turnCclwise(700);
+//driveforward(1700,120);
+suspendalltasks();
 
 }

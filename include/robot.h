@@ -110,6 +110,7 @@ void drivebackward();
 void AccelerateBackward(int power);
 void AccelerateForward(int power);
 void driveforward(int counts, int power);
+void driveBackward(int counts, int power);
 void turnCclwise(int counts);
 void turnClockwise(int counts);
 void drivestraight();
@@ -119,6 +120,8 @@ void decelerate(int counts);
 void autoMobileGoal();
 void deploymobilegoal();
 void retractmobilegoal();
+void drivestraightBack(int counts);
+void decelerateBack(int counts);
 
 //task related methods
 void suspenddrivertasks();
@@ -126,5 +129,5 @@ void suspendautotasks();
 void enableautotasks();
 void enabledrivertasks();
 void TaskManager(TaskHandle th,int operation);
-
+void suspendalltasks();
 #endif // ROBOT_H

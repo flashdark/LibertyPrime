@@ -2,7 +2,7 @@
 
 #define OK_TO_BRAKE 10
 
-
+extern int dmp;
 extern int liftdist;
 extern int lmp;
 extern int armdist;
@@ -51,6 +51,7 @@ void decelerate(int counts)
     motorRightDriveSet(mp);
   }
 
+
   mp = 20;
   motorLeftDriveSet(mp);
   motorRightDriveSet(mp);
@@ -60,6 +61,29 @@ void decelerate(int counts)
   motorRightDriveSet(0);
 }
 
+void decelerateBack(int counts)
+{
+  int mp = 0;
+  while( (encoderGet(LeftDriveEncoder) > -counts+375) )
+  {
+  //speed =
+    if (speed < -OK_TO_BRAKE)
+    {
+    //char buf[17];
+      mp = 2 * (speed / 4.5);
+    }
+    motorLeftDriveSet(mp);
+    motorRightDriveSet(mp);
+  }
+
+  mp = -20;
+  motorLeftDriveSet(mp);
+  motorRightDriveSet(mp);
+
+  while( encoderGet(LeftDriveEncoder) > -counts ){delay(20);}
+  motorLeftDriveSet(0);
+  motorRightDriveSet(0);
+}
 
 
 void getSpeed()
@@ -70,20 +94,30 @@ void getSpeed()
   lastcounts = a;
 }
 
+
 void autoMobileGoal()
 {
+
   switch(mgs)
   {
     case 0:
-            motorSet(MOBILE_GOAL_MOTOR,0);
             break;
     case 1:
-            deploymobilegoal();
-            mgs = 0;
+            motorSet(MOBILE_GOAL_MOTOR,-127);
+            if(analogRead(MOBILE_GOAL_POT) < 1515){}
+            else
+            {
+                motorSet(MOBILE_GOAL_MOTOR,0);
+                mgs=0;
+            }
             break;
     case 2:
-            retractmobilegoal();
-            mgs = 0;
+            if(analogRead(MOBILE_GOAL_POT) > 9) {motorSet(MOBILE_GOAL_MOTOR,127); }
+            else
+            {
+              motorSet(MOBILE_GOAL_MOTOR,0);
+              mgs=0;
+            }
             break;
 
   }
