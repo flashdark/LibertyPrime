@@ -72,3 +72,16 @@ void suspendalltasks()
   TaskManager(mlt,1);
 
 }
+
+void initializeLoopTasks()
+{
+  mgt = taskRunLoop(MobileGoalControl,10);
+  dt = taskRunLoop(DriverControl,15);
+  at = taskRunLoop(ArmControl,5);
+  lt = taskRunLoop(LiftControl,20);
+  it = taskRunLoop(IntakeControl,16);
+  spd = taskRunLoop(getSpeed,1);
+  mat = taskRunLoop(movearm,15);
+  mlt = taskRunLoop(movelift,10);
+  amgt = taskRunLoop(autoMobileGoal,20);
+}

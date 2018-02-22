@@ -130,4 +130,5 @@ void enableautotasks();
 void enabledrivertasks();
 void TaskManager(TaskHandle th,int operation);
 void suspendalltasks();
+void initializeLoopTasks(); //PROS destroys tasks crated by taskRunLoop() when mode changes or disable occurs
 #endif // ROBOT_H

@@ -20,6 +20,7 @@ extern TaskHandle mlt;
 
 
 void autonomous() {
+initializeLoopTasks();
 suspenddrivertasks();
 enableautotasks();
 mgs = 1;
@@ -34,6 +35,6 @@ turnCclwise(50);
 
 //turnCclwise(700);
 //driveforward(1700,120);
-suspendalltasks();
-
+suspendautotasks();
+enabledrivertasks();
 }

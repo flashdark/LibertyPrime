@@ -53,14 +53,6 @@ void initialize() {
    RightDriveEncoder = encoderInit(RIGHT_DRIVE_ENCODER_TOP,RIGHT_DRIVE_ENCODER_BOTTOM,false);
    encoderReset(LeftDriveEncoder);
    encoderReset(RightDriveEncoder);
-   mgt = taskRunLoop(MobileGoalControl,10);
-   dt = taskRunLoop(DriverControl,15);
-   at = taskRunLoop(ArmControl,5);
-   lt = taskRunLoop(LiftControl,20);
-   it = taskRunLoop(IntakeControl,16);
-   spd = taskRunLoop(getSpeed,1);
-   mat = taskRunLoop(movearm,15);
-   mlt = taskRunLoop(movelift,10);
-   amgt = taskRunLoop(autoMobileGoal,20);
+   initializeLoopTasks();
 
 }
