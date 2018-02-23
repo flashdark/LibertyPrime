@@ -1,7 +1,5 @@
 #include "main.h"
 
-extern int dmp;
-
   void turnClockwise(int counts)
 
 {
@@ -26,7 +24,7 @@ void driveforward(int counts, int power)
   AccelerateForward(power); //accelerateion to prevent torque steer
   while (encoderGet(LeftDriveEncoder) < counts-400)
   {
-    drivestraight();//adjustment code
+    drivestraight(power);//adjustment code
   }
   decelerate(counts);//slow down to prevent overshooting
 }
@@ -36,7 +34,7 @@ void driveBackward(int counts, int power)
     AccelerateBackward(power);
     while(encoderGet(LeftDriveEncoder) > -counts + 400)
     {
-      drivestraightBack(counts);
+      drivestraightBack(power);
     }
     decelerateBack(counts);
   }
@@ -195,10 +193,9 @@ void retractmobilegoal()
   }
 }
 
-void drivestraight(int counts)
+void drivestraight(int dmp)
 {
-  if( (encoderGet(LeftDriveEncoder) < counts-400) )//stop at mobile goal
-  {
+
     //go straight algorithm
       static int offset = 0;
       if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 15  )
@@ -248,10 +245,10 @@ void drivestraight(int counts)
     motorRightDriveSet(dmp-offset/50);
 
   }
-}
 
-  void drivestraightBack(void)
+  void drivestraightBack(int dmp)
 {
+
   int leftencval = -encoderGet(LeftDriveEncoder);//making values positive for math
   int rightencval = -encoderGet(RightDriveEncoder);//making values positive for math
     //go straight algorithm
@@ -287,10 +284,10 @@ void drivestraight(int counts)
       }
 
 
-      if ( (leftencval == rightencval) ) //reset offset
-      {
-        offset = 0;
-      }
+    //  if ( (leftencval == rightencval) ) //reset offset
+    //  {
+    //    offset = 0;
+    //  }
 
       if ( (offset > 500))
       {
