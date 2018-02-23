@@ -7,8 +7,6 @@ extern int liftdist;
 extern int lmp;
 extern int armdist;
 extern int amp;
-extern int mgs;
-
 int speed = 0;
 
 void movelift()
@@ -97,8 +95,8 @@ void getSpeed()
 
 void autoMobileGoal()
 {
-
-  switch(mgs)
+  int status = readmgs();
+  switch(status)
   {
     case 0:
             break;
@@ -108,7 +106,7 @@ void autoMobileGoal()
             else
             {
                 motorSet(MOBILE_GOAL_MOTOR,0);
-                mgs=0;
+                status=0;
             }
             break;
     case 2:
@@ -116,7 +114,7 @@ void autoMobileGoal()
             else
             {
               motorSet(MOBILE_GOAL_MOTOR,0);
-              mgs=0;
+             status=0;
             }
             break;
 

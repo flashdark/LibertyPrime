@@ -122,6 +122,8 @@ void deploymobilegoal();
 void retractmobilegoal();
 void drivestraightBack(int counts);
 void decelerateBack(int counts);
+int readmgs();
+void writemgs(int op);
 
 //task related methods
 void suspenddrivertasks();

@@ -256,34 +256,34 @@ void drivestraightBack(int counts)
   {
     //go straight algorithm
       static int offset = 0;
-      if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 15  )
+      if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= 15  )
       {
-        offset += 10;
+        offset -= 10;
       }
 
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 10  )
-      {
-        offset += 5;
-      }
-
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= 5  )
-      {
-        offset += 2;
-      }
-
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -5  )
-      {
-        offset -= 2;
-      }
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -10  )
-
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= 10  )
       {
         offset -= 5;
       }
 
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= -15  )
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= 5  )
       {
-        offset -= 10;
+        offset -= 2;
+      }
+
+       else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= -15  )
+      {
+        offset += 10;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= -10  )
+      {
+        offset += 5;
+      }
+
+      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= -5  )
+      {
+        offset += 2;
       }
 
 
@@ -300,7 +300,7 @@ void drivestraightBack(int counts)
       {
         offset = -500;
       }
-    motorRightDriveSet(dmp+offset/50);
+    motorRightDriveSet(dmp-offset/50);
 
   }
 }

@@ -16,6 +16,15 @@ extern TaskHandle spd;
 extern TaskHandle mat;
 extern TaskHandle mlt;
 
+int readmgs()
+{
+  return mgs;
+}
+
+void writemgs(int op)
+{
+  mgs = op;
+}
 
 
 
@@ -23,14 +32,17 @@ void autonomous() {
 initializeLoopTasks();
 suspenddrivertasks();
 enableautotasks();
-mgs = 1;
-driveforward(1350,120);
+delay(40);
+writemgs(1);
+driveforward(1300,120);
+encoderReset(LeftDriveEncoder);
+writemgs(2);
+delay(100);
+turnCclwise(25);
+delay(1000);
 encoderReset(LeftDriveEncoder);
 
-mgs = 2;
-delay(100);
-turnCclwise(50);
-//driveBackward(1350,-40);
+driveBackward(1350,-40);
 //turnClockwise(700);
 
 //turnCclwise(700);
