@@ -250,44 +250,44 @@ void drivestraight(int counts)
   }
 }
 
-void drivestraightBack(int counts)
+  void drivestraightBack(void)
 {
-  if( (encoderGet(LeftDriveEncoder) > -counts+400) )//stop at mobile goal
-  {
+  int leftencval = -encoderGet(LeftDriveEncoder);//making values positive for math
+  int rightencval = -encoderGet(RightDriveEncoder);//making values positive for math
     //go straight algorithm
       static int offset = 0;
-      if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= 15  )
-      {
-        offset -= 10;
-      }
-
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= 10  )
-      {
-        offset -= 5;
-      }
-
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) <= 5  )
-      {
-        offset -= 2;
-      }
-
-       else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= -15  )
+      if ( (rightencval - leftencval) >= 15  )//if off a lot, compenate accordingly
       {
         offset += 10;
       }
 
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= -10  )
+      else if ( (rightencval - leftencval) >= 10  )//if off more, compenate accordingly
       {
         offset += 5;
       }
 
-      else if ( (encoderGet(RightDriveEncoder) - encoderGet(LeftDriveEncoder)) >= -5  )
+      else if ( (rightencval - leftencval) >= 5  )//if off a little, compenate accordingly
       {
         offset += 2;
       }
 
+       else if ( (rightencval - leftencval) <= -15  )
+      {
+        offset -= 10;
+      }
 
-      else if ( (encoderGet(LeftDriveEncoder) >= -5) && (encoderGet(LeftDriveEncoder) <= 5) )
+      else if ( (rightencval - leftencval) <= -10  )
+      {
+        offset -= 5;
+      }
+
+      else if ( (rightencval - leftencval) <= -5  )
+      {
+        offset -= 2;
+      }
+
+
+      if ( (leftencval == rightencval) )
       {
         offset = 0;
       }
@@ -302,5 +302,5 @@ void drivestraightBack(int counts)
       }
     motorRightDriveSet(dmp-offset/50);
 
-  }
+
 }
