@@ -120,10 +120,11 @@ void decelerate(int counts);
 void autoMobileGoal();
 void deploymobilegoal();
 void retractmobilegoal();
-void drivestraightBack(int counts);
+void drivestraightBack();
 void decelerateBack(int counts);
 int readmgs();
 void writemgs(int op);
+void configurePin(int pin);
 
 //task related methods
 void suspenddrivertasks();

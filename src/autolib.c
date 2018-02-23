@@ -287,7 +287,7 @@ void drivestraight(int counts)
       }
 
 
-      if ( (leftencval == rightencval) )
+      if ( (leftencval == rightencval) ) //reset offset
       {
         offset = 0;
       }

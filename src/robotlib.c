@@ -85,3 +85,8 @@ void initializeLoopTasks()
   mlt = taskRunLoop(movelift,10);
   amgt = taskRunLoop(autoMobileGoal,20);
 }
+
+void configurePin(int pin)
+{
+  pinMode(pin, OUTPUT);
+}

@@ -54,5 +54,5 @@ void initialize() {
    encoderReset(LeftDriveEncoder);
    encoderReset(RightDriveEncoder);
    initializeLoopTasks();
-
+   configurePin(9);
 }

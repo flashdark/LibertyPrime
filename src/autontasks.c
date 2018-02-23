@@ -95,6 +95,7 @@ void getSpeed()
 
 void autoMobileGoal()
 {
+  digitalWrite(9,HIGH);
   int status = readmgs();
   switch(status)
   {
