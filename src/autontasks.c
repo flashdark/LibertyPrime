@@ -14,6 +14,7 @@ void movelift()
   if (encoderGet(LiftEncoder) <= liftdist)
   {
   motorSet(LIFT_MOTOR,lmp);
+  delay(30);
   }
 
   else
@@ -27,11 +28,13 @@ void movearm()
 if (encoderGet(ArmEncoder) <= armdist)
 {
   motorSet(ARM_MOTOR,amp);
+  delay(30);
 }
 else
 {
   motorSet(ARM_MOTOR,0);
 }
+
 }
 
 void decelerate(int counts)
