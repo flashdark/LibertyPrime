@@ -1,5 +1,5 @@
 #include "main.h"
-void auton9()
+void auton3()
 {
 
 }

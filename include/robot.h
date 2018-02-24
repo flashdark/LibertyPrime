@@ -66,15 +66,15 @@ Encoder RightDriveEncoder;
 #define BTN_MGOAL JOY_RIGHT
 
 // Autonomous Definitions for LCD Display
-#define STRING_AUTON_1 "Cone+SG"
-#define STRING_AUTON_2 "Mobile Goal 20"
-#define STRING_AUTON_3 "20 Test"
-#define STRING_AUTON_4 "30 Test"
-#define STRING_AUTON_5 "#5 "
-#define STRING_AUTON_6 "D Test 1"
-#define STRING_AUTON_7 "T Steer Test "
-#define STRING_AUTON_8 "D Test 3 "
-#define STRING_AUTON_9 "D Test 4 "
+#define STRING_AUTON_1 "Mobile Goal R5"
+#define STRING_AUTON_2 "Mobile Goal R10"
+#define STRING_AUTON_3 "Mobile Goal R20"
+#define STRING_AUTON_4 "Block 20"
+#define STRING_AUTON_5 "Cone + SG"
+#define STRING_AUTON_6 "Mobile Goal B5"
+#define STRING_AUTON_7 "Mobile Goal B10 "
+#define STRING_AUTON_8 "Mobile Goal B20"
+#define STRING_AUTON_9 "Skills"
 #define STRING_AUTON_A "#A "
 
 
