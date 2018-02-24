@@ -243,6 +243,7 @@ void drivestraight(int dmp)
         offset = -500;
       }
     motorRightDriveSet(dmp-offset/50);
+    delay(30);
 
   }
 

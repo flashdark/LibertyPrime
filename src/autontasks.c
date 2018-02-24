@@ -1,8 +1,7 @@
 #include "main.h"
 
 #define OK_TO_BRAKE 10
-
-extern int dmp;
+extern int operation;
 extern int liftdist;
 extern int lmp;
 extern int armdist;
@@ -11,18 +10,33 @@ int speed = 0;
 
 void movelift()
 {
-  if (encoderGet(LiftEncoder) <= liftdist)
+  if (lmp < 0)
   {
-  motorSet(LIFT_MOTOR,lmp);
-  delay(30);
-  }
+    if (encoderGet(LiftEncoder) >= liftdist)
+    {
+      motorSet(LIFT_MOTOR,lmp);
+      delay(30);
+    }
+    else
+    {
+      motorSet(LIFT_MOTOR,20);
+    }
 
-  else
-  {
-    motorSet(LIFT_MOTOR,0);
   }
+  else if (lmp > 0)
+     {
+       if (encoderGet(LiftEncoder) <= liftdist)
+       {
+         motorSet(LIFT_MOTOR,lmp);
+         delay(30);
+       }
+
+       else
+       {
+         motorSet(LIFT_MOTOR,20);
+       }
+    }
 }
-
 void movearm()
 {
 if (encoderGet(ArmEncoder) <= armdist)
@@ -122,5 +136,25 @@ void autoMobileGoal()
             }
             break;
 
+  }
+}
+
+void intake()
+{
+  switch(operation)
+  {
+    case 0:
+          motorSet(CLAW_MOTOR,0);
+          break;
+    case 1:
+          motorSet(CLAW_MOTOR,-120);
+          delay(250);
+          operation = 0;
+          break;
+    case 2:
+          motorSet(CLAW_MOTOR,120);
+          delay(250);
+          operation = 0;
+          break;
   }
 }

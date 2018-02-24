@@ -76,7 +76,7 @@ void DriverControl()
         motorLeftDriveSet(0);
       }
 
-    delay(20);
+    // delay(20);
     if (abs(powerRight) > STICK_THRESHOLD && powerRight < 60) {
       //motorRightDriveSet(powerRight/3);
       motorRightDriveSet(powerRight);

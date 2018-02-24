@@ -10,7 +10,7 @@ extern TaskHandle spd;
 extern TaskHandle mat;
 extern TaskHandle mlt;
 extern TaskHandle amgt;
-
+extern TaskHandle ait;
 void TaskManager(TaskHandle th,int operation)
 {
   switch(operation)
@@ -80,6 +80,7 @@ void initializeLoopTasks()
   at = taskRunLoop(ArmControl,5);
   lt = taskRunLoop(LiftControl,20);
   it = taskRunLoop(IntakeControl,16);
+
   spd = taskRunLoop(getSpeed,1);
   mat = taskRunLoop(movearm,15);
   mlt = taskRunLoop(movelift,10);

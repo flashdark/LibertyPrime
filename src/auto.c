@@ -6,7 +6,7 @@ int lmp = 0; //power to use when lifting
 int armdist = 0;//dist to move arm
 int amp = 0;//power to use to move arm
 int mgs = 0;//mobile goal task state
-
+int operation = 0;
 unsigned g_selectedAutonomous = 0;
 
 /*Task Handles used to change task states*/
@@ -18,6 +18,7 @@ extern TaskHandle it;
 extern TaskHandle spd;
 extern TaskHandle mat;
 extern TaskHandle mlt;
+extern TaskHandle ait;
 
 int readmgs()
 {
@@ -136,66 +137,8 @@ void displayRobotStatus() {
 void autonomous() {
 initializeLoopTasks();
 suspenddrivertasks();
-enableautotasks();
-getAutonMode();
-  char buf[17];
-  sprintf(buf,"%d",g_selectedAutonomous);
-  //lcdSetText(uart2,2,buf);
-  switch (g_selectedAutonomous) {
-  case 1:
-    auton1();
-    //sprintf(buf,"A1 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  case 2:
-    auton2();
-    //sprintf(buf,"A2 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  case 3:
-    auton3();
-    //sprintf(buf,"A3 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  case 4:
-    auton4();
-    //sprintf(buf,"A4 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  case 5:
-    auton5();
-    //sprintf(buf,"A5 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  case 6:
-    auton6();
-
-    break;
-  case 7:
-    auton7();
-    //sprintf(buf,"A7 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  case 8:
-    auton8();
-    //sprintf(buf,"A8 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  case 9: // Skills Auton
-    auton9();
-    //sprintf(buf,"A9 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  case 10:
-    autonA();
-    //sprintf(buf,"A10 Called");
-    //lcdSetText(uart2,2,buf);
-    break;
-  default:
-    lcdSetText(uart2, 1, "No Valid Choice");
-    lcdSetText(uart2, 2, "   Was Made");
-    break;
-  } // switch
+//enableautotasks();
+auton5();
 suspendautotasks();
 enabledrivertasks();
 }

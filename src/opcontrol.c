@@ -21,7 +21,7 @@ int ts = 0;
 void operatorControl() {
 	initializeLoopTasks();
 	suspendautotasks();
-	enabledrivertasks();
+	
 	while (1)
 {
 

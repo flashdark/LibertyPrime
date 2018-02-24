@@ -106,7 +106,6 @@ void auton7();
 void auton8();
 void auton9();
 void autonA();
-void drivebackward();
 void AccelerateBackward(int power);
 void AccelerateForward(int power);
 void driveforward(int counts, int power);
