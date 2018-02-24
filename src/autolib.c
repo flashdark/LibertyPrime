@@ -251,6 +251,7 @@ void drivestraight(int dmp)
 
   int leftencval = -encoderGet(LeftDriveEncoder);//making values positive for math
   int rightencval = -encoderGet(RightDriveEncoder);//making values positive for math
+  delay(30);
     //go straight algorithm
       static int offset = 0;
       if ( (rightencval - leftencval) >= 15  )//if off a lot, compenate accordingly
@@ -298,6 +299,6 @@ void drivestraight(int dmp)
         offset = -500;
       }
     motorRightDriveSet(dmp-offset/50);
-
+    delay(30);
 
 }
