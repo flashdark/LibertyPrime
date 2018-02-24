@@ -98,7 +98,7 @@ void ArmControl()
   lcdSetText(uart2, 1,buffer);
   if(armup != 0)
   {
-    motorSet(ARM_MOTOR,80);//up
+    motorSet(ARM_MOTOR,120);//up
   }
 
   else if(armdown)

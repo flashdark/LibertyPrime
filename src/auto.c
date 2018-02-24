@@ -38,11 +38,12 @@ driveforward(1300,120);
 encoderReset(LeftDriveEncoder);
 writemgs(2);
 delay(100);
-turnCclwise(25);
-delay(1000);
+turnCclwise(15);
 encoderReset(LeftDriveEncoder);
-
-driveBackward(1350,-40);
+driveBackward(1000,-40);
+encoderReset(LeftDriveEncoder);
+turnCclwise(380);
+driveforward(300,50);
 //turnClockwise(700);
 
 //turnCclwise(700);
