@@ -8,6 +8,10 @@ extern int operation;
 
 void auton5()
 {
+  char buffer[16];
+	sprintf(buffer,"%d",isAutonomous());
+	lcdSetText(uart2,2,buffer);
+
   operation = 1;
   delay(1000);
 

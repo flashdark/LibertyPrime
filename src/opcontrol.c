@@ -15,17 +15,30 @@ bool liftup = false;
 bool liftdown = false;
 bool incone = false;
 bool relcone = false;
-
-int ts = 0;
+bool shiftpressed = false;
+bool dgoal = false;
+bool rgoal = false;
+bool sgoal = false;
 
 void operatorControl() {
-	initializeLoopTasks();
-	suspendautotasks();
-	
+	// initializeLoopTasks();
+	// suspendautotasks();
+	//enabledrivertasks();
 	while (1)
 {
+	char buffer[16];
+	sprintf(buffer,"%d",shiftpressed);
+	lcdSetText(uart2,1,buffer);
 
-	readButtons();
+	delay(20);
+
+	readButtons(); //read joystick and set values for operation
+	MobileGoalControl(); //move mobile goal in or out
+	IntakeControl();//control intake
+	DriverControl();//control the drivetrain
+	ArmControl(); //control the arm
+	LiftControl(); //control the lift
+
 	delay(20);
 	}
 }

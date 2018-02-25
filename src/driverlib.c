@@ -9,6 +9,10 @@ extern bool liftup;
 extern bool liftdown;
 extern bool incone;
 extern bool relcone;
+extern bool dgoal;
+extern bool rgoal;
+extern bool sgoal;
+extern bool shiftpressed;
 
 void motorLeftDriveSet(int power)
 {
@@ -28,9 +32,10 @@ void motorRightDriveSet(int power)
 
 void readButtons()
 {
-  if(joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT)){ts = 2;} // check Button 8L is pressed
-  if(joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT)){ts = 1;}// check Button 8R is pressed
-  if(joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP)){ts = 3;}
+  dgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT); // check Button 8L is pressed
+  rgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);// check Button 8R is pressed
+  sgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP);
+  shiftpressed = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_DOWN);
   powerLeft = joystickGetAnalog(JOY_MASTER, STK3_LEFT_Y);
   powerRight = joystickGetAnalog(JOY_MASTER, STK2_RIGHT_Y);
   armup = joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_UP);

@@ -8,54 +8,37 @@ extern bool liftup;
 extern bool liftdown;
 extern bool incone;
 extern bool relcone;
+extern bool shiftpressed;
 extern int ts;
+extern bool rgoal;
+extern bool dgoal;
+
 void MobileGoalControl()
 {
-switch(ts)
+  if (dgoal)
+  {
+    motorSet(MOBILE_GOAL_MOTOR,-127);//deploy mobile goal at max power
+  }
+  else if(rgoal)
 {
-  case 0:
-        motorSet(MOBILE_GOAL_MOTOR,0);
-        break;
-  case 1:
-          motorSet(MOBILE_GOAL_MOTOR,-127);
-          if(analogRead(MOBILE_GOAL_POT) < 1515){
-
-          }
-          else{
-          motorSet(MOBILE_GOAL_MOTOR,0);
-          ts = 0;
-        }
-          break;
-  case 2:
-
-          if(analogRead(MOBILE_GOAL_POT) > 9) {motorSet(MOBILE_GOAL_MOTOR,127); }
-          else{
-          motorSet(MOBILE_GOAL_MOTOR,0);
-          ts = 0;
-        }
-          break;
-  case 3:
-
-        if (analogRead(MOBILE_GOAL_POT) <= 800){motorSet(MOBILE_GOAL_MOTOR,-127);}
-        else{
-        motorSet(MOBILE_GOAL_MOTOR,5);
-        delay(50);
-        motorSet(MOBILE_GOAL_MOTOR,10);
-          delay(50);
-        motorSet(MOBILE_GOAL_MOTOR,15);
-        delay(50);
-        motorSet(MOBILE_GOAL_MOTOR,25);
-          delay(50);
-        motorSet(MOBILE_GOAL_MOTOR,30);
-        delay(50);
-        motorSet(MOBILE_GOAL_MOTOR,0);
-        ts = 0;
-      }
-        break;
-case 4:
-      motorSet(MOBILE_GOAL_MOTOR,127);
-      ts = 0;
-      break;
+  motorSet(MOBILE_GOAL_MOTOR,127);//retract mobile goal at max power
+}
+// else if (dgoal && shiftpressed)
+// {
+//   motorSet(MOBILE_GOAL_MOTOR,127);
+//   if(analogRead(MOBILE_GOAL_POT) < 1515){}
+//   else {motorSet(MOBILE_GOAL_MOTOR,0);}
+// }
+//
+// else if (rgoal && shiftpressed)
+// {
+//   motorSet(MOBILE_GOAL_MOTOR,127);
+//   if(analogRead(MOBILE_GOAL_POT) > 9){}
+//   else {motorSet(MOBILE_GOAL_MOTOR,0);}
+// }
+else
+{
+  motorSet(MOBILE_GOAL_MOTOR,0);
 }
 }
 
@@ -65,27 +48,27 @@ void DriverControl()
   sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
   lcdSetText(uart2, 1,buffer);
 
-    if (abs(powerLeft) > STICK_THRESHOLD && powerLeft < 60) {
+    if (abs(powerLeft) > STICK_THRESHOLD && powerLeft < 60) { //min deadzone
       //motorLeftDriveSet(powerLeft/3);
-      motorLeftDriveSet(powerLeft);
-    } else if (abs(powerLeft) > STICK_THRESHOLD && powerLeft > 60) {
-      motorLeftDriveSet(powerLeft);
+      motorLeftDriveSet(powerLeft);//set power of motors to joystick value
+    } else if (abs(powerLeft) > STICK_THRESHOLD && powerLeft > 60) {//max deadzone
+      motorLeftDriveSet(powerLeft);//set power of motors to joystick value
     }
       else
       {
-        motorLeftDriveSet(0);
+        motorLeftDriveSet(0);//turn off motor
       }
 
     // delay(20);
-    if (abs(powerRight) > STICK_THRESHOLD && powerRight < 60) {
+    if (abs(powerRight) > STICK_THRESHOLD && powerRight < 60) { //min deadzone
       //motorRightDriveSet(powerRight/3);
-      motorRightDriveSet(powerRight);
-    } else if (abs(powerRight) > STICK_THRESHOLD && powerRight > 60) {
-      motorRightDriveSet(powerRight);
+      motorRightDriveSet(powerRight);//set power of motors to joystick value
+    } else if (abs(powerRight) > STICK_THRESHOLD && powerRight > 60) { //max deadzone
+      motorRightDriveSet(powerRight);//set power of motors to joystick value
     }
       else
       {
-        motorRightDriveSet(0);
+        motorRightDriveSet(0); //turn off motor
       }
 
 }
@@ -138,7 +121,7 @@ static bool close;
    }
    else if(incone)
    {
-    motorSet(CLAW_MOTOR,-65);
+    motorSet(CLAW_MOTOR,-65); //pull cone in
     close = true;
      }
 
@@ -146,11 +129,11 @@ static bool close;
      {
        if (close == true)
        {
-          motorSet(CLAW_MOTOR,-10);
+          motorSet(CLAW_MOTOR,-10); //intake hold power
        }
        else
        {
-       motorSet(CLAW_MOTOR,0);
+       motorSet(CLAW_MOTOR,0); //stop intake motor
      }
    }
  }

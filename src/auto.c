@@ -139,6 +139,5 @@ initializeLoopTasks();
 suspenddrivertasks();
 //enableautotasks();
 auton5();
-suspendautotasks();
-enabledrivertasks();
+
 }
