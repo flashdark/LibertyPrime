@@ -52,8 +52,9 @@ void initializeLoopTasks()
 {
   spd = taskRunLoop(getSpeed,1);
   mat = taskRunLoop(movearm,15);
-  mlt = taskRunLoop(movelift,10);
+  mlt = taskRunLoop(movelift,16);
   amgt = taskRunLoop(autoMobileGoal,20);
+  ait = taskRunLoop(intake,10);
 }
 
 void configurePin(int pin)

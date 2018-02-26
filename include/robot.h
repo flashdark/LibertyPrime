@@ -124,7 +124,7 @@ void decelerateBack(int counts);
 int readmgs();
 void writemgs(int op);
 void configurePin(int pin);
-
+void intake();
 //task related methods
 void suspenddrivertasks();
 void suspendautotasks();

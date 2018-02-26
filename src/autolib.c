@@ -26,7 +26,7 @@ void driveforward(int counts, int power)
   {
     drivestraight(power);//adjustment code
   }
-  decelerate(counts);//slow down to prevent overshooting
+  //decelerate(counts);//slow down to prevent overshooting
 }
 
 void driveBackward(int counts, int power)

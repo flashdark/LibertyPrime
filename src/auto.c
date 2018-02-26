@@ -136,8 +136,5 @@ void displayRobotStatus() {
 
 void autonomous() {
 initializeLoopTasks();
-suspenddrivertasks();
-//enableautotasks();
-auton5();
-
+auton2();
 }

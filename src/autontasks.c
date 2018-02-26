@@ -149,11 +149,11 @@ void intake()
     case 1:
           motorSet(CLAW_MOTOR,-120);
           delay(250);
-          operation = 0;
+          motorSet(CLAW_MOTOR,-20);
           break;
     case 2:
           motorSet(CLAW_MOTOR,120);
-          delay(250);
+          delay(400);
           operation = 0;
           break;
   }

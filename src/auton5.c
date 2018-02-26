@@ -13,22 +13,22 @@ void auton5()
 	lcdSetText(uart2,2,buffer);
 
   operation = 1;
-  delay(1000);
+  delay(500);
 
   lmp = 100;
   liftdist = 37;
   delay(1000);
-driveforward(400,100);
+driveforward(500,100);
 amp = -80;
 armdist = 110;
-delay(1000);
+delay(500);
 lmp = -50;
 liftdist = 27;
 delay(1000);
 operation = 2;
-delay(500);
+delay(300);
 lmp = 100;
 liftdist = 30;
-delay(1000);
-driveBackward(100,-75);
+delay(500);
+driveBackward(50,-75);
 }
