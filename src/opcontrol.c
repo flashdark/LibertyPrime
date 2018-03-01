@@ -20,10 +20,12 @@ bool dgoal = false;
 bool rgoal = false;
 bool sgoal = false;
 
+
 void operatorControl() {
 	// initializeLoopTasks();
 	// suspendautotasks();
 	//enabledrivertasks();
+	TaskHandle as = taskCreate(fastack,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
 	while (1)
 {
 	char buffer[16];

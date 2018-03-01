@@ -7,7 +7,7 @@ extern int lmp;
 extern int armdist;
 extern int amp;
 int speed = 0;
-
+int status = 0;
 void movelift()
 {
   if (lmp < 0)
@@ -112,8 +112,7 @@ void getSpeed()
 
 void autoMobileGoal()
 {
-  digitalWrite(9,HIGH);
-  int status = readmgs();
+  status = readmgs();
   switch(status)
   {
     case 0:
@@ -128,7 +127,7 @@ void autoMobileGoal()
             }
             break;
     case 2:
-            if(analogRead(MOBILE_GOAL_POT) > 9) {motorSet(MOBILE_GOAL_MOTOR,127); }
+            if(analogRead(MOBILE_GOAL_POT) > 15) {motorSet(MOBILE_GOAL_MOTOR,127); }
             else
             {
               motorSet(MOBILE_GOAL_MOTOR,0);

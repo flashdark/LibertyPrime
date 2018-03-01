@@ -18,7 +18,7 @@ void auton5()
   lmp = 100;
   liftdist = 37;
   delay(1000);
-driveforward(500,100);
+driveforward(500,100,0);
 amp = -80;
 armdist = 110;
 delay(500);

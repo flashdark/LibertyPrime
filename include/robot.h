@@ -43,7 +43,8 @@ Encoder RightDriveEncoder;
 #define LIFT_MOTOR  8 // Y-Cable via Power Expander
 
 // define readable names for joystick buttons
-#define JOY_MASTER 1          // the main controller (not the partner controller)
+#define JOY_MASTER 1
+#define JOY_SLAVE  2          // the main controller (not the partner controller)
 #define STK1_RIGHT_X 1        // returns values of -127 to 127 (Back to Forward)
 #define STK2_RIGHT_Y 2        // returns values of -127 to 127 (Left to Right)
 #define STK4_LEFT_X 4         // returns values of -127 to 127 (Back to Forward)
@@ -77,6 +78,10 @@ Encoder RightDriveEncoder;
 #define STRING_AUTON_9 "Skills"
 #define STRING_AUTON_A "#A "
 
+#define ARM_STOWED 0
+#define ARM_STACK 28 // encoder value to stack a cone
+#define ARM_PICKUP 140 //encoder value to pick up a cone
+#define ARM_PRESTACK 50 //encoder value to hold at when rasing lift
 
 //driver related methods
 void readButtons();
@@ -89,7 +94,7 @@ int iemInches2Counts(float inches);
 int encoderInchesToCounts(float inches);
 void motorLeftDriveSet(int power);
 void motorRightDriveSet(int power);
-
+void fastack(void * parameter);
 //auto related methods
 extern unsigned g_selectedAutonomous; // getAutonMode is the only function that sets this global variable
 void getSpeed();
@@ -108,7 +113,7 @@ void auton9();
 void autonA();
 void AccelerateBackward(int power);
 void AccelerateForward(int power);
-void driveforward(int counts, int power);
+void driveforward(int counts, int power,int mode);
 void driveBackward(int counts, int power);
 void turnCclwise(int counts);
 void turnClockwise(int counts);

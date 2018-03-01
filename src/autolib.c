@@ -19,14 +19,27 @@ void turnCclwise(int counts)
   motorRightDriveSet(0);
 }
 
-void driveforward(int counts, int power)
+void driveforward(int counts, int power,int mode)
 {
+  static int preencval = 0;
+  static int postencval = 0;
   AccelerateForward(power); //accelerateion to prevent torque steer
   while (encoderGet(LeftDriveEncoder) < counts-400)
   {
+    preencval = encoderGet(LeftDriveEncoder);
     drivestraight(power);//adjustment code
+    postencval = encoderGet(LeftDriveEncoder);
+    if (postencval-preencval == 0){ break;}
   }
-  //decelerate(counts);//slow down to prevent overshooting
+  if (mode == 0)
+  {
+    decelerate(counts);//slow down to prevent overshooting
+  }
+  else
+  {
+    motorLeftDriveSet(0);
+    motorRightDriveSet(0);
+  }
 }
 
 void driveBackward(int counts, int power)

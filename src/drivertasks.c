@@ -1,5 +1,4 @@
-#include <API.h>
-#include "robot.h"
+#include "main.h"
 extern int powerLeft;
 extern int powerRight;
 extern bool armup;
@@ -12,6 +11,7 @@ extern bool shiftpressed;
 extern int ts;
 extern bool rgoal;
 extern bool dgoal;
+
 
 void MobileGoalControl()
 {
