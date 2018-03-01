@@ -38,7 +38,7 @@ void MobileGoalControl()
 // }
 else
 {
-  motorSet(MOBILE_GOAL_MOTOR,0);
+  motorSet(MOBILE_GOAL_MOTOR,0);//stop mobile goal
 }
 }
 

@@ -5,7 +5,7 @@ extern int lmp; //power to use when lifting
 extern int armdist;//dist to move arm
 extern int amp;//power to use to move arm
 extern int operation; //intake state
-
+//10 point red
 void auton2()
 {
 
@@ -16,8 +16,8 @@ void auton2()
   lmp = 100;//set lift power to 100
   liftdist = 17;//set lift distance to 17 counts
   delay(500);
-  operation = 0;
-  operation = 1;
+  operation = 0;//release cone hold power
+  operation = 1;//enable cone hold power
   delay(250);//delay 1/2 second
   writemgs(1);//deploy mobile goal
   delay(300);//delay 300 ms

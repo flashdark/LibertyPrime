@@ -10,7 +10,7 @@ int speed = 0;
 int status = 0;
 void movelift()
 {
-  if (lmp < 0)
+  if (lmp < 0)//if we are lifting up
   {
     if (encoderGet(LiftEncoder) >= liftdist)
     {
@@ -23,7 +23,7 @@ void movelift()
     }
 
   }
-  else if (lmp > 0)
+  else if (lmp > 0)//if we are lowering down
      {
        if (encoderGet(LiftEncoder) <= liftdist)
        {
@@ -51,7 +51,7 @@ else
 
 }
 
-void decelerate(int counts)
+void decelerate(int counts)//decelerate for accuracy
 {
   int mp = 0;
   while( (encoderGet(LeftDriveEncoder) < counts-375) )
@@ -60,23 +60,23 @@ void decelerate(int counts)
     if (speed > OK_TO_BRAKE)
     {
     //char buf[17];
-      mp = -2 * (speed / 4.5);
+      mp = -2 * (speed / 4.5);//calculate braking
     }
-    motorLeftDriveSet(mp);
-    motorRightDriveSet(mp);
+    motorLeftDriveSet(mp);//apply braking
+    motorRightDriveSet(mp);//apply braking
   }
 
 
   mp = 20;
-  motorLeftDriveSet(mp);
-  motorRightDriveSet(mp);
+  motorLeftDriveSet(mp);//crawl forward
+  motorRightDriveSet(mp);//crawl forward
 
-  while( encoderGet(LeftDriveEncoder) < counts ){delay(20);}
-  motorLeftDriveSet(0);
-  motorRightDriveSet(0);
+  while( encoderGet(LeftDriveEncoder) < counts ){delay(20);}//crawl to destination
+  motorLeftDriveSet(0);//clear motors
+  motorRightDriveSet(0);//clear motors
 }
 
-void decelerateBack(int counts)
+void decelerateBack(int counts)//logic is flipped for going opposite way
 {
   int mp = 0;
   while( (encoderGet(LeftDriveEncoder) > -counts+375) )
@@ -87,21 +87,21 @@ void decelerateBack(int counts)
     //char buf[17];
       mp = 2 * (speed / 4.5);
     }
-    motorLeftDriveSet(mp);
-    motorRightDriveSet(mp);
+    motorLeftDriveSet(mp);//apply braking
+    motorRightDriveSet(mp);//apply braking
   }
 
   mp = -20;
-  motorLeftDriveSet(mp);
-  motorRightDriveSet(mp);
+  motorLeftDriveSet(mp);//crawl forward
+  motorRightDriveSet(mp);//crawl forward
 
-  while( encoderGet(LeftDriveEncoder) > -counts ){delay(20);}
-  motorLeftDriveSet(0);
-  motorRightDriveSet(0);
+  while( encoderGet(LeftDriveEncoder) > -counts ){delay(20);}//crawl to destination
+  motorLeftDriveSet(0);//clear motors
+  motorRightDriveSet(0);//clear motors
 }
 
 
-void getSpeed()
+void getSpeed()//get speed the robot is traveling at
 {
   static int lastcounts = 0;
   int a = encoderGet(LeftDriveEncoder);
@@ -118,20 +118,20 @@ void autoMobileGoal()
     case 0:
             break;
     case 1:
-            motorSet(MOBILE_GOAL_MOTOR,-127);
-            if(analogRead(MOBILE_GOAL_POT) < 1515){}
-            else
+            motorSet(MOBILE_GOAL_MOTOR,-127);//deploy goal
+            if(analogRead(MOBILE_GOAL_POT) < 1515){}//check if deployed
+            else//if deployed turn power off and do nothing
             {
                 motorSet(MOBILE_GOAL_MOTOR,0);
                 status=0;
             }
             break;
     case 2:
-            if(analogRead(MOBILE_GOAL_POT) > 15) {motorSet(MOBILE_GOAL_MOTOR,127); }
-            else
+            if(analogRead(MOBILE_GOAL_POT) > 15) {motorSet(MOBILE_GOAL_MOTOR,127); }//retract mobile goal
+            else//when finished
             {
-              motorSet(MOBILE_GOAL_MOTOR,0);
-             status=0;
+              motorSet(MOBILE_GOAL_MOTOR,0);//zero motors
+             status=0;//reset
             }
             break;
 
@@ -143,17 +143,17 @@ void intake()
   switch(operation)
   {
     case 0:
-          motorSet(CLAW_MOTOR,0);
+          motorSet(CLAW_MOTOR,0);//clear motors
           break;
     case 1:
-          motorSet(CLAW_MOTOR,-120);
+          motorSet(CLAW_MOTOR,-120);//intake cone
           delay(250);
-          motorSet(CLAW_MOTOR,-20);
+          motorSet(CLAW_MOTOR,-20);//apply hold power
           break;
     case 2:
-          motorSet(CLAW_MOTOR,120);
+          motorSet(CLAW_MOTOR,120);//release cone
           delay(400);
-          operation = 0;
+          operation = 0;//clear motors
           break;
   }
 }

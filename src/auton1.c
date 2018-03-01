@@ -16,17 +16,18 @@ void auton1()
     lmp = 100;//set lift power to 100
     liftdist = 17;//set lift distance to 17 counts
     operation = 0;
-    delay(500);//delay 1/2 second
+    operation = 1;//enable cone hold power
+    delay(250);//delay 1/2 second
     writemgs(1);//deploy mobile goal
     delay(300);//delay 300 ms
-    driveforward(1550,100,1);//1400,120
-    delay(1000);
+    driveforward(1550,100,1);//drive forward to get mobile goal
+    delay(1000);//delay 1 second
 
     //phase 2 stack cone
     encoderReset(LeftDriveEncoder);
     writemgs(2);//retract mobile goal
     while (readmgs() != 0);//wait for moible goal routine to complete
-    delay(500);
+    delay(500);//delay 1/2 a second
     amp = -100;//set arm power to -100
     armdist = 12;//set arm distance
     delay(250);
@@ -55,7 +56,13 @@ void auton1()
     delay(500);
 
     encoderReset(LeftDriveEncoder);
-    driveBackward(600,-100);
+    driveBackward(600,-100);//release mobile goal
+    motorLeftDriveSet(0);
+    motorRightDriveSet(0);
+    amp = 0;
+    lmp = 0;
+    operation = 0;
+    delay(500);
     //turnClockwise(700);
 
     //turnCclwise(700);

@@ -20,12 +20,12 @@ extern TaskHandle mat;
 extern TaskHandle mlt;
 extern TaskHandle ait;
 
-int readmgs()
+int readmgs()//read mobile goal state
 {
   return mgs;
 }
 
-void writemgs(int op)
+void writemgs(int op)//update mobile goal state
 {
   mgs = op;
 }
@@ -136,5 +136,63 @@ void displayRobotStatus() {
 
 void autonomous() {
 initializeLoopTasks();
-auton2();
+getAutonMode();
+  char buf[17];
+  sprintf(buf,"%d",g_selectedAutonomous);
+  //lcdSetText(uart2,2,buf);
+  switch (g_selectedAutonomous) {
+  case 1:
+    auton1();
+    //sprintf(buf,"A1 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 2:
+    auton2();
+    //sprintf(buf,"A2 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 3:
+    auton3();
+    //sprintf(buf,"A3 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 4:
+    auton4();
+    //sprintf(buf,"A4 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 5:
+    auton5();
+    //sprintf(buf,"A5 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 6:
+    auton6();
+
+    break;
+  case 7:
+    auton7();
+    //sprintf(buf,"A7 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 8:
+    auton8();
+    //sprintf(buf,"A8 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 9: // Skills Auton
+    auton9();
+    //sprintf(buf,"A9 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  case 10:
+    autonA();
+    //sprintf(buf,"A10 Called");
+    //lcdSetText(uart2,2,buf);
+    break;
+  default:
+    lcdSetText(uart2, 1, "No Valid Choice");
+    lcdSetText(uart2, 2, "   Was Made");
+    break;
+  } // switch
 }

@@ -7,7 +7,8 @@ extern TaskHandle mat;
 extern TaskHandle mlt;
 extern TaskHandle amgt;
 extern TaskHandle ait;
-void TaskManager(TaskHandle th,int operation)
+
+void TaskManager(TaskHandle th,int operation)//manages tasks
 {
   switch(operation)
   {
@@ -25,30 +26,8 @@ void TaskManager(TaskHandle th,int operation)
   }
 }
 
-void suspendautotasks() //suspend auton tasks at the end of auton
-{
-  TaskManager(mat,1);
-  TaskManager(mlt,1);
-  TaskManager(amgt,1);
-}
 
-void enableautotasks()//enable auton tasks
-{
-  TaskManager(mat,0);
-  TaskManager(mlt,0);
-  TaskManager(amgt,0);
-}
-
-
-void suspendalltasks()//suspend all tasks
-{
-
-  TaskManager(mat,1);
-  TaskManager(mlt,1);
-
-}
-
-void initializeLoopTasks()
+void initializeLoopTasks() //initalize auton tasks
 {
   spd = taskRunLoop(getSpeed,1);
   mat = taskRunLoop(movearm,15);
@@ -56,8 +35,8 @@ void initializeLoopTasks()
   amgt = taskRunLoop(autoMobileGoal,20);
   ait = taskRunLoop(intake,10);
 }
-
-void configurePin(int pin)
-{
-  pinMode(pin, OUTPUT);
-}
+//for LED's
+// void configurePin(int pin)
+// {
+//   pinMode(pin, OUTPUT);
+// }

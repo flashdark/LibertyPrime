@@ -52,5 +52,5 @@ void initialize() {
    LiftEncoder = encoderInit(LIFT_ENCODER_TOP,LIFT_ENCODER_BOTTOM,false);
    LeftDriveEncoder = encoderInit(LEFT_DRIVE_ENCODER_TOP,LEFT_DRIVE_ENCODER_BOTTOM,false);
    RightDriveEncoder = encoderInit(RIGHT_DRIVE_ENCODER_TOP,RIGHT_DRIVE_ENCODER_BOTTOM,false);
-   configurePin(9);//for LED
+   //configurePin(9);//for LED
 }

@@ -28,12 +28,6 @@ void operatorControl() {
 	TaskHandle as = taskCreate(fastack,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
 	while (1)
 {
-	char buffer[16];
-	sprintf(buffer,"%d",shiftpressed);
-	lcdSetText(uart2,1,buffer);
-
-	delay(20);
-
 	readButtons(); //read joystick and set values for operation
 	MobileGoalControl(); //move mobile goal in or out
 	IntakeControl();//control intake

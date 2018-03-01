@@ -1,6 +1,6 @@
 #include "main.h"
 
-  void turnClockwise(int counts)
+  void turnClockwise(int counts)//turn robot clockwise to specified number of counts
 
 {
   motorLeftDriveSet(50);
@@ -10,7 +10,7 @@
   motorRightDriveSet(0);
 }
 
-void turnCclwise(int counts)
+void turnCclwise(int counts)//turn robot counter-clockwise to specified number of counts
 {
   motorLeftDriveSet(-50);
   motorRightDriveSet(50);
@@ -19,7 +19,7 @@ void turnCclwise(int counts)
   motorRightDriveSet(0);
 }
 
-void driveforward(int counts, int power,int mode)
+void driveforward(int counts, int power,int mode)//drive forward to specified counts with specified power
 {
   static int preencval = 0;
   static int postencval = 0;
@@ -29,31 +29,31 @@ void driveforward(int counts, int power,int mode)
     preencval = encoderGet(LeftDriveEncoder);
     drivestraight(power);//adjustment code
     postencval = encoderGet(LeftDriveEncoder);
-    if (postencval-preencval == 0){ break;}
+    if (postencval-preencval == 0){ break;}//check if there is movement, if not something happened so move on
   }
-  if (mode == 0)
+  if (mode == 0)//enable decelerate
   {
     decelerate(counts);//slow down to prevent overshooting
   }
-  else
+  else//disable decelerate for crash runs
   {
-    motorLeftDriveSet(0);
-    motorRightDriveSet(0);
+    motorLeftDriveSet(0);//clear motors
+    motorRightDriveSet(0);//clear motors
   }
 }
 
-void driveBackward(int counts, int power)
+void driveBackward(int counts, int power)//drive back to specified counts with specified power
 {
     AccelerateBackward(power);
     while(encoderGet(LeftDriveEncoder) > -counts + 400)
     {
-      drivestraightBack(power);
+      drivestraightBack(power);//driving straight
     }
-    decelerateBack(counts);
+    decelerateBack(counts);//decelerate
   }
 
 
-void AccelerateForward(int power)
+void AccelerateForward(int power)//gradually increase power to avoid sudden jerking or steering movements
 {
   int i;
   for (i = 0; i < 1; i++)
@@ -119,7 +119,7 @@ void AccelerateForward(int power)
   }
 }
 
-void AccelerateBackward(int power)
+void AccelerateBackward(int power)//gradually increase power to avoid sudden jerking or steering movements
 {
   int i;
   for (i = 0; i < 1; i++)
@@ -185,28 +185,7 @@ void AccelerateBackward(int power)
   }
 }
 
-void deploymobilegoal()
-{
-  motorSet(MOBILE_GOAL_MOTOR,-127);
-  if(analogRead(MOBILE_GOAL_POT) < 1515){
-
-  }
-  else
-  {
-  motorSet(MOBILE_GOAL_MOTOR,0);
-  }
-}
-
-void retractmobilegoal()
-{
-  if(analogRead(MOBILE_GOAL_POT) > 9) {motorSet(MOBILE_GOAL_MOTOR,127); }
-  else
-  {
-  motorSet(MOBILE_GOAL_MOTOR,0);
-  }
-}
-
-void drivestraight(int dmp)
+void drivestraight(int dmp)//add or subtract power to stay on course when driving long distances
 {
 
     //go straight algorithm
@@ -260,7 +239,7 @@ void drivestraight(int dmp)
 
   }
 
-  void drivestraightBack(int dmp)
+  void drivestraightBack(int dmp)//add or subtract power to stay on course when driving long distances but with the logic flipped since we are going backwards
 {
 
   int leftencval = -encoderGet(LeftDriveEncoder);//making values positive for math
@@ -283,17 +262,17 @@ void drivestraight(int dmp)
         offset += 2;
       }
 
-       else if ( (rightencval - leftencval) <= -15  )
+       else if ( (rightencval - leftencval) <= -15  )//if off a lot, compenate accordingly
       {
         offset -= 10;
       }
 
-      else if ( (rightencval - leftencval) <= -10  )
+      else if ( (rightencval - leftencval) <= -10  )//if off more, compenate accordingly
       {
         offset -= 5;
       }
 
-      else if ( (rightencval - leftencval) <= -5  )
+      else if ( (rightencval - leftencval) <= -5  )//if off a little, compenate accordingly
       {
         offset -= 2;
       }
@@ -312,7 +291,7 @@ void drivestraight(int dmp)
       {
         offset = -500;
       }
-    motorRightDriveSet(dmp-offset/50);
+    motorRightDriveSet(dmp-offset/50);//apply offset
     delay(30);
 
 }
