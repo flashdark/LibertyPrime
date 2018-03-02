@@ -67,16 +67,16 @@ Encoder RightDriveEncoder;
 #define BTN_MGOAL JOY_RIGHT
 
 // Autonomous Definitions for LCD Display
-#define STRING_AUTON_1 "Mobile Goal R5"
-#define STRING_AUTON_2 "Mobile Goal R10"
-#define STRING_AUTON_3 "Mobile Goal R20"
-#define STRING_AUTON_4 "Block 20"
-#define STRING_AUTON_5 "Cone + SG"
-#define STRING_AUTON_6 "Mobile Goal B5"
-#define STRING_AUTON_7 "Mobile Goal B10 "
-#define STRING_AUTON_8 "Mobile Goal B20"
-#define STRING_AUTON_9 "Skills"
-#define STRING_AUTON_A "#A "
+#define STRING_AUTON_1 ""
+#define STRING_AUTON_2 "Mobile Goal R5"
+#define STRING_AUTON_3 "Mobile Goal R10"
+#define STRING_AUTON_4 "Mobile Goal B5"
+#define STRING_AUTON_5 "Mobile Goal B10"
+#define STRING_AUTON_6 "Cone + SG"
+#define STRING_AUTON_7 ""
+#define STRING_AUTON_8 ""
+#define STRING_AUTON_9 ""
+#define STRING_AUTON_A ""
 
 #define ARM_STOWED 0
 #define ARM_STACK 28 // encoder value to stack a cone

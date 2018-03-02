@@ -32,8 +32,8 @@ void motorRightDriveSet(int power) //chains motors together
 
 void readButtons()
 {
-  dgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT); // check Button 8L is pressed
-  rgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);// check Button 8R is pressed
+  rgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT); // check Button 8L is pressed
+  dgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);// check Button 8R is pressed
   sgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP); //check if button 8U was pressed
   powerLeft = joystickGetAnalog(JOY_MASTER, STK3_LEFT_Y);//get left joystick position
   powerRight = joystickGetAnalog(JOY_MASTER, STK2_RIGHT_Y);//get right joystick position

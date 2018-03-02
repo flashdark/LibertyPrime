@@ -36,5 +36,10 @@ void operatorControl() {
 	LiftControl(); //control the lift
 
 	delay(20);
+	while (lcdReadButtons(uart2))
+    {
+      displayRobotStatus();
+      delay(20);
+    }
 	}
 }
