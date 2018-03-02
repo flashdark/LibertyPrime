@@ -25,7 +25,9 @@ void operatorControl() {
 	// initializeLoopTasks();
 	// suspendautotasks();
 	//enabledrivertasks();
+	if (isJoystickConnected(JOY_SLAVE)) {//only enable if partner is connected
 	TaskHandle as = taskCreate(fastack,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
+}
 	while (1)
 {
 	readButtons(); //read joystick and set values for operation
