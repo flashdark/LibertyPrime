@@ -31,7 +31,7 @@ void auton2()
           delay(1000);//delay 600 ms
 
           amp = -100;//set arm power to -100
-          armdist = 20;//set arm distance
+          armdist = 18;//set arm distance
           delay(500);
 
           lmp = -50;//set lift power to -50

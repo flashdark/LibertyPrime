@@ -23,19 +23,6 @@ void MobileGoalControl()
 {
   motorSet(MOBILE_GOAL_MOTOR,127);//retract mobile goal at max power
 }
-// else if (dgoal && shiftpressed)
-// {
-//   motorSet(MOBILE_GOAL_MOTOR,127);
-//   if(analogRead(MOBILE_GOAL_POT) < 1515){}
-//   else {motorSet(MOBILE_GOAL_MOTOR,0);}
-// }
-//
-// else if (rgoal && shiftpressed)
-// {
-//   motorSet(MOBILE_GOAL_MOTOR,127);
-//   if(analogRead(MOBILE_GOAL_POT) > 9){}
-//   else {motorSet(MOBILE_GOAL_MOTOR,0);}
-// }
 else
 {
   motorSet(MOBILE_GOAL_MOTOR,0);//stop mobile goal

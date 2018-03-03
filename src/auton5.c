@@ -31,7 +31,7 @@ void auton5()
       delay(1000);//delay 600 ms
 
       amp = -100;//set arm power to -100
-      armdist = 18;//set arm distance
+    armdist = 18;//set arm distance//set arm distance
       delay(500);
 
       lmp = -50;//set lift power to -50
@@ -50,7 +50,7 @@ void auton5()
       turnClockwise(600);//turn 500 counts counter clockwise towards scoring zone
       delay(1000);
       encoderReset(LeftDriveEncoder);
-      driveforward(800,40,1);//drive forward 200 counts with 50 power
+      driveforward(800,70,1);//drive forward 200 counts with 50 power
 
       lmp = 100;//set lift power to 100
       liftdist = 17;//set lift distance to 17 counts
