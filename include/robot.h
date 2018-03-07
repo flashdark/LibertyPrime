@@ -73,7 +73,7 @@ Encoder RightDriveEncoder;
 #define STRING_AUTON_4 "Mobile Goal B5"
 #define STRING_AUTON_5 "Mobile Goal B10"
 #define STRING_AUTON_6 "Cone + SG"
-#define STRING_AUTON_7 ""
+#define STRING_AUTON_7 "Block"
 #define STRING_AUTON_8 ""
 #define STRING_AUTON_9 ""
 #define STRING_AUTON_A ""

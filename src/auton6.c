@@ -18,7 +18,7 @@ void auton6()
   lmp = 100;
   liftdist = 37;
   delay(1000);
-driveforward(500,100,0);
+driveforward(500,100,1);
 amp = -80;
 armdist = 110;
 delay(500);
@@ -31,4 +31,5 @@ lmp = 100;
 liftdist = 30;
 delay(500);
 driveBackward(50,-75);
+
 }

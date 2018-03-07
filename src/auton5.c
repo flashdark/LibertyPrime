@@ -43,6 +43,8 @@ void auton5()
 
       turnClockwise(15);//rotate counter clockwise 15 counts
       encoderReset(LeftDriveEncoder);
+      lmp = 100;//set lift power to 100
+      liftdist = 17;//set lift distance to 17 counts
 
       driveBackward(1300,-100);//reverse 1300 counts with -80 power
       encoderReset(LeftDriveEncoder);
@@ -51,10 +53,6 @@ void auton5()
       delay(1000);
       encoderReset(LeftDriveEncoder);
       driveforward(800,70,1);//drive forward 200 counts with 50 power
-
-      lmp = 100;//set lift power to 100
-      liftdist = 17;//set lift distance to 17 counts
-      delay(250);//delay 250 ms
 
       writemgs(1);//deploy mobile goal
       delay(700);
