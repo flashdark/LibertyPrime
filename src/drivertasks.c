@@ -33,7 +33,7 @@ void DriverControl()
 {
   char buffer[16];
   sprintf(buffer,"%d",encoderGet(LeftDriveEncoder));
-  lcdSetText(uart2, 1,buffer);
+  //lcdSetText(uart2, 1,buffer);
 
     if (abs(powerLeft) > STICK_THRESHOLD && powerLeft < 60) { //min deadzone
       //motorLeftDriveSet(powerLeft/3);
@@ -65,7 +65,7 @@ void ArmControl()
 
   char buffer[16];
   sprintf(buffer,"%d",armup);
-  lcdSetText(uart2, 1,buffer);
+  //lcdSetText(uart2, 1,buffer);
   if(armup != 0)
   {
     motorSet(ARM_MOTOR,120);//up

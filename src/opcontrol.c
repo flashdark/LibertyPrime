@@ -26,8 +26,10 @@ void operatorControl() {
 	// suspendautotasks();
 	//enabledrivertasks();
 	if (isJoystickConnected(JOY_SLAVE)) {//only enable if partner is connected
-	TaskHandle as = taskCreate(fastack,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
-}
+		TaskHandle fs = taskCreate(fastack,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
+		lcdSetText(uart2, 2, "start FS task");
+		delay(2000);
+	}
 	while (1)
 {
 	readButtons(); //read joystick and set values for operation
