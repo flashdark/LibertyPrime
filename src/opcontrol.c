@@ -19,6 +19,7 @@ bool shiftpressed = false;
 bool dgoal = false;
 bool rgoal = false;
 bool sgoal = false;
+int dbgstate = 0;
 
 
 void operatorControl() {

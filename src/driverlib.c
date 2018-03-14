@@ -13,7 +13,7 @@ extern bool relcone;
 extern bool dgoal;
 extern bool rgoal;
 extern bool sgoal;
-
+extern int dbgstate;
 void motorLeftDriveSet(int power)//chains motors together
 {
   motorSet(LEFT_DRIVE_FRONT_MOTOR, LEFT_DRIVE_REVERSED * power);
@@ -32,6 +32,11 @@ void motorRightDriveSet(int power) //chains motors together
 
 void readButtons()
 {
+  if (isJoystickConnected(JOY_SLAVE))
+  {
+      if (joystickGetDigital(JOY_SLAVE, BTN8_RIGHT_THUMB,JOY_LEFT)){dbgstate++;}
+      if(joystickGetDigital(JOY_SLAVE, BTN8_RIGHT_THUMB,JOY_LEFT)){dbgstate--;} 
+  }
   rgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT); // check Button 8L is pressed
   dgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);// check Button 8R is pressed
   sgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP); //check if button 8U was pressed

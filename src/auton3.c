@@ -7,10 +7,10 @@ extern int armdist;//dist to move arm
 extern int amp;//power to use to move arm
 extern int operation; //intake state
 extern int status;
-
+extern int dbgstate;
 void auton3()
 {
-
+    dbgstate = 0;
     //phase 1 drive and deploy goal lift
     operation = 1;//intake cone
     delay(40);//delay 40 ms
