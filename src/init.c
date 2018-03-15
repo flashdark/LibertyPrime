@@ -22,6 +22,7 @@ TaskHandle mat;
 TaskHandle mlt;
 TaskHandle amgt;
 TaskHandle ait;
+TaskHandle dbgmenu;
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
  * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.
@@ -53,4 +54,5 @@ void initialize() {
    LeftDriveEncoder = encoderInit(LEFT_DRIVE_ENCODER_TOP,LEFT_DRIVE_ENCODER_BOTTOM,false);
    RightDriveEncoder = encoderInit(RIGHT_DRIVE_ENCODER_TOP,RIGHT_DRIVE_ENCODER_BOTTOM,false);
    //configurePin(9);//for LED
+    dbgmenu = taskCreate(showdebugmenu,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
 }

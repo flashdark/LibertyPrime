@@ -19,18 +19,14 @@ bool shiftpressed = false;
 bool dgoal = false;
 bool rgoal = false;
 bool sgoal = false;
-int dbgstate = 0;
 
+extern TaskHandle dbgmenu;
 
 void operatorControl() {
-	// initializeLoopTasks();
-	// suspendautotasks();
-	//enabledrivertasks();
-	if (isJoystickConnected(JOY_SLAVE)) {//only enable if partner is connected
-	TaskHandle as = taskCreate(fastack,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
-}
+taskRunLoop(showdebugmenu,50);
 	while (1)
 {
+
 	readButtons(); //read joystick and set values for operation
 	MobileGoalControl(); //move mobile goal in or out
 	IntakeControl();//control intake
