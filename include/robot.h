@@ -20,7 +20,7 @@
 #define ARM_ENCODER_TOP 3
 #define ARM_ENCODER_BOTTOM 4
 
-//class object creation
+//Encoder object creation
 Encoder ArmEncoder;
 Encoder LiftEncoder;
 Encoder LeftDriveEncoder;
@@ -43,8 +43,8 @@ Encoder RightDriveEncoder;
 #define LIFT_MOTOR  8 // Y-Cable via Power Expander
 
 // define readable names for joystick buttons
-#define JOY_MASTER 1
-#define JOY_SLAVE  2          // the main controller (not the partner controller)
+#define JOY_MASTER 1          //the main controller
+#define JOY_SLAVE  2          // the partner controller
 #define STK1_RIGHT_X 1        // returns values of -127 to 127 (Back to Forward)
 #define STK2_RIGHT_Y 2        // returns values of -127 to 127 (Left to Right)
 #define STK4_LEFT_X 4         // returns values of -127 to 127 (Back to Forward)
@@ -60,11 +60,20 @@ Encoder RightDriveEncoder;
 #define STICK_THRESHOLD 15
 
 #define BTN_LIFT BTN5_LEFT_TRIGGER
+#define BTN_LIFT_UP JOY_UP
+#define BTN_LIFT_DOWN JOY_DOWN
+#define BTN_ARM BTN6_RIGHT_TRIGGER
 #define BTN_ARM_UP  JOY_UP
 #define BTN_ARM_DOWN JOY_DOWN
 #define BTN_CLAW_OPEN JOY_LEFT
 #define BTN_CLAW_CLOSE JOY_RIGHT
-#define BTN_MGOAL JOY_RIGHT
+#define BTN_MGOAL BTN8_RIGHT_THUMB
+#define BTN_MGOAL_RETRACT JOY_LEFT
+#define BTN_MGOAL_DEPLOY JOY_RIGHT
+#define BTN_MGOAL_AUTOSCORE JOY_UP
+#define BTN_CONE BTN7_LEFT_THUMB
+#define BTN_CONE_IN JOY_RIGHT
+#define BTN_CONE_OUT JOY_LEFT
 
 // Autonomous Definitions for LCD Display
 #define STRING_AUTON_1 ""
@@ -90,15 +99,12 @@ void DriverControl();
 void LiftControl();
 void ArmControl();
 void IntakeControl();
-int iemInches2Counts(float inches);
-int encoderInchesToCounts(float inches);
 void motorLeftDriveSet(int power);
 void motorRightDriveSet(int power);
 void fastack(void * parameter);
+
 //auto related methods
-extern unsigned g_selectedAutonomous; // getAutonMode is the only function that sets this global variable
 void getSpeed();
-void stack();
 void getAutonMode();
 void displayRobotStatus();
 void auton1();
@@ -122,21 +128,14 @@ void movelift();
 void movearm();
 void decelerate(int counts);
 void autoMobileGoal();
-void deploymobilegoal();
-void retractmobilegoal();
 void drivestraightBack(int dmp);
 void decelerateBack(int counts);
 int readmgs();
 void writemgs(int op);
-void configurePin(int pin);
 void intake();
+
 //task related methods
-void suspenddrivertasks();
-void suspendautotasks();
-void enableautotasks();
-void enabledrivertasks();
-void TaskManager(TaskHandle th,int operation);
-void suspendalltasks();
+void TaskManager(TaskHandle th,int operation); //currently unused, may become deprecated
 void initializeLoopTasks(); //PROS destroys tasks crated by taskRunLoop() when mode changes or disable occurs
 void showdebugmenu();
 #endif // ROBOT_H

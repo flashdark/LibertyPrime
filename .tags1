@@ -1,0 +1,75 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ROBOT_H	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ROBOT_H$/;"	macro	line:3
+SELECT_MODE_POT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define SELECT_MODE_POT /;"	macro	line:6
+MOBILE_GOAL_POT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define MOBILE_GOAL_POT /;"	macro	line:7
+PWR_EXP_PORT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define PWR_EXP_PORT /;"	macro	line:8
+DISPLAY_MODE_POT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define DISPLAY_MODE_POT /;"	macro	line:10
+LEFT_DRIVE_ENCODER_TOP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_ENCODER_TOP /;"	macro	line:14
+LEFT_DRIVE_ENCODER_BOTTOM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_ENCODER_BOTTOM /;"	macro	line:15
+RIGHT_DRIVE_ENCODER_TOP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_ENCODER_TOP /;"	macro	line:16
+RIGHT_DRIVE_ENCODER_BOTTOM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_ENCODER_BOTTOM /;"	macro	line:17
+LIFT_ENCODER_TOP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LIFT_ENCODER_TOP /;"	macro	line:18
+LIFT_ENCODER_BOTTOM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LIFT_ENCODER_BOTTOM /;"	macro	line:19
+ARM_ENCODER_TOP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_ENCODER_TOP /;"	macro	line:20
+ARM_ENCODER_BOTTOM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_ENCODER_BOTTOM /;"	macro	line:21
+ArmEncoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^Encoder ArmEncoder;$/;"	variable	line:24
+LiftEncoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^Encoder LiftEncoder;$/;"	variable	line:25
+LeftDriveEncoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^Encoder LeftDriveEncoder;$/;"	variable	line:26
+RightDriveEncoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^Encoder RightDriveEncoder;$/;"	variable	line:27
+LEFT_DRIVE_FRONT_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_FRONT_MOTOR /;"	macro	line:31
+LEFT_DRIVE_REAR_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_REAR_MOTOR /;"	macro	line:32
+RIGHT_DRIVE_FRONT_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_FRONT_MOTOR /;"	macro	line:33
+RIGHT_DRIVE_REAR_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_REAR_MOTOR /;"	macro	line:34
+LEFT_DRIVE_REVERSED	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_REVERSED /;"	macro	line:36
+RIGHT_DRIVE_REVERSED	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_REVERSED /;"	macro	line:37
+MOBILE_GOAL_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define MOBILE_GOAL_MOTOR /;"	macro	line:39
+ARM_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_MOTOR /;"	macro	line:41
+CLAW_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define CLAW_MOTOR /;"	macro	line:42
+LIFT_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LIFT_MOTOR /;"	macro	line:43
+JOY_MASTER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define JOY_MASTER /;"	macro	line:46
+JOY_SLAVE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define JOY_SLAVE /;"	macro	line:47
+STK1_RIGHT_X	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STK1_RIGHT_X /;"	macro	line:48
+STK2_RIGHT_Y	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STK2_RIGHT_Y /;"	macro	line:49
+STK4_LEFT_X	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STK4_LEFT_X /;"	macro	line:50
+STK3_LEFT_Y	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STK3_LEFT_Y /;"	macro	line:51
+BTN5_LEFT_TRIGGER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN5_LEFT_TRIGGER /;"	macro	line:52
+BTN6_RIGHT_TRIGGER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN6_RIGHT_TRIGGER /;"	macro	line:53
+BTN7_LEFT_THUMB	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN7_LEFT_THUMB /;"	macro	line:54
+BTN8_RIGHT_THUMB	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN8_RIGHT_THUMB /;"	macro	line:55
+STICK_RIGHT_DRIVE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STICK_RIGHT_DRIVE /;"	macro	line:58
+STICK_LEFT_DRIVE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STICK_LEFT_DRIVE /;"	macro	line:59
+STICK_THRESHOLD	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STICK_THRESHOLD /;"	macro	line:60
+BTN_LIFT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_LIFT /;"	macro	line:62
+BTN_LIFT_UP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_LIFT_UP /;"	macro	line:63
+BTN_LIFT_DOWN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_LIFT_DOWN /;"	macro	line:64
+BTN_ARM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_ARM /;"	macro	line:65
+BTN_ARM_UP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_ARM_UP /;"	macro	line:66
+BTN_ARM_DOWN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_ARM_DOWN /;"	macro	line:67
+BTN_CLAW_OPEN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CLAW_OPEN /;"	macro	line:68
+BTN_CLAW_CLOSE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CLAW_CLOSE /;"	macro	line:69
+BTN_MGOAL	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_MGOAL /;"	macro	line:70
+BTN_MGOAL_RETRACT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_MGOAL_RETRACT /;"	macro	line:71
+BTN_MGOAL_DEPLOY	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_MGOAL_DEPLOY /;"	macro	line:72
+BTN_MGOAL_AUTOSCORE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_MGOAL_AUTOSCORE /;"	macro	line:73
+BTN_CONE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CONE /;"	macro	line:74
+BTN_CONE_IN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CONE_IN /;"	macro	line:75
+BTN_CONE_OUT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CONE_OUT /;"	macro	line:76
+STRING_AUTON_1	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_1 /;"	macro	line:79
+STRING_AUTON_2	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_2 /;"	macro	line:80
+STRING_AUTON_3	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_3 /;"	macro	line:81
+STRING_AUTON_4	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_4 /;"	macro	line:82
+STRING_AUTON_5	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_5 /;"	macro	line:83
+STRING_AUTON_6	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_6 /;"	macro	line:84
+STRING_AUTON_7	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_7 /;"	macro	line:85
+STRING_AUTON_8	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_8 /;"	macro	line:86
+STRING_AUTON_9	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_9 /;"	macro	line:87
+STRING_AUTON_A	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_A /;"	macro	line:88
+ARM_STOWED	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_STOWED /;"	macro	line:90
+ARM_STACK	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_STACK /;"	macro	line:91
+ARM_PICKUP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_PICKUP /;"	macro	line:92
+ARM_PRESTACK	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_PRESTACK /;"	macro	line:93

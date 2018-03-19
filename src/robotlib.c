@@ -35,8 +35,3 @@ void initializeLoopTasks() //initalize auton tasks
   amgt = taskRunLoop(autoMobileGoal,20);
   ait = taskRunLoop(intake,10);
 }
-//for LED's
-// void configurePin(int pin)
-// {
-//   pinMode(pin, OUTPUT);
-// }

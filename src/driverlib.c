@@ -32,15 +32,15 @@ void motorRightDriveSet(int power) //chains motors together
 
 void readButtons()
 {
-  rgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_LEFT); // check Button 8L is pressed
-  dgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_RIGHT);// check Button 8R is pressed
-  sgoal = joystickGetDigital(JOY_MASTER,BTN8_RIGHT_THUMB,JOY_UP); //check if button 8U was pressed
-  powerLeft = joystickGetAnalog(JOY_MASTER, STK3_LEFT_Y);//get left joystick position
-  powerRight = joystickGetAnalog(JOY_MASTER, STK2_RIGHT_Y);//get right joystick position
-  armup = joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_UP);//check if button 6U was pressed
-  armdown = joystickGetDigital(JOY_MASTER,BTN6_RIGHT_TRIGGER,JOY_DOWN);//check if button 6D was pressed
-  liftup = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_UP);//check if button 5U was pressed
-  liftdown = joystickGetDigital(JOY_MASTER,BTN5_LEFT_TRIGGER,JOY_DOWN);//check if button 5D was pressed
-  relcone = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_LEFT);//check if button 7L was pressed
-  incone = joystickGetDigital(JOY_MASTER,BTN7_LEFT_THUMB,JOY_RIGHT);//check if button 7R was pressed
+  rgoal = joystickGetDigital(JOY_MASTER,BTN_MGOAL,BTN_MGOAL_RETRACT); // check Button 8L is pressed
+  dgoal = joystickGetDigital(JOY_MASTER,BTN_MGOAL,BTN_MGOAL_DEPLOY);// check Button 8R is pressed
+  sgoal = joystickGetDigital(JOY_MASTER,BTN_MGOAL,BTN_MGOAL_AUTOSCORE); //check if button 8U was pressed
+  powerLeft = joystickGetAnalog(JOY_MASTER, STICK_LEFT_DRIVE);//get left joystick position
+  powerRight = joystickGetAnalog(JOY_MASTER, STICK_RIGHT_DRIVE);//get right joystick position
+  armup = joystickGetDigital(JOY_MASTER,BTN_ARM,BTN_ARM_UP);//check if button 6U was pressed
+  armdown = joystickGetDigital(JOY_MASTER,BTN_ARM,BTN_ARM_DOWN);//check if button 6D was pressed
+  liftup = joystickGetDigital(JOY_MASTER,BTN_LIFT,BTN_LIFT_UP);//check if button 5U was pressed
+  liftdown = joystickGetDigital(JOY_MASTER,BTN_LIFT,BTN_LIFT_DOWN);//check if button 5D was pressed
+  relcone = joystickGetDigital(JOY_MASTER,BTN_CONE,BTN_CONE_OUT);//check if button 7L was pressed
+  incone = joystickGetDigital(JOY_MASTER,BTN_CONE,BTN_CONE_IN);//check if button 7R was pressed
 }

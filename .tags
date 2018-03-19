@@ -1,0 +1,262 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+MAKE_COMMAND	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^MAKE_COMMAND=make$/;"	macro	line:4
+DEVICE	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^DEVICE=VexCortex$/;"	macro	line:7
+LIBRARIES	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^LIBRARIES=$(wildcard $(ROOT)\/firmware\/*.a) -lgcc -lm$/;"	macro	line:9
+MCUPREFIX	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^MCUPREFIX=arm-none-eabi-$/;"	macro	line:11
+MCUAFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^MCUAFLAGS=-mthumb -mcpu=cortex-m3 -mlittle-endian$/;"	macro	line:13
+MCUCFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^MCUCFLAGS=-mthumb -mcpu=cortex-m3 -mlittle-endian -mfloat-abi=soft$/;"	macro	line:15
+MCULFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^MCULFLAGS=-nostartfiles -Wl,-static -Bfirmware -Wl,-u,VectorTable -Wl,-T -Xlinker firmware\/cortex.ld$/;"	macro	line:17
+MCUPREPARE	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^MCUPREPARE=$(OBJCOPY) $(OUT) -O binary $(BINDIR)\/$(OUTBIN)$/;"	macro	line:19
+SIZEFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^SIZEFLAGS=$/;"	macro	line:21
+UPLOAD	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^UPLOAD=@java -jar firmware\/uniflash.jar vex $(BINDIR)\/$(OUTBIN)$/;"	macro	line:23
+ASMEXT	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^ASMEXT=s$/;"	macro	line:26
+CEXT	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^CEXT=c$/;"	macro	line:27
+CPPEXT	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^CPPEXT=cpp$/;"	macro	line:28
+HEXT	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^HEXT=h$/;"	macro	line:29
+INCLUDE	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^INCLUDE=-I$(ROOT)\/include -I$(ROOT)\/src$/;"	macro	line:30
+OUTBIN	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^OUTBIN=output.bin$/;"	macro	line:31
+OUTNAME	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^OUTNAME=output.elf$/;"	macro	line:32
+AFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^AFLAGS:=$(MCUAFLAGS)$/;"	macro	line:35
+ARFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^ARFLAGS:=$(MCUCFLAGS)$/;"	macro	line:36
+CCFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^CCFLAGS:=-c -Wall $(MCUCFLAGS) -Os -ffunction-sections -fsigned-char -fomit-frame-pointer -fsingle-precision-constant$/;"	macro	line:37
+CFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^CFLAGS:=$(CCFLAGS) -std=gnu99 -Werror=implicit-function-declaration$/;"	macro	line:38
+CPPFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^CPPFLAGS:=$(CCFLAGS) -fno-exceptions -fno-rtti -felide-constructors$/;"	macro	line:39
+LDFLAGS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^LDFLAGS:=-Wall $(MCUCFLAGS) $(MCULFLAGS) -Wl,--gc-sections$/;"	macro	line:40
+AR	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^AR:=$(MCUPREFIX)ar$/;"	macro	line:43
+AS	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^AS:=$(MCUPREFIX)as$/;"	macro	line:44
+CC	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^CC:=$(MCUPREFIX)gcc$/;"	macro	line:45
+CPPCC	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^CPPCC:=$(MCUPREFIX)g++$/;"	macro	line:46
+OBJCOPY	C:\Users\VexLabUser\Desktop\LibertyPrime\common.mk	/^OBJCOPY:=$(MCUPREFIX)objcopy$/;"	macro	line:47
+API_H_	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define API_H_$/;"	macro	line:22
+JOY_DOWN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define JOY_DOWN /;"	macro	line:40
+JOY_LEFT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define JOY_LEFT /;"	macro	line:44
+JOY_UP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define JOY_UP /;"	macro	line:48
+JOY_RIGHT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define JOY_RIGHT /;"	macro	line:52
+ACCEL_X	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define ACCEL_X /;"	macro	line:56
+ACCEL_Y	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define ACCEL_Y /;"	macro	line:60
+BOARD_NR_ADC_PINS	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define BOARD_NR_ADC_PINS /;"	macro	line:141
+BOARD_NR_GPIO_PINS	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define BOARD_NR_GPIO_PINS /;"	macro	line:151
+HIGH	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define HIGH /;"	macro	line:157
+LOW	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define LOW /;"	macro	line:163
+INPUT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define INPUT /;"	macro	line:172
+INPUT_ANALOG	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define INPUT_ANALOG /;"	macro	line:179
+INPUT_FLOATING	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define INPUT_FLOATING /;"	macro	line:186
+OUTPUT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define OUTPUT /;"	macro	line:193
+OUTPUT_OD	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define OUTPUT_OD /;"	macro	line:200
+INTERRUPT_EDGE_RISING	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define INTERRUPT_EDGE_RISING /;"	macro	line:318
+INTERRUPT_EDGE_FALLING	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define INTERRUPT_EDGE_FALLING /;"	macro	line:322
+INTERRUPT_EDGE_BOTH	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define INTERRUPT_EDGE_BOTH /;"	macro	line:327
+InterruptHandler	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef void (*InterruptHandler)(unsigned char pin);$/;"	typedef	line:332
+IME_ADDR_MAX	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define IME_ADDR_MAX /;"	macro	line:458
+Gyro	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef void * Gyro;$/;"	typedef	line:548
+Encoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef void * Encoder;$/;"	typedef	line:605
+Ultrasonic	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef void * Ultrasonic;$/;"	typedef	line:653
+FILE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef int FILE;$/;"	typedef	line:744
+SERIAL_DATABITS_8	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define SERIAL_DATABITS_8 /;"	macro	line:748
+SERIAL_DATABITS_9	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define SERIAL_DATABITS_9 /;"	macro	line:752
+SERIAL_STOPBITS_1	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define SERIAL_STOPBITS_1 /;"	macro	line:756
+SERIAL_STOPBITS_2	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define SERIAL_STOPBITS_2 /;"	macro	line:760
+SERIAL_PARITY_NONE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define SERIAL_PARITY_NONE /;"	macro	line:764
+SERIAL_PARITY_EVEN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define SERIAL_PARITY_EVEN /;"	macro	line:768
+SERIAL_PARITY_ODD	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define SERIAL_PARITY_ODD /;"	macro	line:772
+SERIAL_8N1	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define SERIAL_8N1 /;"	macro	line:776
+stdout	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define stdout /;"	macro	line:811
+stdin	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define stdin /;"	macro	line:815
+uart1	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define uart1 /;"	macro	line:819
+uart2	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define uart2 /;"	macro	line:823
+EOF	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define EOF /;"	macro	line:829
+SEEK_SET	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define	SEEK_SET /;"	macro	line:837
+SEEK_CUR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define	SEEK_CUR /;"	macro	line:844
+SEEK_END	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define	SEEK_END /;"	macro	line:851
+LCD_BTN_LEFT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define LCD_BTN_LEFT /;"	macro	line:1123
+LCD_BTN_CENTER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define LCD_BTN_CENTER /;"	macro	line:1127
+LCD_BTN_RIGHT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define LCD_BTN_RIGHT /;"	macro	line:1131
+TASK_MAX	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_MAX /;"	macro	line:1215
+TASK_MAX_PRIORITIES	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_MAX_PRIORITIES /;"	macro	line:1221
+TASK_PRIORITY_LOWEST	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_PRIORITY_LOWEST /;"	macro	line:1226
+TASK_PRIORITY_DEFAULT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_PRIORITY_DEFAULT /;"	macro	line:1232
+TASK_PRIORITY_HIGHEST	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_PRIORITY_HIGHEST /;"	macro	line:1237
+TASK_DEFAULT_STACK_SIZE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_DEFAULT_STACK_SIZE /;"	macro	line:1245
+TASK_MINIMAL_STACK_SIZE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_MINIMAL_STACK_SIZE	/;"	macro	line:1253
+TASK_DEAD	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_DEAD /;"	macro	line:1258
+TASK_RUNNING	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_RUNNING /;"	macro	line:1262
+TASK_RUNNABLE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_RUNNABLE /;"	macro	line:1267
+TASK_SLEEPING	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_SLEEPING /;"	macro	line:1272
+TASK_SUSPENDED	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^#define TASK_SUSPENDED /;"	macro	line:1276
+TaskHandle	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef void * TaskHandle;$/;"	typedef	line:1283
+Mutex	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef void * Mutex;$/;"	typedef	line:1289
+Semaphore	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef void * Semaphore;$/;"	typedef	line:1295
+TaskCode	C:\Users\VexLabUser\Desktop\LibertyPrime\include\API.h	/^typedef void (*TaskCode)(void *);$/;"	typedef	line:1306
+CLAW_OPEN_POWER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\config.h	/^#define CLAW_OPEN_POWER /;"	macro	line:1
+CLAW_CLOSE_POWER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\config.h	/^#define CLAW_CLOSE_POWER /;"	macro	line:2
+CLAW_HOLD_POWER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\config.h	/^#define CLAW_HOLD_POWER /;"	macro	line:3
+USER_CONTROL_STATE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\config.h	/^#define USER_CONTROL_STATE /;"	macro	line:4
+HOLD_POWER_STATE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\config.h	/^#define HOLD_POWER_STATE /;"	macro	line:5
+LIFT_POWER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\config.h	/^#define LIFT_POWER /;"	macro	line:6
+MOBILE_GOAL_POWER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\config.h	/^#define MOBILE_GOAL_POWER /;"	macro	line:7
+MOBILE_GOAL_HOLD_POWER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\config.h	/^#define MOBILE_GOAL_HOLD_POWER /;"	macro	line:8
+MAIN_H_	C:\Users\VexLabUser\Desktop\LibertyPrime\include\main.h	/^#define MAIN_H_$/;"	macro	line:26
+ROBOT_H	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ROBOT_H$/;"	macro	line:3
+SELECT_MODE_POT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define SELECT_MODE_POT /;"	macro	line:6
+MOBILE_GOAL_POT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define MOBILE_GOAL_POT /;"	macro	line:7
+PWR_EXP_PORT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define PWR_EXP_PORT /;"	macro	line:8
+DISPLAY_MODE_POT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define DISPLAY_MODE_POT /;"	macro	line:10
+LEFT_DRIVE_ENCODER_TOP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_ENCODER_TOP /;"	macro	line:14
+LEFT_DRIVE_ENCODER_BOTTOM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_ENCODER_BOTTOM /;"	macro	line:15
+RIGHT_DRIVE_ENCODER_TOP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_ENCODER_TOP /;"	macro	line:16
+RIGHT_DRIVE_ENCODER_BOTTOM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_ENCODER_BOTTOM /;"	macro	line:17
+LIFT_ENCODER_TOP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LIFT_ENCODER_TOP /;"	macro	line:18
+LIFT_ENCODER_BOTTOM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LIFT_ENCODER_BOTTOM /;"	macro	line:19
+ARM_ENCODER_TOP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_ENCODER_TOP /;"	macro	line:20
+ARM_ENCODER_BOTTOM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_ENCODER_BOTTOM /;"	macro	line:21
+ArmEncoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^Encoder ArmEncoder;$/;"	variable	line:24
+LiftEncoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^Encoder LiftEncoder;$/;"	variable	line:25
+LeftDriveEncoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^Encoder LeftDriveEncoder;$/;"	variable	line:26
+RightDriveEncoder	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^Encoder RightDriveEncoder;$/;"	variable	line:27
+LEFT_DRIVE_FRONT_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_FRONT_MOTOR /;"	macro	line:31
+LEFT_DRIVE_REAR_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_REAR_MOTOR /;"	macro	line:32
+RIGHT_DRIVE_FRONT_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_FRONT_MOTOR /;"	macro	line:33
+RIGHT_DRIVE_REAR_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_REAR_MOTOR /;"	macro	line:34
+LEFT_DRIVE_REVERSED	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LEFT_DRIVE_REVERSED /;"	macro	line:36
+RIGHT_DRIVE_REVERSED	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define RIGHT_DRIVE_REVERSED /;"	macro	line:37
+MOBILE_GOAL_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define MOBILE_GOAL_MOTOR /;"	macro	line:39
+ARM_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_MOTOR /;"	macro	line:41
+CLAW_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define CLAW_MOTOR /;"	macro	line:42
+LIFT_MOTOR	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define LIFT_MOTOR /;"	macro	line:43
+JOY_MASTER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define JOY_MASTER /;"	macro	line:46
+JOY_SLAVE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define JOY_SLAVE /;"	macro	line:47
+STK1_RIGHT_X	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STK1_RIGHT_X /;"	macro	line:48
+STK2_RIGHT_Y	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STK2_RIGHT_Y /;"	macro	line:49
+STK4_LEFT_X	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STK4_LEFT_X /;"	macro	line:50
+STK3_LEFT_Y	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STK3_LEFT_Y /;"	macro	line:51
+BTN5_LEFT_TRIGGER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN5_LEFT_TRIGGER /;"	macro	line:52
+BTN6_RIGHT_TRIGGER	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN6_RIGHT_TRIGGER /;"	macro	line:53
+BTN7_LEFT_THUMB	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN7_LEFT_THUMB /;"	macro	line:54
+BTN8_RIGHT_THUMB	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN8_RIGHT_THUMB /;"	macro	line:55
+STICK_RIGHT_DRIVE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STICK_RIGHT_DRIVE /;"	macro	line:58
+STICK_LEFT_DRIVE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STICK_LEFT_DRIVE /;"	macro	line:59
+STICK_THRESHOLD	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STICK_THRESHOLD /;"	macro	line:60
+BTN_LIFT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_LIFT /;"	macro	line:62
+BTN_LIFT_UP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_LIFT_UP /;"	macro	line:63
+BTN_LIFT_DOWN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_LIFT_DOWN /;"	macro	line:64
+BTN_ARM	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_ARM /;"	macro	line:65
+BTN_ARM_UP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_ARM_UP /;"	macro	line:66
+BTN_ARM_DOWN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_ARM_DOWN /;"	macro	line:67
+BTN_CLAW_OPEN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CLAW_OPEN /;"	macro	line:68
+BTN_CLAW_CLOSE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CLAW_CLOSE /;"	macro	line:69
+BTN_MGOAL	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_MGOAL /;"	macro	line:70
+BTN_MGOAL_RETRACT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_MGOAL_RETRACT /;"	macro	line:71
+BTN_MGOAL_DEPLOY	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_MGOAL_DEPLOY /;"	macro	line:72
+BTN_MGOAL_AUTOSCORE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_MGOAL_AUTOSCORE /;"	macro	line:73
+BTN_CONE	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CONE /;"	macro	line:74
+BTN_CONE_IN	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CONE_IN /;"	macro	line:75
+BTN_CONE_OUT	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define BTN_CONE_OUT /;"	macro	line:76
+STRING_AUTON_1	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_1 /;"	macro	line:79
+STRING_AUTON_2	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_2 /;"	macro	line:80
+STRING_AUTON_3	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_3 /;"	macro	line:81
+STRING_AUTON_4	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_4 /;"	macro	line:82
+STRING_AUTON_5	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_5 /;"	macro	line:83
+STRING_AUTON_6	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_6 /;"	macro	line:84
+STRING_AUTON_7	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_7 /;"	macro	line:85
+STRING_AUTON_8	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_8 /;"	macro	line:86
+STRING_AUTON_9	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_9 /;"	macro	line:87
+STRING_AUTON_A	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define STRING_AUTON_A /;"	macro	line:88
+ARM_STOWED	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_STOWED /;"	macro	line:90
+ARM_STACK	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_STACK /;"	macro	line:91
+ARM_PICKUP	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_PICKUP /;"	macro	line:92
+ARM_PRESTACK	C:\Users\VexLabUser\Desktop\LibertyPrime\include\robot.h	/^#define ARM_PRESTACK /;"	macro	line:93
+LibertyPrime	C:\Users\VexLabUser\Desktop\LibertyPrime\README.md	/^# LibertyPrime$/;"	function	line:1
+dmp	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int dmp = 0;\/\/drive motor power$/;"	variable	line:3
+liftdist	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int liftdist = 0;\/\/how far to lift$/;"	variable	line:4
+lmp	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int lmp = 0; \/\/power to use when lifting$/;"	variable	line:5
+armdist	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int armdist = 0;\/\/dist to move arm$/;"	variable	line:6
+amp	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int amp = 0;\/\/power to use to move arm$/;"	variable	line:7
+mgs	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int mgs = 0;\/\/mobile goal task state$/;"	variable	line:8
+operation	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int operation = 0;$/;"	variable	line:9
+g_selectedAutonomous	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^unsigned g_selectedAutonomous = 0;$/;"	variable	line:10
+readmgs	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int readmgs()\/\/read mobile goal state$/;"	function	line:23
+writemgs	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^void writemgs(int op)\/\/update mobile goal state$/;"	function	line:28	signature:(int op)
+getAutonMode	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^void getAutonMode() {$/;"	function	line:33
+displayRobotStatus	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^void displayRobotStatus() {$/;"	function	line:112
+autonomous	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^void autonomous() {$/;"	function	line:150
+turnClockwise	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^  void turnClockwise(int counts)\/\/turn robot clockwise to specified number of counts$/;"	function	line:3	signature:(int counts)
+turnCclwise	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void turnCclwise(int counts)\/\/turn robot counter-clockwise to specified number of counts$/;"	function	line:13	signature:(int counts)
+driveforward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void driveforward(int counts, int power,int mode)\/\/drive forward to specified counts with specified power$/;"	function	line:22	signature:(int counts, int power,int mode)
+driveBackward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void driveBackward(int counts, int power)\/\/drive back to specified counts with specified power$/;"	function	line:45	signature:(int counts, int power)
+AccelerateForward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void AccelerateForward(int power)\/\/gradually increase power to avoid sudden jerking or steering movements$/;"	function	line:56	signature:(int power)
+AccelerateBackward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void AccelerateBackward(int power)\/\/gradually increase power to avoid sudden jerking or steering movements$/;"	function	line:122	signature:(int power)
+drivestraight	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void drivestraight(int dmp)\/\/add or subtract power to stay on course when driving long distances$/;"	function	line:188	signature:(int dmp)
+drivestraightBack	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^  void drivestraightBack(int dmp)\/\/add or subtract power to stay on course when driving long distances but with the logic flipped since we are going backwards$/;"	function	line:242	signature:(int dmp)
+auton1	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton1.c	/^void auton1()$/;"	function	line:9
+auton2	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton2.c	/^void auton2()$/;"	function	line:9
+auton3	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton3.c	/^void auton3()$/;"	function	line:11
+auton4	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton4.c	/^void auton4()$/;"	function	line:9
+auton5	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton5.c	/^void auton5()$/;"	function	line:9
+auton6	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton6.c	/^void auton6()$/;"	function	line:9
+auton7	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton7.c	/^void auton7()$/;"	function	line:4
+auton8	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton8.c	/^void auton8()$/;"	function	line:2
+auton9	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton9.c	/^void auton9()$/;"	function	line:2
+autonA	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autonA.c	/^void autonA()$/;"	function	line:2
+OK_TO_BRAKE	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^#define OK_TO_BRAKE /;"	macro	line:3	file:
+speed	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^int speed = 0;$/;"	variable	line:9
+status	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^int status = 0;$/;"	variable	line:10
+movelift	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^void movelift()$/;"	function	line:11
+movearm	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^void movearm()$/;"	function	line:40
+decelerate	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^void decelerate(int counts)\/\/decelerate for accuracy$/;"	function	line:54	signature:(int counts)
+decelerateBack	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^void decelerateBack(int counts)\/\/logic is flipped for going opposite way$/;"	function	line:79	signature:(int counts)
+getSpeed	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^void getSpeed()\/\/get speed the robot is traveling at$/;"	function	line:104
+autoMobileGoal	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^void autoMobileGoal()$/;"	function	line:113
+intake	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autontasks.c	/^void intake()$/;"	function	line:141
+showdebugmenu	C:\Users\VexLabUser\Desktop\LibertyPrime\src\debugmenu.c	/^void showdebugmenu()$/;"	function	line:6
+motorLeftDriveSet	C:\Users\VexLabUser\Desktop\LibertyPrime\src\driverlib.c	/^void motorLeftDriveSet(int power)\/\/chains motors together$/;"	function	line:17	signature:(int power)
+motorRightDriveSet	C:\Users\VexLabUser\Desktop\LibertyPrime\src\driverlib.c	/^void motorRightDriveSet(int power) \/\/chains motors together$/;"	function	line:26	signature:(int power)
+readButtons	C:\Users\VexLabUser\Desktop\LibertyPrime\src\driverlib.c	/^void readButtons()$/;"	function	line:33
+MobileGoalControl	C:\Users\VexLabUser\Desktop\LibertyPrime\src\drivertasks.c	/^void MobileGoalControl()$/;"	function	line:16
+DriverControl	C:\Users\VexLabUser\Desktop\LibertyPrime\src\drivertasks.c	/^void DriverControl()$/;"	function	line:32
+ArmControl	C:\Users\VexLabUser\Desktop\LibertyPrime\src\drivertasks.c	/^void ArmControl()$/;"	function	line:62
+LiftControl	C:\Users\VexLabUser\Desktop\LibertyPrime\src\drivertasks.c	/^void LiftControl()$/;"	function	line:81
+IntakeControl	C:\Users\VexLabUser\Desktop\LibertyPrime\src\drivertasks.c	/^void IntakeControl() {$/;"	function	line:98
+stackHeight	C:\Users\VexLabUser\Desktop\LibertyPrime\src\fastack.c	/^int stackHeight[15] = {0,10,18,26,34, 42,50,58,66,74, 82,90,98,106,114};$/;"	variable	line:3
+holdAtHeight	C:\Users\VexLabUser\Desktop\LibertyPrime\src\fastack.c	/^int holdAtHeight[15] = {0,0,0,0,0, 20,20,20,20,20, 40,40,40,40,40};$/;"	variable	line:4
+coneCount	C:\Users\VexLabUser\Desktop\LibertyPrime\src\fastack.c	/^int coneCount = 0;\/\/track number of cones stacked$/;"	variable	line:5
+fastack	C:\Users\VexLabUser\Desktop\LibertyPrime\src\fastack.c	/^ void fastack(void * parameter) {\/\/fast stack$/;"	function	line:24	signature:(void * parameter)
+mgt	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle mgt;$/;"	variable	line:15
+dt	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle dt;$/;"	variable	line:16
+at	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle at;$/;"	variable	line:17
+lt	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle lt;$/;"	variable	line:18
+it	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle it;$/;"	variable	line:19
+spd	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle spd;$/;"	variable	line:20
+mat	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle mat;$/;"	variable	line:21
+mlt	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle mlt;$/;"	variable	line:22
+amgt	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle amgt;$/;"	variable	line:23
+ait	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle ait;$/;"	variable	line:24
+dbgmenu	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^TaskHandle dbgmenu;$/;"	variable	line:25
+initializeIO	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^void initializeIO() {$/;"	function	line:34
+initialize	C:\Users\VexLabUser\Desktop\LibertyPrime\src\init.c	/^void initialize() {$/;"	function	line:50
+mp	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^int mp = 0;$/;"	variable	line:3
+dforward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool dforward = false;$/;"	variable	line:4
+dbackward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool dbackward = false;$/;"	variable	line:5
+armforward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool armforward = false;$/;"	variable	line:6
+armbackward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool armbackward = false;$/;"	variable	line:7
+grab	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool grab = false;$/;"	variable	line:8
+release	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool release = false;$/;"	variable	line:9
+powerLeft	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^int powerLeft = 0;$/;"	variable	line:10
+powerRight	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^int powerRight = 0;$/;"	variable	line:11
+armup	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool armup = false;$/;"	variable	line:12
+armdown	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool armdown = false;$/;"	variable	line:13
+liftup	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool liftup = false;$/;"	variable	line:14
+liftdown	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool liftdown = false;$/;"	variable	line:15
+incone	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool incone = false;$/;"	variable	line:16
+relcone	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool relcone = false;$/;"	variable	line:17
+shiftpressed	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool shiftpressed = false;$/;"	variable	line:18
+dgoal	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool dgoal = false;$/;"	variable	line:19
+rgoal	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool rgoal = false;$/;"	variable	line:20
+sgoal	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^bool sgoal = false;$/;"	variable	line:21
+operatorControl	C:\Users\VexLabUser\Desktop\LibertyPrime\src\opcontrol.c	/^void operatorControl() {$/;"	function	line:25
+TaskManager	C:\Users\VexLabUser\Desktop\LibertyPrime\src\robotlib.c	/^void TaskManager(TaskHandle th,int operation)\/\/manages tasks$/;"	function	line:11	signature:(TaskHandle th,int operation)
+initializeLoopTasks	C:\Users\VexLabUser\Desktop\LibertyPrime\src\robotlib.c	/^void initializeLoopTasks() \/\/initalize auton tasks$/;"	function	line:30
