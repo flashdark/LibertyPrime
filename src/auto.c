@@ -116,7 +116,7 @@ void displayRobotStatus() {
   // display raw value from autonModePot for calibrating auton selection
   if ((lcdReadButtons(uart2) & LCD_BTN_LEFT) &&
       (lcdReadButtons(uart2) & LCD_BTN_CENTER)) {
-    // TBD
+  
 
     // Short delay for the LCD refresh rate
     taskDelay(100);
@@ -148,7 +148,7 @@ void displayRobotStatus() {
 
 
 void autonomous() {
-  
+
 initializeLoopTasks();
 getAutonMode();
 

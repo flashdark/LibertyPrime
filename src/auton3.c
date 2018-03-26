@@ -30,14 +30,14 @@ void auton3()
     writemgs(2);//retract mobile goal
     delay(1000);//delay 600 ms
 
-    amp = -100;//set arm power to -100
-    armdist = 18;//set arm distance
-    delay(500);
+    //amp = -100;//set arm power to -100
+    //armdist = 18;//set arm distance
+    //delay(500);
 
     lmp = -50;//set lift power to -50
     liftdist = 8;//set liftdist to 10 counts
-    delay(500);//delay 300 ms
-
+    //delay(500);//delay 300 ms
+    delay(700);//delay 300 ms
     operation = 2;//release cone
     delay(300);//delay 300 ms
 
