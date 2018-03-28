@@ -221,6 +221,7 @@ initialize	.\src\init.c	/^void initialize() {$/;"	f
 initializeIO	.\src\init.c	/^void initializeIO() {$/;"	f
 initializeLoopTasks	.\src\robotlib.c	/^void initializeLoopTasks() \/\/initalize auton tasks$/;"	f
 intake	.\src\autontasks.c	/^void intake()$/;"	f
+intpwr	.\src\auto.c	/^int volatile intpwr = 0;$/;"	v
 it	.\src\init.c	/^TaskHandle it;$/;"	v
 liftdist	.\src\auto.c	/^int liftdist = 0;\/\/how far to lift$/;"	v
 liftdown	.\src\opcontrol.c	/^bool liftdown = false;$/;"	v
@@ -236,7 +237,7 @@ motorRightDriveSet	.\src\driverlib.c	/^void motorRightDriveSet(int power) \/\/ch
 movearm	.\src\autontasks.c	/^void movearm()$/;"	f
 movelift	.\src\autontasks.c	/^void movelift()$/;"	f
 mp	.\src\opcontrol.c	/^int mp = 0;$/;"	v
-operation	.\src\auto.c	/^int operation = 0;$/;"	v
+operation	.\src\auto.c	/^int volatile operation = 0;$/;"	v
 operatorControl	.\src\opcontrol.c	/^void operatorControl() {$/;"	f
 powerLeft	.\src\opcontrol.c	/^int powerLeft = 0;$/;"	v
 powerRight	.\src\opcontrol.c	/^int powerRight = 0;$/;"	v

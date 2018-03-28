@@ -6,7 +6,8 @@ int lmp = 0; //power to use when lifting
 int armdist = 0;//dist to move arm
 int amp = 0;//power to use to move arm
 int mgs = 0;//mobile goal task state
-int operation = 0;
+int volatile operation = 0;
+int volatile intpwr = 0;
 unsigned g_selectedAutonomous = 0;
 
 /*Task Handles used to change task states*/
@@ -116,7 +117,7 @@ void displayRobotStatus() {
   // display raw value from autonModePot for calibrating auton selection
   if ((lcdReadButtons(uart2) & LCD_BTN_LEFT) &&
       (lcdReadButtons(uart2) & LCD_BTN_CENTER)) {
-  
+
 
     // Short delay for the LCD refresh rate
     taskDelay(100);

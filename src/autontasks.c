@@ -6,6 +6,7 @@ extern int liftdist;
 extern int lmp;
 extern int armdist;
 extern int amp;
+extern int volatile intpwr;
 int speed = 0;
 int status = 0;
 void movelift()
@@ -143,17 +144,16 @@ void intake()
   switch(operation)
   {
     case 0:
-          motorSet(CLAW_MOTOR,0);//clear motors
+          motorSet(CLAW_MOTOR,0);//off motors
           break;
     case 1:
-          motorSet(CLAW_MOTOR,-120);//intake cone
-          delay(250);
-          motorSet(CLAW_MOTOR,-20);//apply hold power
+          motorSet(CLAW_MOTOR,-intpwr);//intake cone
           break;
     case 2:
-          motorSet(CLAW_MOTOR,120);//release cone
-          delay(400);
-          operation = 0;//clear motors
+          motorSet(CLAW_MOTOR,intpwr);//release cone
+          break;
+    case 3:
+          motorSet(CLAW_MOTOR,-20);//hold
           break;
   }
 }
