@@ -206,6 +206,7 @@ dgoal	.\src\opcontrol.c	/^bool dgoal = false;$/;"	v
 displayRobotStatus	.\src\auto.c	/^void displayRobotStatus() {$/;"	f
 dmp	.\src\auto.c	/^int dmp = 0;\/\/drive motor power$/;"	v
 driveBackward	.\src\autolib.c	/^void driveBackward(int counts, int power)\/\/drive back to specified counts with specified power$/;"	f
+drivedone	.\src\auto.c	/^bool volatile drivedone = false;$/;"	v
 driveforward	.\src\autolib.c	/^void driveforward(int counts, int power,int mode)\/\/drive forward to specified counts with specified power$/;"	f
 drivestraight	.\src\autolib.c	/^void drivestraight(int dmp)\/\/add or subtract power to stay on course when driving long distances$/;"	f
 drivestraightBack	.\src\autolib.c	/^  void drivestraightBack(int dmp)\/\/add or subtract power to stay on course when driving long distances but with the logic flipped since we are going backwards$/;"	f

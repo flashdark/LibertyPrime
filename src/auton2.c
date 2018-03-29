@@ -5,49 +5,55 @@ extern int lmp; //power to use when lifting
 extern int armdist;//dist to move arm
 extern int amp;//power to use to move arm
 extern int operation; //intake state
+extern int volatile intpwr;
+extern bool volatile drivedone;
 //5 point red
 void auton2()
 {
       char buf[16];
+      sprintf(buf,"%d",analogRead(MOBILE_GOAL_POT));
+      lcdSetText(uart2,2,buf);
       //phase 1 drive and deploy goal lift
 
           //phase 1 drive and deploy goal lift
           operation = 1;//intake cone
+          intpwr = 100;
           delay(40);//delay 40 ms
-
+          operation = 3;
           lmp = 100;//set lift power to 100
           liftdist = 17;//set lift distance to 17 counts
-          delay(500);
-          operation = 0;//release cone hold power
-          operation = 1;//enable cone hold power
-          delay(250);//delay 1/2 second
+          while(motorGet(LIFT_MOTOR) != 20);
+
           writemgs(1);//deploy mobile goal
           delay(300);//delay 300 ms
           driveforward(1550,100,1);//1400,120
-          delay(1000);//delay 600 ms
+          while(drivedone == false);
+
           //phase 2 stack cone
           encoderReset(LeftDriveEncoder);
           writemgs(2);//retract mobile goal
-          delay(1000);//delay 600 ms
+          delay(30);//delay 600 ms
 
-          amp = -100;//set arm power to -100
-          armdist = 18;//set arm distance
-          delay(500);
-
+          while(readmgs() != 3);
           lmp = -50;//set lift power to -50
           liftdist = 8;//set liftdist to 10 counts
-          delay(500);//delay 300 ms
+          delay(30);
+          while(motorGet(LIFT_MOTOR) != 20);
 
           operation = 2;//release cone
-          delay(300);//delay 300 ms
+          intpwr = 100;
+          delay(30);//delay 300 ms
 
           turnCclwise(15);//rotate counter clockwise 15 counts
           encoderReset(LeftDriveEncoder);
 
           lmp = 100;//set lift power to 100
           liftdist = 17;//set lift distance to 17 counts
+          delay(30);
+          while(motorGet(LIFT_MOTOR) != 20);
 
           driveBackward(1300,-100);//reverse 1300 counts with -80 power
+          while(drivedone == false);
           encoderReset(LeftDriveEncoder);
 
           turnCclwise(600);//turn 500 counts counter clockwise towards scoring zone
@@ -65,6 +71,7 @@ void auton2()
         motorRightDriveSet(0);
         amp = 0;
         lmp = 0;
+        writemgs(0);
         operation = 0;
         delay(500);
   //turnCclwise(700);

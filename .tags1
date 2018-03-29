@@ -4,4 +4,18 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-auton6	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton6.c	/^void auton6()$/;"	function	line:10
+dmp	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int dmp = 0;\/\/drive motor power$/;"	variable	line:3
+liftdist	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int liftdist = 0;\/\/how far to lift$/;"	variable	line:4
+lmp	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int lmp = 0; \/\/power to use when lifting$/;"	variable	line:5
+armdist	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int armdist = 0;\/\/dist to move arm$/;"	variable	line:6
+amp	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int amp = 0;\/\/power to use to move arm$/;"	variable	line:7
+mgs	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int mgs = 0;\/\/mobile goal task state$/;"	variable	line:8
+operation	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int volatile operation = 0;$/;"	variable	line:9
+intpwr	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int volatile intpwr = 0;$/;"	variable	line:10
+g_selectedAutonomous	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^unsigned g_selectedAutonomous = 0;$/;"	variable	line:11
+drivedone	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^bool volatile drivedone = false;$/;"	variable	line:12
+readmgs	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^int readmgs()\/\/read mobile goal state$/;"	function	line:25
+writemgs	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^void writemgs(int op)\/\/update mobile goal state$/;"	function	line:30	signature:(int op)
+getAutonMode	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^void getAutonMode() {$/;"	function	line:35
+displayRobotStatus	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^void displayRobotStatus() {$/;"	function	line:114
+autonomous	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auto.c	/^void autonomous() {$/;"	function	line:152

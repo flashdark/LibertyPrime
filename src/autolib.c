@@ -1,5 +1,7 @@
 #include "main.h"
 
+extern bool volatile drivedone;
+
   void turnClockwise(int counts)//turn robot clockwise to specified number of counts
 
 {
@@ -21,6 +23,7 @@ void turnCclwise(int counts)//turn robot counter-clockwise to specified number o
 
 void driveforward(int counts, int power,int mode)//drive forward to specified counts with specified power
 {
+  drivedone = false;
   static int preencval = 0;
   static int postencval = 0;
   AccelerateForward(power); //accelerateion to prevent torque steer
@@ -40,6 +43,7 @@ void driveforward(int counts, int power,int mode)//drive forward to specified co
     motorLeftDriveSet(0);//clear motors
     motorRightDriveSet(0);//clear motors
   }
+  drivedone = true;
 }
 
 void driveBackward(int counts, int power)//drive back to specified counts with specified power

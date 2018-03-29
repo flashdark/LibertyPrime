@@ -7,16 +7,17 @@ extern int lmp;
 extern int armdist;
 extern int amp;
 extern int volatile intpwr;
+
 int speed = 0;
 int status = 0;
 void movelift()
 {
-  if (lmp < 0)//if we are lifting up
+  if (lmp < 0)//if we are lowering down
   {
     if (encoderGet(LiftEncoder) >= liftdist)
     {
       motorSet(LIFT_MOTOR,lmp);
-      delay(30);
+      //delay(30);
     }
     else
     {
@@ -24,12 +25,12 @@ void movelift()
     }
 
   }
-  else if (lmp > 0)//if we are lowering down
+  else if (lmp > 0)//if we are lifting up
      {
        if (encoderGet(LiftEncoder) <= liftdist)
        {
          motorSet(LIFT_MOTOR,lmp);
-         delay(30);
+         //delay(30);
        }
 
        else
@@ -116,25 +117,34 @@ void autoMobileGoal()
   status = readmgs();
   switch(status)
   {
-    case 0:
+    case 0://stop
+            motorSet(MOBILE_GOAL_MOTOR,0);
             break;
-    case 1:
+    case 1://deploy
             motorSet(MOBILE_GOAL_MOTOR,-127);//deploy goal
             if(analogRead(MOBILE_GOAL_POT) < 1515){}//check if deployed
             else//if deployed turn power off and do nothing
             {
-                motorSet(MOBILE_GOAL_MOTOR,0);
-                status=0;
+                motorSet(MOBILE_GOAL_MOTOR,-70);//hold power
+                status = 3;
             }
             break;
-    case 2:
+    case 2://retract
+            lcdSetBacklight(uart2,true);
             if(analogRead(MOBILE_GOAL_POT) > 15) {motorSet(MOBILE_GOAL_MOTOR,127); }//retract mobile goal
             else//when finished
             {
+              lcdSetBacklight(uart2,false);
               motorSet(MOBILE_GOAL_MOTOR,0);//zero motors
-             status=0;//reset
+              status = 3;
             }
             break;
+    case 3://done
+            break;
+    default:
+            status = 0;
+            break;
+
 
   }
 }

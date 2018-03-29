@@ -9,6 +9,7 @@ int mgs = 0;//mobile goal task state
 int volatile operation = 0;
 int volatile intpwr = 0;
 unsigned g_selectedAutonomous = 0;
+bool volatile drivedone = false;
 
 /*Task Handles used to change task states*/
 extern TaskHandle mgt;
@@ -34,7 +35,7 @@ void writemgs(int op)//update mobile goal state
 void getAutonMode() {
   lcdSetBacklight(uart2, true);
   char buf[17];
-  sprintf(buf,"%d",analogRead(SELECT_MODE_POT));
+  //sprintf(buf,"%d",analogRead(SELECT_MODE_POT));
   int modePotValue = analogRead(SELECT_MODE_POT);
   // char buff[16];
   // sprintf(buff,"%d",modePotValue);
@@ -44,62 +45,62 @@ void getAutonMode() {
   // 1st choice
   if (modePotValue <= 5) {
     lcdSetText(uart2, 1, STRING_AUTON_1);
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
     g_selectedAutonomous = 1;
   }
   // 2nd choice
   else if (modePotValue <= 345) {
     lcdSetText(uart2, 1, STRING_AUTON_2);
     g_selectedAutonomous = 2;
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
   }
   // 3rd choice
   else if (modePotValue <= 905) {
     lcdSetText(uart2, 1, STRING_AUTON_3);
     g_selectedAutonomous = 3;
-    lcdSetText(uart2,2,buf);
+  //  lcdSetText(uart2,2,buf);
   }
   // 4th choice
   else if (modePotValue <= 1410) {
     lcdSetText(uart2, 1, STRING_AUTON_4);
     g_selectedAutonomous = 4;
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
   }
   // 5th choice
   else if (modePotValue <= 1880) {
     lcdSetText(uart2, 1, STRING_AUTON_5);
     g_selectedAutonomous = 5;
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
   }
   // 6th choice
   else if (modePotValue <= 2430) {
     lcdSetText(uart2, 1, STRING_AUTON_6);
     g_selectedAutonomous = 6;
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
   }
   // 7th choice
   else if (modePotValue <= 3025) {
     lcdSetText(uart2, 1, STRING_AUTON_7);
     g_selectedAutonomous = 7;
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
   }
   // 8th choice
   else if (modePotValue <= 3685) {
     lcdSetText(uart2, 1, STRING_AUTON_8);
     g_selectedAutonomous = 8;
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
   }
   // 9th choice
   else if (modePotValue <= 4075) {
     lcdSetText(uart2, 1, STRING_AUTON_9);
     g_selectedAutonomous = 9;
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
   }
   // 10th choice
   else if (modePotValue > 4076) {
     lcdSetText(uart2, 1, STRING_AUTON_A);
     g_selectedAutonomous = 10;
-    lcdSetText(uart2,2,buf);
+    //lcdSetText(uart2,2,buf);
   }
 } // end getAutonMode
 
