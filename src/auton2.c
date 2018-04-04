@@ -11,8 +11,9 @@ extern bool volatile drivedone;
 void auton2()
 {
       char buf[16];
-      sprintf(buf,"%d",analogRead(MOBILE_GOAL_POT));
-      lcdSetText(uart2,2,buf);
+
+      lcdClear(uart2);
+
       //phase 1 drive and deploy goal lift
 
           //phase 1 drive and deploy goal lift
@@ -29,12 +30,22 @@ void auton2()
           driveforward(1550,100,1);//1400,120
           while(drivedone == false);
 
-          //phase 2 stack cone
+
           encoderReset(LeftDriveEncoder);
           writemgs(2);//retract mobile goal
-          delay(30);//delay 600 ms
+          delay(100);//delay 600 ms
+
+          // sprintf(buf,"Pot: %d Wait",analogRead(MOBILE_GOAL_POT));
+          // lcdSetText(uart2,2,buf);
+          // delay(20);
 
           while(readmgs() != 3);
+
+          // sprintf(buf,"Pot: %d Done",analogRead(MOBILE_GOAL_POT));
+          // lcdSetText(uart2,2,buf);
+          // delay(20);
+
+          //phase 2 stack cone
           lmp = -50;//set lift power to -50
           liftdist = 8;//set liftdist to 10 counts
           delay(30);
@@ -44,15 +55,21 @@ void auton2()
           intpwr = 100;
           delay(30);//delay 300 ms
 
+          //drive to scoring zone
+          driveBackward(250,-100);
+          operation = 0;//release cone
+          delay(30);//delay 300 ms
           turnCclwise(15);//rotate counter clockwise 15 counts
           encoderReset(LeftDriveEncoder);
-
+          delay(1000);
           lmp = 100;//set lift power to 100
           liftdist = 17;//set lift distance to 17 counts
           delay(30);
           while(motorGet(LIFT_MOTOR) != 20);
-
-          driveBackward(1300,-100);//reverse 1300 counts with -80 power
+          lmp = 0;
+          delay(30);
+          
+          driveBackward(750,-100);//reverse 1300 counts with -80 power
           while(drivedone == false);
           encoderReset(LeftDriveEncoder);
 

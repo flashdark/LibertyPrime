@@ -126,7 +126,7 @@ void autoMobileGoal()
             else//if deployed turn power off and do nothing
             {
                 motorSet(MOBILE_GOAL_MOTOR,-70);//hold power
-                status = 3;
+                writemgs(3);
             }
             break;
     case 2://retract
@@ -136,13 +136,13 @@ void autoMobileGoal()
             {
               lcdSetBacklight(uart2,false);
               motorSet(MOBILE_GOAL_MOTOR,0);//zero motors
-              status = 3;
+              writemgs(3);
             }
             break;
     case 3://done
             break;
     default:
-            status = 0;
+            writemgs(0);
             break;
 
 
