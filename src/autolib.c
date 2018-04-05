@@ -27,18 +27,31 @@ void driveforward(int counts, int power,int mode)//drive forward to specified co
   static int preencval = 0;
   static int postencval = 0;
   AccelerateForward(power); //accelerateion to prevent torque steer
-  while (encoderGet(LeftDriveEncoder) < counts-400)
+
+  //drive straight
+  if (mode & 2) //without stall detect
   {
-    preencval = encoderGet(LeftDriveEncoder);
-    drivestraight(power);//adjustment code
-    postencval = encoderGet(LeftDriveEncoder);
-    if (postencval-preencval == 0){ break;}//check if there is movement, if not something happened so move on
+    while ( (encoderGet(LeftDriveEncoder) < counts))
+    {
+      drivestraight(power);//adjustment code
+    }
   }
-  if (mode == 0)//enable decelerate
+  else //with stall detect
+  {
+    while ( (encoderGet(LeftDriveEncoder) < counts-400) )
+    {
+      preencval = encoderGet(LeftDriveEncoder);
+      drivestraight(power);//adjustment code
+      postencval = encoderGet(LeftDriveEncoder);
+      if (postencval-preencval == 0){ break;}//check if there is movement, if not something happened so move on
+    }
+  }
+
+  if ( !(mode & 1) )//enable decelerate
   {
     decelerate(counts);//slow down to prevent overshooting
   }
-  else//disable decelerate for crash runs
+  else //disable decelerate for crash runs
   {
     motorLeftDriveSet(0);//clear motors
     motorRightDriveSet(0);//clear motors

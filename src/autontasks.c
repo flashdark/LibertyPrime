@@ -41,15 +41,18 @@ void movelift()
 }
 void movearm()
 {
-if (encoderGet(ArmEncoder) <= armdist)
-{
-  motorSet(ARM_MOTOR,amp);
-  delay(30);
-}
-else
-{
-  motorSet(ARM_MOTOR,0);
-}
+  if ( (analogRead(ARM_POT) <= armdist) && (amp < 0) )
+  {
+    motorSet(ARM_MOTOR,amp);
+  }
+  else if ( (analogRead(ARM_POT) >= armdist) && (amp > 0) )
+  {
+    motorSet(ARM_MOTOR,amp);
+  }
+  else
+  {
+    motorSet(ARM_MOTOR,0);
+  }
 
 }
 

@@ -6,8 +6,8 @@
 #define SELECT_MODE_POT 1
 #define MOBILE_GOAL_POT 6
 #define PWR_EXP_PORT 3
-
-#define DISPLAY_MODE_POT 4
+#define ARM_POT 4
+//#define DISPLAY_MODE_POT 4
 
 
 // digital ports
@@ -21,7 +21,6 @@
 #define ARM_ENCODER_BOTTOM 4
 
 //Encoder object creation
-Encoder ArmEncoder;
 Encoder LiftEncoder;
 Encoder LeftDriveEncoder;
 Encoder RightDriveEncoder;

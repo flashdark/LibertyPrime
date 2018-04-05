@@ -4,4 +4,11 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-auton3	C:\Users\VexLabUser\Desktop\LibertyPrime\src\auton3.c	/^void auton3()$/;"	function	line:11
+turnClockwise	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^  void turnClockwise(int counts)\/\/turn robot clockwise to specified number of counts$/;"	function	line:5	signature:(int counts)
+turnCclwise	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void turnCclwise(int counts)\/\/turn robot counter-clockwise to specified number of counts$/;"	function	line:15	signature:(int counts)
+driveforward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void driveforward(int counts, int power,int mode)\/\/drive forward to specified counts with specified power$/;"	function	line:24	signature:(int counts, int power,int mode)
+driveBackward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void driveBackward(int counts, int power)\/\/drive back to specified counts with specified power$/;"	function	line:62	signature:(int counts, int power)
+AccelerateForward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void AccelerateForward(int power)\/\/gradually increase power to avoid sudden jerking or steering movements$/;"	function	line:73	signature:(int power)
+AccelerateBackward	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void AccelerateBackward(int power)\/\/gradually increase power to avoid sudden jerking or steering movements$/;"	function	line:139	signature:(int power)
+drivestraight	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^void drivestraight(int dmp)\/\/add or subtract power to stay on course when driving long distances$/;"	function	line:205	signature:(int dmp)
+drivestraightBack	C:\Users\VexLabUser\Desktop\LibertyPrime\src\autolib.c	/^  void drivestraightBack(int dmp)\/\/add or subtract power to stay on course when driving long distances but with the logic flipped since we are going backwards$/;"	function	line:259	signature:(int dmp)

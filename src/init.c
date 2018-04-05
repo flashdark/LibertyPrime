@@ -49,10 +49,9 @@ void initializeIO() {
  */
 void initialize() {
    lcdInit(uart2);
-  ArmEncoder =  encoderInit(ARM_ENCODER_TOP,ARM_ENCODER_BOTTOM,false);
    LiftEncoder = encoderInit(LIFT_ENCODER_TOP,LIFT_ENCODER_BOTTOM,false);
    LeftDriveEncoder = encoderInit(LEFT_DRIVE_ENCODER_TOP,LEFT_DRIVE_ENCODER_BOTTOM,false);
    RightDriveEncoder = encoderInit(RIGHT_DRIVE_ENCODER_TOP,RIGHT_DRIVE_ENCODER_BOTTOM,false);
    //configurePin(9);//for LED
-    dbgmenu = taskCreate(showdebugmenu,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
+    //dbgmenu = taskCreate(showdebugmenu,TASK_DEFAULT_STACK_SIZE,NULL,TASK_PRIORITY_DEFAULT);
 }

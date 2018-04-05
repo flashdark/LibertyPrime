@@ -19,11 +19,11 @@ bool shiftpressed = false;
 bool dgoal = false;
 bool rgoal = false;
 bool sgoal = false;
-
+char buf[16];
 extern TaskHandle dbgmenu;
 
 void operatorControl() {
-taskRunLoop(showdebugmenu,50);
+//taskRunLoop(showdebugmenu,50);
 	while (1)
 {
 
@@ -33,7 +33,8 @@ taskRunLoop(showdebugmenu,50);
 	DriverControl();//control the drivetrain
 	ArmControl(); //control the arm
 	LiftControl(); //control the lift
-
+	sprintf(buf,"Lift: %d",encoderGet(LiftEncoder));
+	lcdSetText(uart2,2,buf);
 	delay(20);
 	while (lcdReadButtons(uart2))
     {
