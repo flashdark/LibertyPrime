@@ -27,13 +27,15 @@ void operatorControl() {
 	while (1)
 {
 
+
 	readButtons(); //read joystick and set values for operation
 	MobileGoalControl(); //move mobile goal in or out
 	IntakeControl();//control intake
 	DriverControl();//control the drivetrain
 	ArmControl(); //control the arm
 	LiftControl(); //control the lift
-	sprintf(buf,"Lift: %d",encoderGet(LiftEncoder));
+	lcdSetBacklight(uart2,true);
+	sprintf(buf,"Arm: %d",analogRead(ARM_POT));
 	lcdSetText(uart2,2,buf);
 	delay(20);
 	while (lcdReadButtons(uart2))

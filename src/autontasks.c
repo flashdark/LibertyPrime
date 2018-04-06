@@ -38,22 +38,43 @@ void movelift()
          motorSet(LIFT_MOTOR,20);
        }
     }
+    else
+    {
+      motorSet(LIFT_MOTOR,0);
+    }
 }
+
+
 void movearm()
 {
-  if ( (analogRead(ARM_POT) <= armdist) && (amp < 0) )
+  if (amp < 0)
   {
-    motorSet(ARM_MOTOR,amp);
-  }
-  else if ( (analogRead(ARM_POT) >= armdist) && (amp > 0) )
+
+    if (analogRead(ARM_POT) <= armdist)
+    {
+      motorSet(ARM_MOTOR,amp);
+    }
+    else
+    {
+      motorSet(ARM_MOTOR,-10);
+    }
+
+}
+  else if (amp > 0)
   {
-    motorSet(ARM_MOTOR,amp);
+    if (analogRead(ARM_POT) >= armdist)
+    {
+      motorSet(ARM_MOTOR,amp);
+    }
+    else
+    {
+      motorSet(ARM_MOTOR,-10);
+    }
   }
   else
   {
     motorSet(ARM_MOTOR,0);
   }
-
 }
 
 void decelerate(int counts)//decelerate for accuracy

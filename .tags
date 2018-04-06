@@ -12,51 +12,50 @@ AR	.\common.mk	/^AR:=$(MCUPREFIX)ar$/;"	m
 ARFLAGS	.\common.mk	/^ARFLAGS:=$(MCUCFLAGS)$/;"	m
 ARM_ENCODER_BOTTOM	.\include\robot.h	21;"	d
 ARM_ENCODER_TOP	.\include\robot.h	20;"	d
-ARM_MOTOR	.\include\robot.h	41;"	d
-ARM_PICKUP	.\include\robot.h	92;"	d
-ARM_PRESTACK	.\include\robot.h	93;"	d
-ARM_STACK	.\include\robot.h	91;"	d
-ARM_STOWED	.\include\robot.h	90;"	d
+ARM_MOTOR	.\include\robot.h	40;"	d
+ARM_PICKUP	.\include\robot.h	91;"	d
+ARM_POT	.\include\robot.h	9;"	d
+ARM_PRESTACK	.\include\robot.h	92;"	d
+ARM_STACK	.\include\robot.h	90;"	d
+ARM_STOWED	.\include\robot.h	89;"	d
 AS	.\common.mk	/^AS:=$(MCUPREFIX)as$/;"	m
 ASMEXT	.\common.mk	/^ASMEXT=s$/;"	m
 AccelerateBackward	.\src\autolib.c	/^void AccelerateBackward(int power)\/\/gradually increase power to avoid sudden jerking or steering movements$/;"	f
 AccelerateForward	.\src\autolib.c	/^void AccelerateForward(int power)\/\/gradually increase power to avoid sudden jerking or steering movements$/;"	f
 ArmControl	.\src\drivertasks.c	/^void ArmControl()$/;"	f
-ArmEncoder	.\include\robot.h	/^Encoder ArmEncoder;$/;"	v
 BOARD_NR_ADC_PINS	.\include\API.h	141;"	d
 BOARD_NR_GPIO_PINS	.\include\API.h	151;"	d
-BTN5_LEFT_TRIGGER	.\include\robot.h	52;"	d
-BTN6_RIGHT_TRIGGER	.\include\robot.h	53;"	d
-BTN7_LEFT_THUMB	.\include\robot.h	54;"	d
-BTN8_RIGHT_THUMB	.\include\robot.h	55;"	d
-BTN_ARM	.\include\robot.h	65;"	d
-BTN_ARM_DOWN	.\include\robot.h	67;"	d
-BTN_ARM_UP	.\include\robot.h	66;"	d
-BTN_CLAW_CLOSE	.\include\robot.h	69;"	d
-BTN_CLAW_OPEN	.\include\robot.h	68;"	d
-BTN_CONE	.\include\robot.h	74;"	d
-BTN_CONE_IN	.\include\robot.h	75;"	d
-BTN_CONE_OUT	.\include\robot.h	76;"	d
-BTN_LIFT	.\include\robot.h	62;"	d
-BTN_LIFT_DOWN	.\include\robot.h	64;"	d
-BTN_LIFT_UP	.\include\robot.h	63;"	d
-BTN_MGOAL	.\include\robot.h	70;"	d
-BTN_MGOAL_AUTOSCORE	.\include\robot.h	73;"	d
-BTN_MGOAL_DEPLOY	.\include\robot.h	72;"	d
-BTN_MGOAL_RETRACT	.\include\robot.h	71;"	d
+BTN5_LEFT_TRIGGER	.\include\robot.h	51;"	d
+BTN6_RIGHT_TRIGGER	.\include\robot.h	52;"	d
+BTN7_LEFT_THUMB	.\include\robot.h	53;"	d
+BTN8_RIGHT_THUMB	.\include\robot.h	54;"	d
+BTN_ARM	.\include\robot.h	64;"	d
+BTN_ARM_DOWN	.\include\robot.h	66;"	d
+BTN_ARM_UP	.\include\robot.h	65;"	d
+BTN_CLAW_CLOSE	.\include\robot.h	68;"	d
+BTN_CLAW_OPEN	.\include\robot.h	67;"	d
+BTN_CONE	.\include\robot.h	73;"	d
+BTN_CONE_IN	.\include\robot.h	74;"	d
+BTN_CONE_OUT	.\include\robot.h	75;"	d
+BTN_LIFT	.\include\robot.h	61;"	d
+BTN_LIFT_DOWN	.\include\robot.h	63;"	d
+BTN_LIFT_UP	.\include\robot.h	62;"	d
+BTN_MGOAL	.\include\robot.h	69;"	d
+BTN_MGOAL_AUTOSCORE	.\include\robot.h	72;"	d
+BTN_MGOAL_DEPLOY	.\include\robot.h	71;"	d
+BTN_MGOAL_RETRACT	.\include\robot.h	70;"	d
 CC	.\common.mk	/^CC:=$(MCUPREFIX)gcc$/;"	m
 CCFLAGS	.\common.mk	/^CCFLAGS:=-c -Wall $(MCUCFLAGS) -Os -ffunction-sections -fsigned-char -fomit-frame-pointer -fsingle-precision-constant$/;"	m
 CEXT	.\common.mk	/^CEXT=c$/;"	m
 CFLAGS	.\common.mk	/^CFLAGS:=$(CCFLAGS) -std=gnu99 -Werror=implicit-function-declaration$/;"	m
 CLAW_CLOSE_POWER	.\include\config.h	2;"	d
 CLAW_HOLD_POWER	.\include\config.h	3;"	d
-CLAW_MOTOR	.\include\robot.h	42;"	d
+CLAW_MOTOR	.\include\robot.h	41;"	d
 CLAW_OPEN_POWER	.\include\config.h	1;"	d
 CPPCC	.\common.mk	/^CPPCC:=$(MCUPREFIX)g++$/;"	m
 CPPEXT	.\common.mk	/^CPPEXT=cpp$/;"	m
 CPPFLAGS	.\common.mk	/^CPPFLAGS:=$(CCFLAGS) -fno-exceptions -fno-rtti -felide-constructors$/;"	m
 DEVICE	.\common.mk	/^DEVICE=VexCortex$/;"	m
-DISPLAY_MODE_POT	.\include\robot.h	10;"	d
 DriverControl	.\src\drivertasks.c	/^void DriverControl()$/;"	f
 EOF	.\include\API.h	829;"	d
 Encoder	.\include\API.h	/^typedef void * Encoder;$/;"	t
@@ -77,9 +76,9 @@ IntakeControl	.\src\drivertasks.c	/^void IntakeControl() {$/;"	f
 InterruptHandler	.\include\API.h	/^typedef void (*InterruptHandler)(unsigned char pin);$/;"	t
 JOY_DOWN	.\include\API.h	40;"	d
 JOY_LEFT	.\include\API.h	44;"	d
-JOY_MASTER	.\include\robot.h	46;"	d
+JOY_MASTER	.\include\robot.h	45;"	d
 JOY_RIGHT	.\include\API.h	52;"	d
-JOY_SLAVE	.\include\robot.h	47;"	d
+JOY_SLAVE	.\include\robot.h	46;"	d
 JOY_UP	.\include\API.h	48;"	d
 LCD_BTN_CENTER	.\include\API.h	1127;"	d
 LCD_BTN_LEFT	.\include\API.h	1123;"	d
@@ -87,13 +86,13 @@ LCD_BTN_RIGHT	.\include\API.h	1131;"	d
 LDFLAGS	.\common.mk	/^LDFLAGS:=-Wall $(MCUCFLAGS) $(MCULFLAGS) -Wl,--gc-sections$/;"	m
 LEFT_DRIVE_ENCODER_BOTTOM	.\include\robot.h	15;"	d
 LEFT_DRIVE_ENCODER_TOP	.\include\robot.h	14;"	d
-LEFT_DRIVE_FRONT_MOTOR	.\include\robot.h	31;"	d
-LEFT_DRIVE_REAR_MOTOR	.\include\robot.h	32;"	d
-LEFT_DRIVE_REVERSED	.\include\robot.h	36;"	d
+LEFT_DRIVE_FRONT_MOTOR	.\include\robot.h	30;"	d
+LEFT_DRIVE_REAR_MOTOR	.\include\robot.h	31;"	d
+LEFT_DRIVE_REVERSED	.\include\robot.h	35;"	d
 LIBRARIES	.\common.mk	/^LIBRARIES=$(wildcard $(ROOT)\/firmware\/*.a) -lgcc -lm$/;"	m
 LIFT_ENCODER_BOTTOM	.\include\robot.h	19;"	d
 LIFT_ENCODER_TOP	.\include\robot.h	18;"	d
-LIFT_MOTOR	.\include\robot.h	43;"	d
+LIFT_MOTOR	.\include\robot.h	42;"	d
 LIFT_POWER	.\include\config.h	6;"	d
 LOW	.\include\API.h	163;"	d
 LeftDriveEncoder	.\include\robot.h	/^Encoder LeftDriveEncoder;$/;"	v
@@ -107,7 +106,7 @@ MCULFLAGS	.\common.mk	/^MCULFLAGS=-nostartfiles -Wl,-static -Bfirmware -Wl,-u,Ve
 MCUPREFIX	.\common.mk	/^MCUPREFIX=arm-none-eabi-$/;"	m
 MCUPREPARE	.\common.mk	/^MCUPREPARE=$(OBJCOPY) $(OUT) -O binary $(BINDIR)\/$(OUTBIN)$/;"	m
 MOBILE_GOAL_HOLD_POWER	.\include\config.h	8;"	d
-MOBILE_GOAL_MOTOR	.\include\robot.h	39;"	d
+MOBILE_GOAL_MOTOR	.\include\robot.h	38;"	d
 MOBILE_GOAL_POT	.\include\robot.h	7;"	d
 MOBILE_GOAL_POWER	.\include\config.h	7;"	d
 MobileGoalControl	.\src\drivertasks.c	/^void MobileGoalControl()$/;"	f
@@ -121,9 +120,9 @@ OUTPUT_OD	.\include\API.h	200;"	d
 PWR_EXP_PORT	.\include\robot.h	8;"	d
 RIGHT_DRIVE_ENCODER_BOTTOM	.\include\robot.h	17;"	d
 RIGHT_DRIVE_ENCODER_TOP	.\include\robot.h	16;"	d
-RIGHT_DRIVE_FRONT_MOTOR	.\include\robot.h	33;"	d
-RIGHT_DRIVE_REAR_MOTOR	.\include\robot.h	34;"	d
-RIGHT_DRIVE_REVERSED	.\include\robot.h	37;"	d
+RIGHT_DRIVE_FRONT_MOTOR	.\include\robot.h	32;"	d
+RIGHT_DRIVE_REAR_MOTOR	.\include\robot.h	33;"	d
+RIGHT_DRIVE_REVERSED	.\include\robot.h	36;"	d
 ROBOT_H	.\include\robot.h	3;"	d
 RightDriveEncoder	.\include\robot.h	/^Encoder RightDriveEncoder;$/;"	v
 SEEK_CUR	.\include\API.h	844;"	d
@@ -139,23 +138,23 @@ SERIAL_PARITY_ODD	.\include\API.h	772;"	d
 SERIAL_STOPBITS_1	.\include\API.h	756;"	d
 SERIAL_STOPBITS_2	.\include\API.h	760;"	d
 SIZEFLAGS	.\common.mk	/^SIZEFLAGS=$/;"	m
-STICK_LEFT_DRIVE	.\include\robot.h	59;"	d
-STICK_RIGHT_DRIVE	.\include\robot.h	58;"	d
-STICK_THRESHOLD	.\include\robot.h	60;"	d
-STK1_RIGHT_X	.\include\robot.h	48;"	d
-STK2_RIGHT_Y	.\include\robot.h	49;"	d
-STK3_LEFT_Y	.\include\robot.h	51;"	d
-STK4_LEFT_X	.\include\robot.h	50;"	d
-STRING_AUTON_1	.\include\robot.h	79;"	d
-STRING_AUTON_2	.\include\robot.h	80;"	d
-STRING_AUTON_3	.\include\robot.h	81;"	d
-STRING_AUTON_4	.\include\robot.h	82;"	d
-STRING_AUTON_5	.\include\robot.h	83;"	d
-STRING_AUTON_6	.\include\robot.h	84;"	d
-STRING_AUTON_7	.\include\robot.h	85;"	d
-STRING_AUTON_8	.\include\robot.h	86;"	d
-STRING_AUTON_9	.\include\robot.h	87;"	d
-STRING_AUTON_A	.\include\robot.h	88;"	d
+STICK_LEFT_DRIVE	.\include\robot.h	58;"	d
+STICK_RIGHT_DRIVE	.\include\robot.h	57;"	d
+STICK_THRESHOLD	.\include\robot.h	59;"	d
+STK1_RIGHT_X	.\include\robot.h	47;"	d
+STK2_RIGHT_Y	.\include\robot.h	48;"	d
+STK3_LEFT_Y	.\include\robot.h	50;"	d
+STK4_LEFT_X	.\include\robot.h	49;"	d
+STRING_AUTON_1	.\include\robot.h	78;"	d
+STRING_AUTON_2	.\include\robot.h	79;"	d
+STRING_AUTON_3	.\include\robot.h	80;"	d
+STRING_AUTON_4	.\include\robot.h	81;"	d
+STRING_AUTON_5	.\include\robot.h	82;"	d
+STRING_AUTON_6	.\include\robot.h	83;"	d
+STRING_AUTON_7	.\include\robot.h	84;"	d
+STRING_AUTON_8	.\include\robot.h	85;"	d
+STRING_AUTON_9	.\include\robot.h	86;"	d
+STRING_AUTON_A	.\include\robot.h	87;"	d
 Semaphore	.\include\API.h	/^typedef void * Semaphore;$/;"	t
 TASK_DEAD	.\include\API.h	1258;"	d
 TASK_DEFAULT_STACK_SIZE	.\include\API.h	1245;"	d
@@ -196,7 +195,7 @@ auton8	.\src\auton8.c	/^void auton8()$/;"	f
 auton9	.\src\auton9.c	/^void auton9()$/;"	f
 autonA	.\src\autonA.c	/^void autonA()$/;"	f
 autonomous	.\src\auto.c	/^void autonomous() {$/;"	f
-coneCount	.\src\fastack.c	/^int coneCount = 0;\/\/track number of cones stacked$/;"	v
+buf	.\src\opcontrol.c	/^char buf[16];$/;"	v
 dbackward	.\src\opcontrol.c	/^bool dbackward = false;$/;"	v
 dbgmenu	.\src\init.c	/^TaskHandle dbgmenu;$/;"	v
 decelerate	.\src\autontasks.c	/^void decelerate(int counts)\/\/decelerate for accuracy$/;"	f
@@ -211,12 +210,10 @@ driveforward	.\src\autolib.c	/^void driveforward(int counts, int power,int mode)
 drivestraight	.\src\autolib.c	/^void drivestraight(int dmp)\/\/add or subtract power to stay on course when driving long distances$/;"	f
 drivestraightBack	.\src\autolib.c	/^  void drivestraightBack(int dmp)\/\/add or subtract power to stay on course when driving long distances but with the logic flipped since we are going backwards$/;"	f
 dt	.\src\init.c	/^TaskHandle dt;$/;"	v
-fastack	.\src\fastack.c	/^ void fastack(void * parameter) {\/\/fast stack$/;"	f
 g_selectedAutonomous	.\src\auto.c	/^unsigned g_selectedAutonomous = 0;$/;"	v
 getAutonMode	.\src\auto.c	/^void getAutonMode() {$/;"	f
 getSpeed	.\src\autontasks.c	/^void getSpeed()\/\/get speed the robot is traveling at$/;"	f
 grab	.\src\opcontrol.c	/^bool grab = false;$/;"	v
-holdAtHeight	.\src\fastack.c	/^int holdAtHeight[15] = {0,0,0,0,0, 20,20,20,20,20, 40,40,40,40,40};$/;"	v
 incone	.\src\opcontrol.c	/^bool incone = false;$/;"	v
 initialize	.\src\init.c	/^void initialize() {$/;"	f
 initializeIO	.\src\init.c	/^void initializeIO() {$/;"	f
@@ -249,10 +246,8 @@ release	.\src\opcontrol.c	/^bool release = false;$/;"	v
 rgoal	.\src\opcontrol.c	/^bool rgoal = false;$/;"	v
 sgoal	.\src\opcontrol.c	/^bool sgoal = false;$/;"	v
 shiftpressed	.\src\opcontrol.c	/^bool shiftpressed = false;$/;"	v
-showdebugmenu	.\src\debugmenu.c	/^void showdebugmenu()$/;"	f
 spd	.\src\init.c	/^TaskHandle spd;$/;"	v
 speed	.\src\autontasks.c	/^int speed = 0;$/;"	v
-stackHeight	.\src\fastack.c	/^int stackHeight[15] = {0,10,18,26,34, 42,50,58,66,74, 82,90,98,106,114};$/;"	v
 status	.\src\autontasks.c	/^int status = 0;$/;"	v
 stdin	.\include\API.h	815;"	d
 stdout	.\include\API.h	811;"	d

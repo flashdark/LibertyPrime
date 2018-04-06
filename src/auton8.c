@@ -21,8 +21,10 @@ void auton8()
       intpwr = 100;
       delay(40);//delay 40 ms
       operation = 3;
-      lmp = 100;//set lift power to 100
       liftdist = 17;//set lift distance to 17 counts
+      lmp = 100;//set lift power to 100
+
+      delay(100);
       while(motorGet(LIFT_MOTOR) != 20);
 
       writemgs(1);//deploy mobile goal
@@ -46,22 +48,26 @@ void auton8()
       // delay(20);
 
       //phase 2 stack cone
-      lmp = -50;//set lift power to -50
       liftdist = 8;//set liftdist to 10 counts
-      delay(30);
+      lmp = -50;//set lift power to -50
+
+      delay(100);
       while(motorGet(LIFT_MOTOR) != 20);
 
-      operation = 2;//release cone
+      operation = 2;//release preload cone
       intpwr = 100;
       delay(100);//delay 300 ms
-      lmp = 100;//set lift power to 100
       liftdist = 17;//set lift distance to 17 counts
+      lmp = 100;//set lift power to 100
+
+      delay(100);
       while(motorGet(LIFT_MOTOR) != 20);
 
-      armdist = 2680;
-      amp = -100;
+      armdist = 3700;
+      amp = -60;
+      delay(100);
+      while(motorGet(ARM_MOTOR) != -10);
       operation = 1;//intake cone
-      delay(1000);
       encoderReset(LeftDriveEncoder);
       delay(250);
 
@@ -69,6 +75,7 @@ void auton8()
       while(drivedone == false);
       liftdist = 3;
       lmp = -50;
+      delay(100);
       while(motorGet(LIFT_MOTOR) != 20);
       //drive to scoring zone
       driveBackward(250,-100);
@@ -77,17 +84,15 @@ void auton8()
       turnCclwise(15);//rotate counter clockwise 15 counts
       encoderReset(LeftDriveEncoder);
       delay(1000);
-      lmp = 100;//set lift power to 100
       liftdist = 17;//set lift distance to 17 counts
-      delay(30);
+      lmp = 100;//set lift power to 100
+      delay(100);
       while(motorGet(LIFT_MOTOR) != 20);
       lmp = 0;
       delay(30);
-
       driveBackward(750,-100);//reverse 1300 counts with -80 power
       while(drivedone == false);
       encoderReset(LeftDriveEncoder);
-
       turnCclwise(600);//turn 500 counts counter clockwise towards scoring zone
       delay(1000);
       encoderReset(LeftDriveEncoder);
