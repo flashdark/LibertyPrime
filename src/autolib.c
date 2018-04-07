@@ -61,12 +61,14 @@ void driveforward(int counts, int power,int mode)//drive forward to specified co
 
 void driveBackward(int counts, int power)//drive back to specified counts with specified power
 {
+    drivedone = false;
     AccelerateBackward(power);
     while(encoderGet(LeftDriveEncoder) > -counts + 400)
     {
       drivestraightBack(power);//driving straight
     }
     decelerateBack(counts);//decelerate
+    drivedone = true;
   }
 
 

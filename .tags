@@ -10,14 +10,17 @@ AFLAGS	.\common.mk	/^AFLAGS:=$(MCUAFLAGS)$/;"	m
 API_H_	.\include\API.h	22;"	d
 AR	.\common.mk	/^AR:=$(MCUPREFIX)ar$/;"	m
 ARFLAGS	.\common.mk	/^ARFLAGS:=$(MCUCFLAGS)$/;"	m
+ARM_DEPLOY_POWER	.\src\auton8.c	6;"	d	file:
 ARM_ENCODER_BOTTOM	.\include\robot.h	21;"	d
 ARM_ENCODER_TOP	.\include\robot.h	20;"	d
+ARM_HOLD_POWER	.\src\auton8.c	5;"	d	file:
 ARM_MOTOR	.\include\robot.h	40;"	d
 ARM_PICKUP	.\include\robot.h	91;"	d
 ARM_POT	.\include\robot.h	9;"	d
 ARM_PRESTACK	.\include\robot.h	92;"	d
 ARM_STACK	.\include\robot.h	90;"	d
 ARM_STOWED	.\include\robot.h	89;"	d
+AR_RETRACT_POWER	.\src\auton8.c	7;"	d	file:
 AS	.\common.mk	/^AS:=$(MCUPREFIX)as$/;"	m
 ASMEXT	.\common.mk	/^ASMEXT=s$/;"	m
 AccelerateBackward	.\src\autolib.c	/^void AccelerateBackward(int power)\/\/gradually increase power to avoid sudden jerking or steering movements$/;"	f
@@ -69,6 +72,7 @@ INCLUDE	.\common.mk	/^INCLUDE=-I$(ROOT)\/include -I$(ROOT)\/src$/;"	m
 INPUT	.\include\API.h	172;"	d
 INPUT_ANALOG	.\include\API.h	179;"	d
 INPUT_FLOATING	.\include\API.h	186;"	d
+INTAKE_PWR	.\src\auton8.c	10;"	d	file:
 INTERRUPT_EDGE_BOTH	.\include\API.h	327;"	d
 INTERRUPT_EDGE_FALLING	.\include\API.h	322;"	d
 INTERRUPT_EDGE_RISING	.\include\API.h	318;"	d
@@ -92,6 +96,8 @@ LEFT_DRIVE_REVERSED	.\include\robot.h	35;"	d
 LIBRARIES	.\common.mk	/^LIBRARIES=$(wildcard $(ROOT)\/firmware\/*.a) -lgcc -lm$/;"	m
 LIFT_ENCODER_BOTTOM	.\include\robot.h	19;"	d
 LIFT_ENCODER_TOP	.\include\robot.h	18;"	d
+LIFT_HIGH	.\src\auton8.c	4;"	d	file:
+LIFT_HOLD_POWER	.\src\auton8.c	3;"	d	file:
 LIFT_MOTOR	.\include\robot.h	42;"	d
 LIFT_POWER	.\include\config.h	6;"	d
 LOW	.\include\API.h	163;"	d
@@ -113,6 +119,10 @@ MobileGoalControl	.\src\drivertasks.c	/^void MobileGoalControl()$/;"	f
 Mutex	.\include\API.h	/^typedef void * Mutex;$/;"	t
 OBJCOPY	.\common.mk	/^OBJCOPY:=$(MCUPREFIX)objcopy$/;"	m
 OK_TO_BRAKE	.\src\autontasks.c	3;"	d	file:
+OPERATION_DISABLE	.\src\auton8.c	14;"	d	file:
+OPERATION_HOLDPOWER	.\src\auton8.c	13;"	d	file:
+OPERATION_INTAKECONE	.\src\auton8.c	11;"	d	file:
+OPERATION_RELEASECONE	.\src\auton8.c	12;"	d	file:
 OUTBIN	.\common.mk	/^OUTBIN=output.bin$/;"	m
 OUTNAME	.\common.mk	/^OUTNAME=output.elf$/;"	m
 OUTPUT	.\include\API.h	193;"	d
@@ -138,6 +148,8 @@ SERIAL_PARITY_ODD	.\include\API.h	772;"	d
 SERIAL_STOPBITS_1	.\include\API.h	756;"	d
 SERIAL_STOPBITS_2	.\include\API.h	760;"	d
 SIZEFLAGS	.\common.mk	/^SIZEFLAGS=$/;"	m
+STACK_HEIGHT	.\src\auton8.c	9;"	d	file:
+STACK_HEIGHT_INITIAL	.\src\auton8.c	8;"	d	file:
 STICK_LEFT_DRIVE	.\include\robot.h	58;"	d
 STICK_RIGHT_DRIVE	.\include\robot.h	57;"	d
 STICK_THRESHOLD	.\include\robot.h	59;"	d
