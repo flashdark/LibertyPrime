@@ -18,9 +18,9 @@ ARM_MOTOR	.\include\robot.h	40;"	d
 ARM_PICKUP	.\include\robot.h	91;"	d
 ARM_POT	.\include\robot.h	9;"	d
 ARM_PRESTACK	.\include\robot.h	92;"	d
+ARM_RETRACT_POWER	.\src\auton8.c	7;"	d	file:
 ARM_STACK	.\include\robot.h	90;"	d
 ARM_STOWED	.\include\robot.h	89;"	d
-AR_RETRACT_POWER	.\src\auton8.c	7;"	d	file:
 AS	.\common.mk	/^AS:=$(MCUPREFIX)as$/;"	m
 ASMEXT	.\common.mk	/^ASMEXT=s$/;"	m
 AccelerateBackward	.\src\autolib.c	/^void AccelerateBackward(int power)\/\/gradually increase power to avoid sudden jerking or steering movements$/;"	f

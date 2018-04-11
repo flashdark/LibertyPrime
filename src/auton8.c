@@ -68,10 +68,13 @@ void auton8()
 
       operation = 2;//release preload cone
       intpwr = 100;
-      delay(100);//delay 300 ms
+      delay(100);//delay 300 ms]
+      encoderReset(LeftDriveEncoder);
+      delay(100);
+      turnClockwise(20);
+      delay(250);
       liftdist = 17;//set lift distance to 17 counts
       lmp = 100;//set lift power to 100
-
       delay(100);
       while(motorGet(LIFT_MOTOR) != 20);
 
@@ -83,7 +86,7 @@ void auton8()
       encoderReset(LeftDriveEncoder);
       delay(250);
 
-      driveforward(100,60,3);
+      driveforward(50,60,3);
       while(drivedone == false);
       liftdist = 2;
       lmp = -50;
@@ -106,19 +109,30 @@ void auton8()
       operation = 2;
       intpwr = 100;
       delay(100);
-
-
-
-      operation = 1;//intake cone
-      intpwr = 100;
       encoderReset(LeftDriveEncoder);
       delay(250);
-      driveforward(100,60,3);
+      //turnClockwise(15);
+
+      encoderReset(LeftDriveEncoder);
+      delay(250);
+      driveforward(125,60,3);
+
       while(drivedone == false);
+      encoderReset(LeftDriveEncoder);
+      delay(250);
+      turnClockwise(2);
+      delay(250);
+      operation = 2;
+      intpwr = 100;
+      delay(100);
       liftdist = 17;//set lift distance to 17 counts
       lmp = 100;//set lift power to 100
       delay(100);
       while(motorGet(LIFT_MOTOR) != 20);
+      delay(100);
+      operation = 1;//intake cone
+      intpwr = 100;
+      delay(100);
       armdist = 3700;
       amp = -60;
       delay(100);
@@ -144,25 +158,25 @@ void auton8()
       operation = 2;
       intpwr = 100;
       delay(100);
-      operation = 0;
-      delay(100);
+      encoderReset(LeftDriveEncoder);
+      delay(250);
       liftdist = 17;//set lift distance to 17 counts
       lmp = 100;//set lift power to 100
       delay(100);
       while(motorGet(LIFT_MOTOR) != 20);
       //drive to scoring zone
+      turnCclwise(15);
       driveBackward(250,-100);
         while(drivedone == false);
       operation = 0;//release cone
       delay(30);//delay 300 ms
-      turnCclwise(15);//rotate counter clockwise 15 counts
       encoderReset(LeftDriveEncoder);
       delay(1000);
 
 
       lmp = 0;
       delay(30);
-      driveBackward(750,-100);//reverse 1300 counts with -80 power
+      driveBackward(1000,-100);//reverse 1300 counts with -80 power
       while(drivedone == false);
       encoderReset(LeftDriveEncoder);
       turnCclwise(600);//turn 500 counts counter clockwise towards scoring zone
