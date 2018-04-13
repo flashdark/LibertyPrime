@@ -11,8 +11,8 @@ extern bool shiftpressed;
 extern int ts;
 extern bool rgoal;
 extern bool dgoal;
-
-
+extern bool sgoal;
+volatile int mobilegoalpos = 0;
 void MobileGoalControl()
 {
   if (dgoal)
@@ -22,6 +22,26 @@ void MobileGoalControl()
   else if(rgoal)
 {
   motorSet(MOBILE_GOAL_MOTOR,127);//retract mobile goal at max power
+}
+else if (sgoal)
+{
+mobilegoalpos = analogRead(MOBILE_GOAL_POT);
+  if(mobilegoalpos < 187)
+  {
+    motorSet(MOBILE_GOAL_MOTOR,-100);
+  }
+  else if ( (mobilegoalpos > 187) && (mobilegoalpos < 494) )
+  {
+    motorSet(MOBILE_GOAL_MOTOR,0);
+  }
+  else if ( (mobilegoalpos > 495) && (mobilegoalpos < 1126) )
+  {
+    motorSet(MOBILE_GOAL_MOTOR,2);
+  }
+  else if ( (mobilegoalpos > 1126) )
+  {
+    motorSet(MOBILE_GOAL_MOTOR,0);
+  }
 }
 else
 {

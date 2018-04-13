@@ -35,7 +35,7 @@ void operatorControl() {
 	ArmControl(); //control the arm
 	LiftControl(); //control the lift
 	lcdSetBacklight(uart2,true);
-	sprintf(buf,"Arm: %d",analogRead(ARM_POT));
+	sprintf(buf,"MogoPot: %d",analogRead(MOBILE_GOAL_POT));//channel 7 is color selector
 	lcdSetText(uart2,2,buf);
 	delay(20);
 	while (lcdReadButtons(uart2))

@@ -242,6 +242,7 @@ mat	.\src\init.c	/^TaskHandle mat;$/;"	v
 mgs	.\src\auto.c	/^int mgs = 0;\/\/mobile goal task state$/;"	v
 mgt	.\src\init.c	/^TaskHandle mgt;$/;"	v
 mlt	.\src\init.c	/^TaskHandle mlt;$/;"	v
+mobilegoalpos	.\src\drivertasks.c	/^volatile int mobilegoalpos = 0;$/;"	v
 motorLeftDriveSet	.\src\driverlib.c	/^void motorLeftDriveSet(int power)\/\/chains motors together$/;"	f
 motorRightDriveSet	.\src\driverlib.c	/^void motorRightDriveSet(int power) \/\/chains motors together$/;"	f
 movearm	.\src\autontasks.c	/^void movearm()$/;"	f

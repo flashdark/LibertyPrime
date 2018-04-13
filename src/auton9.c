@@ -104,7 +104,7 @@ void auton9()
       delay(30);//delay 300 ms
       turnCclwise(15);//rotate counter clockwise 15 counts
       encoderReset(LeftDriveEncoder);
-      delay(1000);
+      delay(100);
       lmp = 100;//set lift power to 100
       liftdist = 17;//set lift distance to 17 counts
       delay(30);
