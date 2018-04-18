@@ -7,6 +7,7 @@
 #define MOBILE_GOAL_POT 6
 #define PWR_EXP_PORT 3
 #define ARM_POT 4
+#define COLOR_SELECT_POT 7
 //#define DISPLAY_MODE_POT 4
 
 
@@ -76,15 +77,26 @@ Encoder RightDriveEncoder;
 
 // Autonomous Definitions for LCD Display
 #define STRING_AUTON_1 ""
-#define STRING_AUTON_2 "Mobile Goal R5"
-#define STRING_AUTON_3 "Mobile Goal R10"
-#define STRING_AUTON_4 "Mobile Goal B5"
-#define STRING_AUTON_5 "Mobile Goal B10"
-#define STRING_AUTON_6 "Cone + SG"
-#define STRING_AUTON_7 "Block"
-#define STRING_AUTON_8 ""
-#define STRING_AUTON_9 ""
-#define STRING_AUTON_A ""
+#define STRING_AUTON_2 "R Mobile Goal 5"
+#define STRING_AUTON_3 "R Mobile Goal 10"
+#define STRING_AUTON_4 "R Auton4"
+#define STRING_AUTON_5 "R Auton5"
+#define STRING_AUTON_6 "R Cone + SG"
+#define STRING_AUTON_7 "R Block"
+#define STRING_AUTON_8 "R Auton 8"
+#define STRING_AUTON_9 "R 20 Point"
+#define STRING_AUTON_10 "R Auton 10"
+#define STRING_AUTON_11 ""
+#define STRING_AUTON_12 "B Mobile Goal 5"
+#define STRING_AUTON_13 "B Mobile Goal 10"
+#define STRING_AUTON_14 "B Auton4"
+#define STRING_AUTON_15 "B Auton5"
+#define STRING_AUTON_16 "B Cone + SG"
+#define STRING_AUTON_17 "B Block"
+#define STRING_AUTON_18 "B Auton 8"
+#define STRING_AUTON_19 "B 20 Point"
+#define STRING_AUTON_20 "B Auton 10"
+
 
 #define ARM_STOWED 0
 #define ARM_STACK 28 // encoder value to stack a cone
@@ -115,7 +127,17 @@ void auton6();
 void auton7();
 void auton8();
 void auton9();
-void autonA();
+void auton10();
+void auton11();
+void auton12();
+void auton13();
+void auton14();
+void auton15();
+void auton16();
+void auton17();
+void auton18();
+void auton19();
+void auton20();
 void AccelerateBackward(int power);
 void AccelerateForward(int power);
 void driveforward(int counts, int power,int mode);

@@ -34,10 +34,9 @@ void operatorControl() {
 	DriverControl();//control the drivetrain
 	ArmControl(); //control the arm
 	LiftControl(); //control the lift
-	lcdSetBacklight(uart2,true);
-	sprintf(buf,"MogoPot: %d",analogRead(MOBILE_GOAL_POT));//channel 7 is color selector
-	lcdSetText(uart2,2,buf);
 	delay(20);
+	sprintf(buf,"Pot2: %d",analogRead(COLOR_SELECT_POT));
+	lcdSetText(uart2,2,buf);
 	while (lcdReadButtons(uart2))
     {
       displayRobotStatus();

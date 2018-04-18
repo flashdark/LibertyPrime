@@ -37,68 +37,131 @@ void getAutonMode() {
   char buf[17];
   //sprintf(buf,"%d",analogRead(SELECT_MODE_POT));
   int modePotValue = analogRead(SELECT_MODE_POT);
+  int colorPotValue = analogRead(COLOR_SELECT_POT);
+  bool redselected = ( (colorPotValue > 300) && (colorPotValue < 450 ) );
+  bool blueselected = (colorPotValue > 760) && (colorPotValue < 850);
   // char buff[16];
   // sprintf(buff,"%d",modePotValue);
   // lcdSetText(uart2,2,buff);
   g_selectedAutonomous = 0;
 
   // 1st choice
-  if (modePotValue <= 5) {
+  if ( (modePotValue <= 5) && redselected){
     lcdSetText(uart2, 1, STRING_AUTON_1);
     //lcdSetText(uart2,2,buf);
     g_selectedAutonomous = 1;
   }
   // 2nd choice
-  else if (modePotValue <= 345) {
+  else if ( (modePotValue <= 345) && redselected )  {
     lcdSetText(uart2, 1, STRING_AUTON_2);
     g_selectedAutonomous = 2;
     //lcdSetText(uart2,2,buf);
   }
   // 3rd choice
-  else if (modePotValue <= 905) {
+  else if ( (modePotValue <= 905) && redselected )  {
     lcdSetText(uart2, 1, STRING_AUTON_3);
     g_selectedAutonomous = 3;
   //  lcdSetText(uart2,2,buf);
   }
   // 4th choice
-  else if (modePotValue <= 1410) {
+  else if ( (modePotValue <= 1410) && redselected ) {
     lcdSetText(uart2, 1, STRING_AUTON_4);
     g_selectedAutonomous = 4;
     //lcdSetText(uart2,2,buf);
   }
   // 5th choice
-  else if (modePotValue <= 1880) {
+  else if (modePotValue <= 1880 && redselected ) {
     lcdSetText(uart2, 1, STRING_AUTON_5);
     g_selectedAutonomous = 5;
     //lcdSetText(uart2,2,buf);
   }
   // 6th choice
-  else if (modePotValue <= 2430) {
+  else if (modePotValue <= 2430 && redselected) {
     lcdSetText(uart2, 1, STRING_AUTON_6);
     g_selectedAutonomous = 6;
     //lcdSetText(uart2,2,buf);
   }
   // 7th choice
-  else if (modePotValue <= 3025) {
+  else if (modePotValue <= 3025 && redselected) {
     lcdSetText(uart2, 1, STRING_AUTON_7);
     g_selectedAutonomous = 7;
     //lcdSetText(uart2,2,buf);
   }
   // 8th choice
-  else if (modePotValue <= 3685) {
+  else if (modePotValue <= 3685 && redselected) {
     lcdSetText(uart2, 1, STRING_AUTON_8);
     g_selectedAutonomous = 8;
     //lcdSetText(uart2,2,buf);
   }
   // 9th choice
-  else if (modePotValue <= 4075) {
+  else if (modePotValue <= 4075 && redselected) {
     lcdSetText(uart2, 1, STRING_AUTON_9);
     g_selectedAutonomous = 9;
     //lcdSetText(uart2,2,buf);
   }
   // 10th choice
-  else if (modePotValue > 4076) {
-    lcdSetText(uart2, 1, STRING_AUTON_A);
+  else if (modePotValue > 4076 && redselected) {
+    lcdSetText(uart2, 1, STRING_AUTON_10);
+    g_selectedAutonomous = 10;
+    //lcdSetText(uart2,2,buf);
+  }
+//11th choice
+  if ( (modePotValue <= 5) && blueselected){
+    lcdSetText(uart2, 1, STRING_AUTON_11);
+    //lcdSetText(uart2,2,buf);
+    g_selectedAutonomous = 1;
+  }
+  // 12th choice
+  else if ( (modePotValue <= 345) && blueselected )  {
+    lcdSetText(uart2, 1, STRING_AUTON_12);
+    g_selectedAutonomous = 2;
+    //lcdSetText(uart2,2,buf);
+  }
+  // 13th choice
+  else if ( (modePotValue <= 905) && blueselected )  {
+    lcdSetText(uart2, 1, STRING_AUTON_13);
+    g_selectedAutonomous = 3;
+  //  lcdSetText(uart2,2,buf);
+  }
+  // 14th choice
+  else if ( (modePotValue <= 1410) && blueselected ) {
+    lcdSetText(uart2, 1, STRING_AUTON_14);
+    g_selectedAutonomous = 4;
+    //lcdSetText(uart2,2,buf);
+  }
+  // 15th choice
+  else if (modePotValue <= 1880 && blueselected ) {
+    lcdSetText(uart2, 1, STRING_AUTON_15);
+    g_selectedAutonomous = 5;
+    //lcdSetText(uart2,2,buf);
+  }
+  // 16th choice
+  else if (modePotValue <= 2430 && blueselected) {
+    lcdSetText(uart2, 1, STRING_AUTON_16);
+    g_selectedAutonomous = 6;
+    //lcdSetText(uart2,2,buf);
+  }
+  // 17th choice
+  else if (modePotValue <= 3025 && blueselected) {
+    lcdSetText(uart2, 1, STRING_AUTON_17);
+    g_selectedAutonomous = 7;
+    //lcdSetText(uart2,2,buf);
+  }
+  // 18th choice
+  else if (modePotValue <= 3685 && blueselected) {
+    lcdSetText(uart2, 1, STRING_AUTON_18);
+    g_selectedAutonomous = 8;
+    //lcdSetText(uart2,2,buf);
+  }
+  // 19th choice
+  else if (modePotValue <= 4075 && blueselected) {
+    lcdSetText(uart2, 1, STRING_AUTON_19);
+    g_selectedAutonomous = 9;
+    //lcdSetText(uart2,2,buf);
+  }
+  // 20th choice
+  else if (modePotValue > 4076 && blueselected) {
+    lcdSetText(uart2, 1, STRING_AUTON_20);
     g_selectedAutonomous = 10;
     //lcdSetText(uart2,2,buf);
   }
@@ -141,7 +204,7 @@ void displayRobotStatus() {
     taskDelay(100);
   }
   // Right button calls this function from usercontrol() or during initialize.
-  else if ((lcdReadButtons(uart2) & LCD_BTN_RIGHT) || !isEnabled()) {
+  else if ((lcdReadButtons(uart2) & LCD_BTN_RIGHT)) {
     getAutonMode();
     taskDelay(100);
   }
@@ -201,10 +264,60 @@ getAutonMode();
     //lcdSetText(uart2,2,buf);
     break;
   case 10:
-    autonA();
+    auton10();
     //sprintf(buf,"A10 Called");
     //lcdSetText(uart2,2,buf);
     break;
+
+    case 11:
+      auton1();
+      //sprintf(buf,"A1 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
+    case 12:
+      auton2();
+      //sprintf(buf,"A2 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
+    case 13:
+      auton3();
+      //sprintf(buf,"A3 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
+    case 14:
+      auton4();
+      //sprintf(buf,"A4 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
+    case 15:
+      auton5();
+      //sprintf(buf,"A5 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
+    case 16:
+      auton6();
+
+      break;
+    case 17:
+      auton7();
+      //sprintf(buf,"A7 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
+    case 18:
+      auton8();
+      //sprintf(buf,"A8 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
+    case 19: // Skills Auton
+      auton9();
+      //sprintf(buf,"A9 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
+    case 20:
+      auton10();
+      //sprintf(buf,"A10 Called");
+      //lcdSetText(uart2,2,buf);
+      break;
   default:
     lcdSetText(uart2, 1, "No Valid Choice");
     lcdSetText(uart2, 2, "   Was Made");
