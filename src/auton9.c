@@ -7,6 +7,7 @@ extern int amp;//power to use to move arm
 extern int operation; //intake state
 extern int volatile intpwr;
 extern bool volatile drivedone;
+extern bool volatile turndone;
 void auton9()
 {
   char buf[16];
@@ -25,7 +26,7 @@ void auton9()
       while(motorGet(LIFT_MOTOR) != 20);
 
       writemgs(1);//deploy mobile goal
-      delay(300);//delay 300 ms
+      delay(100);//delay 300 ms
       driveforward(1550,100,1);//1400,120
       while(drivedone == false);
 
@@ -50,88 +51,98 @@ void auton9()
       delay(30);
       while(motorGet(LIFT_MOTOR) != 20);
 
+      //stack 1st cone
       operation = 2;//release cone
       intpwr = 100;
       delay(30);//delay 300 ms
-      liftdist = 17;//set lift distance to 17 counts
+
+      //position lift for second cone
+      liftdist = 15;//set lift distance to 17 counts
       lmp = 100;//set lift power to 100
-      delay(100);
+      delay(30);//100
       while(motorGet(LIFT_MOTOR) != 20);
+
+      //turn ,drive, and prepare to pickup second cone
       encoderReset(LeftDriveEncoder);
       turnClockwise(20);
-      delay(250);
+      while(turndone == false);
       armdist = 3700;
       amp = -60;
-      delay(100);
+      delay(30);//100
       while(motorGet(ARM_MOTOR) != -10);
-      operation = 1;//intake cone
+      operation = 1;//turns on intake
       encoderReset(LeftDriveEncoder);
-      delay(250);
+      //delay(250);
 
+      //drive and stack 2nd cone
       driveforward(75,60,3);
       while(drivedone == false);
-      liftdist = 2;
+      liftdist = 6;//lower to get cone
       lmp = -50;
-      delay(100);
+      delay(30);//100
       while(motorGet(LIFT_MOTOR) != 20);
-      operation = 3;
-      delay(100);
-      liftdist = 17;//set lift distance to 17 counts
+      operation = 3;//intake hold power
+      delay(30);//100
+      liftdist = 15;//set lift distance to 17 counts
       lmp = 100;//set lift power to 100
-      delay(100);
+      delay(30);//100
       while(motorGet(LIFT_MOTOR) != 20);
+
+      //stack 2nd cone
       armdist = 1200;
       amp = 80;
-      delay(100);
+      delay(30);//100
       while(motorGet(ARM_MOTOR) != -10);
       liftdist = 13;//set lift distance to 17 counts
       lmp = -50;//set lift power to 100
-      delay(100);
+      delay(30);//100
       while(motorGet(LIFT_MOTOR) != 20);
       operation = 2;
       intpwr = 100;
-      delay(100);
+      delay(30);//100
       encoderReset(LeftDriveEncoder);
-      delay(250);
+      //delay(250);
       //turnClockwise(15);
-      operation = 0;//release cone
+      operation = 0;//turn off intake
+
       encoderReset(LeftDriveEncoder);
-      delay(250);
+      //delay(250);
       //drive to scoring zone
       driveBackward(250,-100);
       while(drivedone == false);
-      operation = 0;//release cone
-      delay(30);//delay 300 ms
-      turnCclwise(15);//rotate counter clockwise 15 counts
-      encoderReset(LeftDriveEncoder);
-      delay(100);
-      lmp = 100;//set lift power to 100
-      liftdist = 17;//set lift distance to 17 counts
       delay(30);
-      while(motorGet(LIFT_MOTOR) != 20);
-      lmp = 0;
+      turnCclwise(15);//rotate counter clockwise 15 counts
+      while(turndone == false);
+      encoderReset(LeftDriveEncoder);
+      delay(30);
+      liftdist = 18;//set lift distance to 17 counts
+      lmp = 100;//set lift power to 100
       delay(30);
 
-      driveBackward(850,-100);//reverse 1300 counts with -80 power
+      driveBackward(850,-120);//reverse 1300 counts with -80 power
       while(drivedone == false);
+      delay(30);
       encoderReset(LeftDriveEncoder);
       turnCclwise(200);
-      delay(1000);
+      while(turndone == false);
+      delay(30);
       encoderReset(LeftDriveEncoder);
-      delay(100);
+      delay(30);
       driveBackward(900,-127);//reverse 1300 counts with -80 power
       while(drivedone == false);
-      delay(250);
+      delay(30);
       encoderReset(LeftDriveEncoder);
-      delay(100);
+      delay(30);//100
       turnCclwise(350);
-      delay(1000);
+      while(turndone == false);
+
+      writemgs(1);
+      delay(25);
       driveforward(800,127,1);
       while(drivedone == false);
-      writemgs(1);
       while(readmgs() != 3);
 
-      driveBackward(500,-80);
+      driveBackward(500,-120);
       //turnClockwise(700);
     motorLeftDriveSet(0);
     motorRightDriveSet(0);

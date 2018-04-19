@@ -68,18 +68,18 @@ void auton2()
           while(motorGet(LIFT_MOTOR) != 20);
           lmp = 0;
           delay(30);
-          
+
           driveBackward(750,-100);//reverse 1300 counts with -80 power
           while(drivedone == false);
           encoderReset(LeftDriveEncoder);
 
           turnCclwise(600);//turn 500 counts counter clockwise towards scoring zone
-          delay(1000);
+          delay(750);
           encoderReset(LeftDriveEncoder);
           //driveforward(800,40,1);//drive forward 200 counts with 50 power
 
           writemgs(1);//deploy mobile goal
-          delay(700);
+          delay(300);
 
           encoderReset(LeftDriveEncoder);
           driveBackward(500,-100);//reverse away from  mobile goal

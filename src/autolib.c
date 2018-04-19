@@ -1,24 +1,28 @@
 #include "main.h"
 
 extern bool volatile drivedone;
-
+volatile bool turndone = false;
   void turnClockwise(int counts)//turn robot clockwise to specified number of counts
 
 {
+  turndone = false;
   motorLeftDriveSet(50);
   motorRightDriveSet(-50);
   while(encoderGet(LeftDriveEncoder) <= counts){}
   motorLeftDriveSet(0);
   motorRightDriveSet(0);
+  turndone = true;
 }
 
 void turnCclwise(int counts)//turn robot counter-clockwise to specified number of counts
 {
+  turndone = false;
   motorLeftDriveSet(-50);
   motorRightDriveSet(50);
   while(encoderGet(LeftDriveEncoder) >= -counts){}
   motorLeftDriveSet(0);
   motorRightDriveSet(0);
+  turndone = true;
 }
 
 void driveforward(int counts, int power,int mode)//drive forward to specified counts with specified power

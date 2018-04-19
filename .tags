@@ -287,6 +287,7 @@ stdin	.\include\API.h	815;"	d
 stdout	.\include\API.h	811;"	d
 turnCclwise	.\src\autolib.c	/^void turnCclwise(int counts)\/\/turn robot counter-clockwise to specified number of counts$/;"	f
 turnClockwise	.\src\autolib.c	/^  void turnClockwise(int counts)\/\/turn robot clockwise to specified number of counts$/;"	f
+turndone	.\src\autolib.c	/^volatile bool turndone = false;$/;"	v
 uart1	.\include\API.h	819;"	d
 uart2	.\include\API.h	823;"	d
 writemgs	.\src\auto.c	/^void writemgs(int op)\/\/update mobile goal state$/;"	f
