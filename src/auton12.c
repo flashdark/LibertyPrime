@@ -16,6 +16,7 @@ void auton12()
 
       //phase 1 drive and deploy goal lift
       operation = 1;//intake cone
+      intpwr = 100;
       delay(40);//delay 40 ms
 
       lmp = 100;//set lift power to 100
@@ -27,21 +28,18 @@ void auton12()
       writemgs(1);//deploy mobile goal
       delay(300);//delay 300 ms
       driveforward(1550,100,1);//1400,120
-      delay(1000);//delay 600 ms
+      while(!drivedone);
       //phase 2 stack cone
       encoderReset(LeftDriveEncoder);
       writemgs(2);//retract mobile goal
-      delay(1000);//delay 600 ms
-
-      amp = -100;//set arm power to -100
-      armdist = 18;//set arm distance
-      delay(500);
+      while(readmgs() != 3);
 
       lmp = -50;//set lift power to -50
       liftdist = 8;//set liftdist to 10 counts
-      delay(500);//delay 300 ms
+      delay(500);//delay 300 m
 
       operation = 2;//release cone
+      intpwr = 100;
       delay(300);//delay 300 ms
 
       turnClockwise(15);//rotate counter clockwise 15 counts
@@ -52,7 +50,7 @@ void auton12()
       driveBackward(1300,-100);//reverse 1300 counts with -80 power
       encoderReset(LeftDriveEncoder);
 
-      turnCclwise(600);//turn 500 counts counter clockwise towards scoring zone
+      turnCclwise(800);//turn 500 counts counter clockwise towards scoring zone
       while(!turndone);
       encoderReset(LeftDriveEncoder);
       //driveforward(800,40,1);//drive forward 200 counts with 50 power

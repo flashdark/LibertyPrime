@@ -77,7 +77,7 @@ void auton13()
       while(drivedone == false);
       encoderReset(LeftDriveEncoder);
 
-      turnCclwise(1200);//turn 500 counts counter clockwise towards scoring zone
+      turnCclwise(900);//turn 500 counts counter clockwise towards scoring zone
       while(!turndone);
 
       driveforward(200,40,1);

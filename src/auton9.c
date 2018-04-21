@@ -75,7 +75,7 @@ void auton9()
       //delay(250);
 
       //drive and stack 2nd cone
-      driveforward(75,60,3);
+      driveforward(50,60,3);
       while(drivedone == false);
       liftdist = 6;//lower to get cone
       lmp = -50;
@@ -136,11 +136,12 @@ void auton9()
       turnCclwise(350);
       while(turndone == false);
 
-      writemgs(1);
+      motorSet(MOBILE_GOAL_MOTOR,-80);
       delay(25);
       driveforward(800,127,1);
       while(drivedone == false);
-      while(readmgs() != 3);
+      while(analogRead(MOBILE_GOAL_POT) < 750);
+      motorSet(MOBILE_GOAL_MOTOR,5);
 
       driveBackward(500,-120);
       //turnClockwise(700);

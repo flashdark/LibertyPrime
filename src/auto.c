@@ -109,60 +109,60 @@ void getAutonMode() {
   if ( (modePotValue <= 5) && blueselected){
     lcdSetText(uart2, 1, STRING_AUTON_11);
     //lcdSetText(uart2,2,buf);
-    g_selectedAutonomous = 1;
+    g_selectedAutonomous = 11;
   }
   // 12th choice
   else if ( (modePotValue <= 345) && blueselected )  {
     lcdSetText(uart2, 1, STRING_AUTON_12);
-    g_selectedAutonomous = 2;
+    g_selectedAutonomous = 12;
     //lcdSetText(uart2,2,buf);
   }
   // 13th choice
   else if ( (modePotValue <= 905) && blueselected )  {
     lcdSetText(uart2, 1, STRING_AUTON_13);
-    g_selectedAutonomous = 3;
+    g_selectedAutonomous = 13;
   //  lcdSetText(uart2,2,buf);
   }
   // 14th choice
   else if ( (modePotValue <= 1410) && blueselected ) {
     lcdSetText(uart2, 1, STRING_AUTON_14);
-    g_selectedAutonomous = 4;
+    g_selectedAutonomous = 14;
     //lcdSetText(uart2,2,buf);
   }
   // 15th choice
   else if (modePotValue <= 1880 && blueselected ) {
     lcdSetText(uart2, 1, STRING_AUTON_15);
-    g_selectedAutonomous = 5;
+    g_selectedAutonomous = 15;
     //lcdSetText(uart2,2,buf);
   }
   // 16th choice
   else if (modePotValue <= 2430 && blueselected) {
     lcdSetText(uart2, 1, STRING_AUTON_16);
-    g_selectedAutonomous = 6;
+    g_selectedAutonomous = 16;
     //lcdSetText(uart2,2,buf);
   }
   // 17th choice
   else if (modePotValue <= 3025 && blueselected) {
     lcdSetText(uart2, 1, STRING_AUTON_17);
-    g_selectedAutonomous = 7;
+    g_selectedAutonomous = 17;
     //lcdSetText(uart2,2,buf);
   }
   // 18th choice
   else if (modePotValue <= 3685 && blueselected) {
     lcdSetText(uart2, 1, STRING_AUTON_18);
-    g_selectedAutonomous = 8;
+    g_selectedAutonomous = 18;
     //lcdSetText(uart2,2,buf);
   }
   // 19th choice
   else if (modePotValue <= 4075 && blueselected) {
     lcdSetText(uart2, 1, STRING_AUTON_19);
-    g_selectedAutonomous = 9;
+    g_selectedAutonomous = 19;
     //lcdSetText(uart2,2,buf);
   }
   // 20th choice
   else if (modePotValue > 4076 && blueselected) {
     lcdSetText(uart2, 1, STRING_AUTON_20);
-    g_selectedAutonomous = 10;
+    g_selectedAutonomous = 20;
     //lcdSetText(uart2,2,buf);
   }
 } // end getAutonMode
@@ -270,51 +270,51 @@ getAutonMode();
     break;
 
     case 11:
-      auton1();
+      auton11();
       //sprintf(buf,"A1 Called");
       //lcdSetText(uart2,2,buf);
       break;
     case 12:
-      auton2();
+      auton12();
       //sprintf(buf,"A2 Called");
       //lcdSetText(uart2,2,buf);
       break;
     case 13:
-      auton3();
+      auton13();
       //sprintf(buf,"A3 Called");
       //lcdSetText(uart2,2,buf);
       break;
     case 14:
-      auton4();
+      auton14();
       //sprintf(buf,"A4 Called");
       //lcdSetText(uart2,2,buf);
       break;
     case 15:
-      auton5();
+      auton15();
       //sprintf(buf,"A5 Called");
       //lcdSetText(uart2,2,buf);
       break;
     case 16:
-      auton6();
+      auton16();
 
       break;
     case 17:
-      auton7();
+      auton17();
       //sprintf(buf,"A7 Called");
       //lcdSetText(uart2,2,buf);
       break;
     case 18:
-      auton8();
+      auton18();
       //sprintf(buf,"A8 Called");
       //lcdSetText(uart2,2,buf);
       break;
     case 19: // Skills Auton
-      auton9();
+      auton19();
       //sprintf(buf,"A9 Called");
       //lcdSetText(uart2,2,buf);
       break;
     case 20:
-      auton10();
+      auton20();
       //sprintf(buf,"A10 Called");
       //lcdSetText(uart2,2,buf);
       break;
