@@ -47,7 +47,7 @@ void auton12()
 
       lmp = 100;//set lift power to 100
       liftdist = 17;//set lift distance to 17 counts
-      driveBackward(1300,-100);//reverse 1300 counts with -80 power
+      driveBackward(1100,-100);//reverse 1300 counts with -80 power
       encoderReset(LeftDriveEncoder);
 
       turnCclwise(800);//turn 500 counts counter clockwise towards scoring zone

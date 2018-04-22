@@ -64,7 +64,7 @@ void auton19()
 
       //turn ,drive, and prepare to pickup second cone
       encoderReset(LeftDriveEncoder);
-      turnClockwise(20);
+      turnCclwise(15);
       while(turndone == false);
       armdist = 3700;
       amp = -60;
@@ -77,7 +77,7 @@ void auton19()
       //drive and stack 2nd cone
       driveforward(50,60,3);
       while(drivedone == false);
-      liftdist = 6;//lower to get cone
+      liftdist = 5;//lower to get cone
       lmp = -50;
       delay(30);//100
       while(motorGet(LIFT_MOTOR) != 20);
@@ -101,7 +101,7 @@ void auton19()
       intpwr = 100;
       delay(30);//100
       encoderReset(LeftDriveEncoder);
-      //delay(250);
+      delay(250);
       //turnClockwise(15);
       operation = 0;//turn off intake
 
@@ -111,9 +111,7 @@ void auton19()
       driveBackward(250,-100);
       while(drivedone == false);
       delay(30);
-      encoderReset(LeftDriveEncoder);
-      turnClockwise(15);//rotate counter clockwise 15 counts
-      while(turndone == false);
+
       encoderReset(LeftDriveEncoder);
       delay(30);
       liftdist = 18;//set lift distance to 17 counts
@@ -124,12 +122,12 @@ void auton19()
       while(drivedone == false);
       delay(30);
       encoderReset(LeftDriveEncoder);
-      turnClockwise(120);
+      turnClockwise(70);
       while(turndone == false);
       delay(30);
       encoderReset(LeftDriveEncoder);
       delay(30);
-      driveBackward(850,-127);//reverse 1300 counts with -80 power
+      driveBackward(900,-127);//reverse 1300 counts with -80 power
       while(drivedone == false);
       delay(30);
       encoderReset(LeftDriveEncoder);
@@ -137,14 +135,14 @@ void auton19()
       turnClockwise(250);
       while(turndone == false);
 
-      motorSet(MOBILE_GOAL_MOTOR,-70);
-      delay(15);
-      driveforward(800,127,3);
+      motorSet(MOBILE_GOAL_MOTOR,-80);
+      delay(25);
+      driveforward(800,127,2);
       while(drivedone == false);
       while(analogRead(MOBILE_GOAL_POT) < 750);
       motorSet(MOBILE_GOAL_MOTOR,5);
 
-      driveBackward(500,-120);
+      driveBackward(400,-120);
       //turnClockwise(700);
     motorLeftDriveSet(0);
     motorRightDriveSet(0);
