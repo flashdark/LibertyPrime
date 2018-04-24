@@ -10,46 +10,35 @@ extern bool volatile drivedone;
 //5 point red
 void auton2()
 {
-      char buf[16];
-
-      lcdClear(uart2);
-
       //phase 1 drive and deploy goal lift
 
           //phase 1 drive and deploy goal lift
           operation = 1;//intake cone
-          intpwr = 100;
+          intpwr = 100;//use 100 power
           delay(40);//delay 40 ms
           operation = 3;
           lmp = 100;//set lift power to 100
           liftdist = 17;//set lift distance to 17 counts
-          while(motorGet(LIFT_MOTOR) != 20);
+          while(motorGet(LIFT_MOTOR) != 20);//check if lift done
 
           writemgs(1);//deploy mobile goal
           delay(300);//delay 300 ms
           driveforward(1550,100,1);//1400,120
-          while(drivedone == false);
+          while(drivedone == false);//check if drive done
 
 
           encoderReset(LeftDriveEncoder);
           writemgs(2);//retract mobile goal
-          delay(100);//delay 600 ms
+          delay(100);//delay 100 ms
 
-          // sprintf(buf,"Pot: %d Wait",analogRead(MOBILE_GOAL_POT));
-          // lcdSetText(uart2,2,buf);
-          // delay(20);
+          while(readmgs() != 3);//wait for goal to retract
 
-          while(readmgs() != 3);
-
-          // sprintf(buf,"Pot: %d Done",analogRead(MOBILE_GOAL_POT));
-          // lcdSetText(uart2,2,buf);
-          // delay(20);
 
           //phase 2 stack cone
           lmp = -50;//set lift power to -50
           liftdist = 8;//set liftdist to 10 counts
           delay(30);
-          while(motorGet(LIFT_MOTOR) != 20);
+          while(motorGet(LIFT_MOTOR) != 20);//check if lift done
 
           operation = 2;//release cone
           intpwr = 100;
@@ -65,7 +54,7 @@ void auton2()
           lmp = 100;//set lift power to 100
           liftdist = 17;//set lift distance to 17 counts
           delay(30);
-          while(motorGet(LIFT_MOTOR) != 20);
+          while(motorGet(LIFT_MOTOR) != 20);//check if lift done
           lmp = 0;
           delay(30);
 

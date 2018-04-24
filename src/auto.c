@@ -36,10 +36,10 @@ void getAutonMode() {
   lcdSetBacklight(uart2, true);
   char buf[17];
   //sprintf(buf,"%d",analogRead(SELECT_MODE_POT));
-  int modePotValue = analogRead(SELECT_MODE_POT);
-  int colorPotValue = analogRead(COLOR_SELECT_POT);
-  bool redselected = ( (colorPotValue > 300) && (colorPotValue < 450 ) );
-  bool blueselected = (colorPotValue > 760) && (colorPotValue < 850);
+  int modePotValue = analogRead(SELECT_MODE_POT);//read auton number pot
+  int colorPotValue = analogRead(COLOR_SELECT_POT);//read auton color pot
+  bool redselected = ( (colorPotValue > 300) && (colorPotValue < 450 ) );//if pot position is red
+  bool blueselected = (colorPotValue > 760) && (colorPotValue < 850);;//if pot position is blue
   // char buff[16];
   // sprintf(buff,"%d",modePotValue);
   // lcdSetText(uart2,2,buff);
