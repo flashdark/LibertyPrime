@@ -23,60 +23,56 @@ unsigned g_selectedAutonomous = 0;
 // Read Select Mode Pot
 // Must be done prior to autonomous mode,
 ///////////////////////////////////////////////////////////////////////////////
+// Pot Read Values = 8, 530, 1000, 1495, 1975, 2530, 3100, 3800, 4095
 void getAutonMode() {
-  lcdSetBacklight(uart2, true);
   int modePotValue = analogRead(SELECT_MODE_POT);
+  lcdSetBacklight(uart2, true);
   g_selectedAutonomous = 0;
 
   // 1st choice
-  if (modePotValue <= 5) {
+  if (modePotValue <= 100) {
     lcdSetText(uart2, 1, STRING_AUTON_1);
     g_selectedAutonomous = 1;
   }
   // 2nd choice
-  else if (modePotValue <= 345) {
+  else if (modePotValue <= 700) {
     lcdSetText(uart2, 1, STRING_AUTON_2);
     g_selectedAutonomous = 2;
   }
   // 3rd choice
-  else if (modePotValue <= 905) {
+  else if (modePotValue <= 1250) {
     lcdSetText(uart2, 1, STRING_AUTON_3);
     g_selectedAutonomous = 3;
   }
   // 4th choice
-  else if (modePotValue <= 1410) {
+  else if (modePotValue <= 1700) {
     lcdSetText(uart2, 1, STRING_AUTON_4);
     g_selectedAutonomous = 4;
   }
   // 5th choice
-  else if (modePotValue <= 1880) {
+  else if (modePotValue <= 2250) {
     lcdSetText(uart2, 1, STRING_AUTON_5);
     g_selectedAutonomous = 5;
   }
   // 6th choice
-  else if (modePotValue <= 2430) {
+  else if (modePotValue <= 2800) {
     lcdSetText(uart2, 1, STRING_AUTON_6);
     g_selectedAutonomous = 6;
   }
   // 7th choice
-  else if (modePotValue <= 3025) {
+  else if (modePotValue <= 3450) {
     lcdSetText(uart2, 1, STRING_AUTON_7);
     g_selectedAutonomous = 7;
   }
   // 8th choice
-  else if (modePotValue <= 3685) {
+  else if (modePotValue <= 3950) {
     lcdSetText(uart2, 1, STRING_AUTON_8);
     g_selectedAutonomous = 8;
   }
   // 9th choice
-  else if (modePotValue <= 4075) {
+  else if (modePotValue > 4075) {
     lcdSetText(uart2, 1, STRING_AUTON_9);
     g_selectedAutonomous = 9;
-  }
-  // 10th choice
-  else if (modePotValue > 4076) {
-    lcdSetText(uart2, 1, STRING_AUTON_A);
-    g_selectedAutonomous = 10;
   }
 } // end getAutonMode
 
@@ -88,54 +84,79 @@ void getAutonMode() {
 // called from initialize and opcontrol
 ///////////////////////////////////////////////////////////////////////////////
 void displayRobotStatus() {
-  char mainBattery[16], backupBattery[16];
+  char lcdTextLine[16];
+  static int lcdButtonsPressed=0;
 
-  // When Left and Middle button pressed
-  // display raw value from autonModePot for calibrating auton selection
-  if ((lcdReadButtons(uart2) & LCD_BTN_LEFT) &&
-      (lcdReadButtons(uart2) & LCD_BTN_CENTER)) {
-    // TBD
+  // once lcd button pressed keep updating display
+  // until only center button pressed
+  // allows live update of select pots
+  if (lcdReadButtons(uart2)) {
+    lcdButtonsPressed = lcdReadButtons(uart2);
+  }
 
-    // Short delay for the LCD refresh rate
-    taskDelay(100);
-  } else if (lcdReadButtons(uart2) & LCD_BTN_LEFT) {
+  if (lcdButtonsPressed == (LCD_BTN_LEFT | LCD_BTN_CENTER)) {
+    lcdSetBacklight(uart2, true); // Turn on LCD Backlight
+
+    // Display liftEncoder for calibrating fastack, & Mogo Pot
+    sprintf(lcdTextLine, "L%d M%d A%d",
+      encoderGet(liftEncoder), analogRead(MOGO_POT), analogRead(ARM_POT));
+    lcdSetText(uart2, 1, lcdTextLine);
+
+    // Display selectModePot for calibrating auton selection
+    sprintf(lcdTextLine, "SP=%d CP=%d",
+      analogRead(SELECT_MODE_POT), analogRead(SELECT_COLOR_POT));
+    lcdSetText(uart2, 2, lcdTextLine);
+  } else if (lcdButtonsPressed == (LCD_BTN_LEFT | LCD_BTN_RIGHT)) {
+    lcdSetBacklight(uart2, true); // Turn on LCD Backlight
+
+    // Display liftEncoder for calibrating fastack, & Mogo Pot
+    sprintf(lcdTextLine, "L%d M%d A%d",
+      encoderGet(liftEncoder), analogRead(MOGO_POT), analogRead(ARM_POT));
+    lcdSetText(uart2, 1, lcdTextLine);
+
+    // Display left and right drive encoders
+    sprintf(lcdTextLine, "LE=%d RE=%d",
+      encoderGet(leftDriveEncoder), encoderGet(rightDriveEncoder));
+    lcdSetText(uart2, 2, lcdTextLine);
+  } else if (lcdButtonsPressed == LCD_BTN_LEFT) {
     lcdSetBacklight(uart2, true); // Turn on LCD Backlight
 
     // Display the Primary Robot battery voltage
-    sprintf(mainBattery, "M:%1.2fV, E: %1.2fV", powerLevelMain() / 1000.0,
+    sprintf(lcdTextLine, "M:%1.2fV, E: %1.2fV", powerLevelMain() / 1000.0,
             analogRead(PWR_EXP_PORT) / 280.0);
-    lcdSetText(uart2, 1, mainBattery);
+    lcdSetText(uart2, 1, lcdTextLine);
 
     // Display the Backup battery voltage
-    sprintf(backupBattery, "B:%1.2fV", powerLevelBackup() / 1000.0);
-    lcdSetText(uart2, 2, backupBattery);
+    sprintf(lcdTextLine, "B:%1.2fV", powerLevelBackup() / 1000.0);
+    lcdSetText(uart2, 2, lcdTextLine);
 
-    // Short delay for the LCD refresh rate
-    taskDelay(100);
-  } else if (lcdReadButtons(uart2) & LCD_BTN_CENTER) {
-    lcdSetBacklight(uart2, false); // Turn off LCD Backlight
-    taskDelay(100);
-  }
-  // Right button calls this function from usercontrol() or during initialize.
-  else if ((lcdReadButtons(uart2) & LCD_BTN_RIGHT) || !isEnabled()) {
+  } else if (lcdButtonsPressed == LCD_BTN_CENTER) {
+    // Turn off LCD Backlight and clear screen
+    lcdSetBacklight(uart2, false);
+    lcdSetText(uart2, 1, "");
+    lcdSetText(uart2, 2, "");
+
+    // Turn off live update of data
+    lcdButtonsPressed = 0;
+  } else if ((lcdButtonsPressed == LCD_BTN_RIGHT) || !isEnabled()) {
     getAutonMode();
     taskDelay(100);
   }
 } // end displayRobotStatus()
 
 /*
-   Runs the user autonomous code. This function will be started in its own 
-   task with the default priority and stack size whenever the robot is 
-   enabled via the Field Management System or the VEX Competition Switch in 
+   Runs the user autonomous code. This function will be started in its own
+   task with the default priority and stack size whenever the robot is
+   enabled via the Field Management System or the VEX Competition Switch in
    the autonomous mode.
 
-   If the robot is disabled or communications is lost, the autonomous task 
-   will be stopped by the kernel. Re-enabling the robot will restart the 
+   If the robot is disabled or communications is lost, the autonomous task
+   will be stopped by the kernel. Re-enabling the robot will restart the
    task, not re-start it from where it left off.
 
-   Code running in the autonomous task cannot access information from the 
-   VEX Joystick. However, the autonomous function can be invoked from another 
-   task if a VEX Competition Switch is not available, and it can access 
+   Code running in the autonomous task cannot access information from the
+   VEX Joystick. However, the autonomous function can be invoked from another
+   task if a VEX Competition Switch is not available, and it can access
    joystick information if called in this way.
 
    The autonomous task may exit, unlike operatorControl() which should never
@@ -171,9 +192,6 @@ void autonomous() {
     break;
   case 9: // Skills Auton
     auton9();
-    break;
-  case 10:
-    autonA();
     break;
   default:
     lcdSetText(uart2, 1, "No Valid Choice");

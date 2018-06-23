@@ -14,13 +14,13 @@
 #include "robot.h"
 
 /*
-   Runs pre-initialization code. This function will be started in kernel mode 
-   one time while the VEX Cortex is starting up. As the scheduler is still 
+   Runs pre-initialization code. This function will be started in kernel mode
+   one time while the VEX Cortex is starting up. As the scheduler is still
    paused, most API functions will fail.
-  
-   The purpose of this function is solely to set the default pin modes 
-   (pinMode()) and port states (digitalWrite()) of limit switches, push 
-   buttons, and solenoids. It can also safely configure a UART port 
+
+   The purpose of this function is solely to set the default pin modes
+   (pinMode()) and port states (digitalWrite()) of limit switches, push
+   buttons, and solenoids. It can also safely configure a UART port
    (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
 
@@ -28,26 +28,42 @@ void initializeIO() {
 }
 
 /*
-   Runs user initialization code. This function will be started in its own 
-   task with the default priority and stack size once when the robot is 
-   starting up. It is possible that the VEXnet communication link may not be 
+   Runs user initialization code. This function will be started in its own
+   task with the default priority and stack size once when the robot is
+   starting up. It is possible that the VEXnet communication link may not be
    fully established at this time, so reading from the VEX Joystick may fail.
-  
-   This function should initialize most sensors (gyro, encoders, ultrasonics), 
+
+   This function should initialize most sensors (gyro, encoders, ultrasonics),
    LCDs, global variables, and IMEs.
-  
-   This function must exit relatively promptly, or the operatorControl() and 
-   autonomous() tasks will not start. An autonomous mode selection menu like 
-   the pre_auton() in other environments can be implemented in this task if 
+
+   This function must exit relatively promptly, or the operatorControl() and
+   autonomous() tasks will not start. An autonomous mode selection menu like
+   the pre_auton() in other environments can be implemented in this task if
    desired.
  */
 
+Encoder liftEncoder;
+Encoder leftDriveEncoder;
+Encoder rightDriveEncoder;
+
 void initialize() {
   lcdInit(uart2);
+
+  liftEncoder = encoderInit(LIFT_ENCODER);
+  leftDriveEncoder = encoderInit(LEFT_DRIVE_ENCODER);
+  rightDriveEncoder = encoderInit(RIGHT_DRIVE_ENCODER);
+
+  TaskHandle fastackTaskHandle = taskCreate(fastack, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
 
   while (!isEnabled()) {
     displayRobotStatus();
     taskDelay(100);
   }
-  lcdSetBacklight(uart2, false);
+
+  if (LCD_DEBUG_LEVEL) {
+    // if debugging turn on backlight
+    lcdSetBacklight(uart2, true);
+  } else {
+    lcdSetBacklight(uart2, false);
+  }
 }

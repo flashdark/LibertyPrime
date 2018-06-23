@@ -14,11 +14,11 @@
 // Circumference of wheel is 12.56637
 // used to move robot in auton
 ///////////////////////////////////////////////////////////////////////////////
-int iemInches2Counts(float inches)
-{
-	// divide one revolution of counts by the circumference of the wheel
-	return (int)(627.2/12.56637 * inches);
-}
+// int iemInches2Counts(float inches)
+// {
+// 	// divide one revolution of counts by the circumference of the wheel
+// 	return (int)(627.2/12.56637 * inches);
+// }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Convert Counts to Inches of the integrated encoder module
@@ -40,9 +40,9 @@ int iemInches2Counts(float inches)
 // Circumference of wheel is 4*3.14=12.56637
 // used to move robot in auton
 ///////////////////////////////////////////////////////////////////////////////
-int encoderInchesToCounts(float inches)
+int encoderInches2Counts(float inches)
 {
- return (int)(360/(12.56637) * inches);
+ return (int)((360/12.56637) * inches);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,192 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+ACCEL_X	include/API.h	56;"	d
+ACCEL_Y	include/API.h	60;"	d
+API_H_	include/API.h	22;"	d
+ARM_DECEL_POINT	include/robot.h	98;"	d
+ARM_DECEL_POWER	include/robot.h	105;"	d
+ARM_DEPLOYED	include/robot.h	97;"	d
+ARM_DOWN_POWER	include/robot.h	103;"	d
+ARM_HOLD_POWER	include/robot.h	106;"	d
+ARM_MOTOR	include/robot.h	42;"	d
+ARM_POT	include/robot.h	10;"	d
+ARM_PRESTACK	include/robot.h	100;"	d
+ARM_STACK	include/robot.h	99;"	d
+ARM_STOWED	include/robot.h	96;"	d
+ARM_UP_POWER	include/robot.h	104;"	d
+BOARD_NR_ADC_PINS	include/API.h	141;"	d
+BOARD_NR_GPIO_PINS	include/API.h	151;"	d
+BTN5_LEFT_TRIGGER	include/robot.h	53;"	d
+BTN6_RIGHT_TRIGGER	include/robot.h	54;"	d
+BTN7_LEFT_THUMB	include/robot.h	55;"	d
+BTN8_RIGHT_THUMB	include/robot.h	56;"	d
+BTN_ARM_DOWN	include/robot.h	71;"	d
+BTN_ARM_UP	include/robot.h	70;"	d
+BTN_FASTACK_CONE	include/robot.h	77;"	d
+BTN_FASTACK_RESET	include/robot.h	85;"	d
+BTN_FASTACK_SUBTRACT	include/robot.h	78;"	d
+BTN_INTAKE_EGRESS	include/robot.h	75;"	d
+BTN_INTAKE_INGRESS	include/robot.h	74;"	d
+BTN_LIFT_DOWN	include/robot.h	69;"	d
+BTN_LIFT_UP	include/robot.h	68;"	d
+BTN_MOGO_AUTOSCORE	include/robot.h	83;"	d
+BTN_MOGO_EGRESS	include/robot.h	82;"	d
+BTN_MOGO_INGRESS	include/robot.h	81;"	d
+EOF	include/API.h	829;"	d
+Encoder	include/API.h	/^typedef void * Encoder;$/;"	t
+FILE	include/API.h	/^typedef int FILE;$/;"	t
+Gyro	include/API.h	/^typedef void * Gyro;$/;"	t
+HIGH	include/API.h	157;"	d
+IME_ADDR_MAX	include/API.h	458;"	d
+INPUT	include/API.h	172;"	d
+INPUT_ANALOG	include/API.h	179;"	d
+INPUT_FLOATING	include/API.h	186;"	d
+INTAKE_EGRESS_POWER	include/robot.h	109;"	d
+INTAKE_INGRESS_HOLD_POWER	include/robot.h	111;"	d
+INTAKE_INGRESS_POWER	include/robot.h	110;"	d
+INTAKE_MOTOR	include/robot.h	43;"	d
+INTERRUPT_EDGE_BOTH	include/API.h	327;"	d
+INTERRUPT_EDGE_FALLING	include/API.h	322;"	d
+INTERRUPT_EDGE_RISING	include/API.h	318;"	d
+InterruptHandler	include/API.h	/^typedef void (*InterruptHandler)(unsigned char pin);$/;"	t
+JOY_DOWN	include/API.h	40;"	d
+JOY_LEFT	include/API.h	44;"	d
+JOY_MASTER	include/robot.h	47;"	d
+JOY_RIGHT	include/API.h	52;"	d
+JOY_SLAVE	include/robot.h	48;"	d
+JOY_UP	include/API.h	48;"	d
+LCD_BTN_CENTER	include/API.h	1127;"	d
+LCD_BTN_LEFT	include/API.h	1123;"	d
+LCD_BTN_RIGHT	include/API.h	1131;"	d
+LCD_DEBUG_ARM	include/robot.h	140;"	d
+LCD_DEBUG_FASTACK	include/robot.h	137;"	d
+LCD_DEBUG_LEVEL	include/robot.h	141;"	d
+LCD_DEBUG_LIFT	include/robot.h	139;"	d
+LCD_DEBUG_MOGO	include/robot.h	138;"	d
+LCD_DEBUG_OFF	include/robot.h	135;"	d
+LCD_DEBUG_OPCONTROL	include/robot.h	136;"	d
+LEFT_DRIVE_ENCODER	include/robot.h	18;"	d
+LEFT_DRIVE_ENCODER_BOTTOM	include/robot.h	16;"	d
+LEFT_DRIVE_ENCODER_REVERSE	include/robot.h	17;"	d
+LEFT_DRIVE_ENCODER_TOP	include/robot.h	15;"	d
+LEFT_DRIVE_FRONT_MOTOR	include/robot.h	32;"	d
+LEFT_DRIVE_REAR_MOTOR	include/robot.h	33;"	d
+LEFT_DRIVE_REVERSED	include/robot.h	37;"	d
+LIFT_DOWN_POWER	include/robot.h	92;"	d
+LIFT_ENCODER	include/robot.h	28;"	d
+LIFT_ENCODER_BOTTOM	include/robot.h	26;"	d
+LIFT_ENCODER_REVERSE	include/robot.h	27;"	d
+LIFT_ENCODER_TOP	include/robot.h	25;"	d
+LIFT_MAX_HEIGHT	include/robot.h	89;"	d
+LIFT_MOTOR	include/robot.h	44;"	d
+LIFT_STOWED	include/robot.h	88;"	d
+LIFT_UP_POWER	include/robot.h	93;"	d
+LOW	include/API.h	163;"	d
+MAIN_H_	include/main.h	26;"	d
+MOGO_DEPLOYED	include/robot.h	117;"	d
+MOGO_EGRESS_POWER	include/robot.h	120;"	d
+MOGO_GRAVITY_POINT	include/robot.h	115;"	d
+MOGO_INGRESS_POWER	include/robot.h	121;"	d
+MOGO_MOTOR	include/robot.h	40;"	d
+MOGO_PLACE_POINT	include/robot.h	116;"	d
+MOGO_POT	include/robot.h	8;"	d
+MOGO_STOWED	include/robot.h	114;"	d
+Mutex	include/API.h	/^typedef void * Mutex;$/;"	t
+OUTPUT	include/API.h	193;"	d
+OUTPUT_OD	include/API.h	200;"	d
+PWR_EXP_PORT	include/robot.h	9;"	d
+RIGHT_DRIVE_ENCODER	include/robot.h	23;"	d
+RIGHT_DRIVE_ENCODER_BOTTOM	include/robot.h	21;"	d
+RIGHT_DRIVE_ENCODER_REVERSE	include/robot.h	22;"	d
+RIGHT_DRIVE_ENCODER_TOP	include/robot.h	20;"	d
+RIGHT_DRIVE_FRONT_MOTOR	include/robot.h	34;"	d
+RIGHT_DRIVE_REAR_MOTOR	include/robot.h	35;"	d
+RIGHT_DRIVE_REVERSED	include/robot.h	38;"	d
+ROBOT_H	include/robot.h	2;"	d
+SEEK_CUR	include/API.h	844;"	d
+SEEK_END	include/API.h	851;"	d
+SEEK_SET	include/API.h	837;"	d
+SELECT_COLOR_POT	include/robot.h	11;"	d
+SELECT_MODE_POT	include/robot.h	7;"	d
+SERIAL_8N1	include/API.h	776;"	d
+SERIAL_DATABITS_8	include/API.h	748;"	d
+SERIAL_DATABITS_9	include/API.h	752;"	d
+SERIAL_PARITY_EVEN	include/API.h	768;"	d
+SERIAL_PARITY_NONE	include/API.h	764;"	d
+SERIAL_PARITY_ODD	include/API.h	772;"	d
+SERIAL_STOPBITS_1	include/API.h	756;"	d
+SERIAL_STOPBITS_2	include/API.h	760;"	d
+STICK_LEFT_DRIVE	include/robot.h	64;"	d
+STICK_RIGHT_DRIVE	include/robot.h	63;"	d
+STICK_THRESHOLD	include/robot.h	65;"	d
+STK1_RIGHT_X	include/robot.h	49;"	d
+STK2_RIGHT_Y	include/robot.h	50;"	d
+STK3_LEFT_Y	include/robot.h	52;"	d
+STK4_LEFT_X	include/robot.h	51;"	d
+STRING_AUTON_1	include/robot.h	124;"	d
+STRING_AUTON_2	include/robot.h	125;"	d
+STRING_AUTON_3	include/robot.h	126;"	d
+STRING_AUTON_4	include/robot.h	127;"	d
+STRING_AUTON_5	include/robot.h	128;"	d
+STRING_AUTON_6	include/robot.h	129;"	d
+STRING_AUTON_7	include/robot.h	130;"	d
+STRING_AUTON_8	include/robot.h	131;"	d
+STRING_AUTON_9	include/robot.h	132;"	d
+STRING_AUTON_A	include/robot.h	133;"	d
+Semaphore	include/API.h	/^typedef void * Semaphore;$/;"	t
+TASK_DEAD	include/API.h	1258;"	d
+TASK_DEFAULT_STACK_SIZE	include/API.h	1245;"	d
+TASK_MAX	include/API.h	1215;"	d
+TASK_MAX_PRIORITIES	include/API.h	1221;"	d
+TASK_MINIMAL_STACK_SIZE	include/API.h	1253;"	d
+TASK_PRIORITY_DEFAULT	include/API.h	1232;"	d
+TASK_PRIORITY_HIGHEST	include/API.h	1237;"	d
+TASK_PRIORITY_LOWEST	include/API.h	1226;"	d
+TASK_RUNNABLE	include/API.h	1267;"	d
+TASK_RUNNING	include/API.h	1262;"	d
+TASK_SLEEPING	include/API.h	1272;"	d
+TASK_SUSPENDED	include/API.h	1276;"	d
+TaskCode	include/API.h	/^typedef void (*TaskCode)(void *);$/;"	t
+TaskHandle	include/API.h	/^typedef void * TaskHandle;$/;"	t
+Ultrasonic	include/API.h	/^typedef void * Ultrasonic;$/;"	t
+armControl	src/opcontrol.c	/^void armControl () {$/;"	f
+auton1	src/auton1.c	/^void auton1()$/;"	f
+auton2	src/auton2.c	/^void auton2()$/;"	f
+auton3	src/auton3.c	/^void auton3()$/;"	f
+auton4	src/auton4.c	/^void auton4()$/;"	f
+auton5	src/auton5.c	/^void auton5()$/;"	f
+auton6	src/auton6.c	/^void auton6()$/;"	f
+auton7	src/auton7.c	/^void auton7()$/;"	f
+auton8	src/auton8.c	/^void auton8()$/;"	f
+auton9	src/auton9.c	/^void auton9()$/;"	f
+autonA	src/autonA.c	/^void autonA()$/;"	f
+autonomous	src/auto.c	/^void autonomous() {$/;"	f
+displayRobotStatus	src/auto.c	/^void displayRobotStatus() {$/;"	f
+driveControl	src/opcontrol.c	/^void driveControl () {$/;"	f
+encoderInchesToCounts	src/robot.c	/^int encoderInchesToCounts(float inches)$/;"	f
+fastack	src/fastack.c	/^ void fastack(void * parameter) {$/;"	f
+g_selectedAutonomous	src/auto.c	/^unsigned g_selectedAutonomous = 0;$/;"	v
+getAutonMode	src/auto.c	/^void getAutonMode() {$/;"	f
+iemInches2Counts	src/robot.c	/^int iemInches2Counts(float inches)$/;"	f
+initialize	src/init.c	/^void initialize() {$/;"	f
+initializeIO	src/init.c	/^void initializeIO() {$/;"	f
+intakeControl	src/opcontrol.c	/^void intakeControl () {$/;"	f
+lcdDebug	src/robot.c	/^void lcdDebug(const char *str1, const char *str2, int lcdLevel, int lcdDelay) {$/;"	f
+leftDriveEncoder	src/init.c	/^Encoder leftDriveEncoder;$/;"	v
+liftControl	src/opcontrol.c	/^void liftControl () {$/;"	f
+liftEncoder	src/init.c	/^Encoder liftEncoder;$/;"	v
+mogoControl	src/opcontrol.c	/^void mogoControl () {$/;"	f
+motorLeftDriveSet	src/robot.c	/^void motorLeftDriveSet (int power)$/;"	f
+motorRightDriveSet	src/robot.c	/^void motorRightDriveSet (int power)$/;"	f
+operatorControl	src/opcontrol.c	/^void operatorControl() {$/;"	f
+rightDriveEncoder	src/init.c	/^Encoder rightDriveEncoder;$/;"	v
+sign	include/robot.h	146;"	d
+stdin	include/API.h	815;"	d
+stdout	include/API.h	811;"	d
+trueSpeed	include/robot.h	/^static const unsigned int trueSpeed[128] =$/;"	v
+uart1	include/API.h	819;"	d
+uart2	include/API.h	823;"	d

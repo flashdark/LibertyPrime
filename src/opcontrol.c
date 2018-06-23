@@ -35,57 +35,179 @@
    even if empty.
  */
 
-void clawControl () {
-   // TBD add code
-}
+ //////////////////////////////////////////////////////////////////////
+ // Cone intake Control
+ // Cone Egress - drop cone
+ // Cone Ingress - pickup cone
+ // Cone hold
+ // Intake Idle - allows fastack to control intake if not actively used
+ /////////////////////////////////////////////////////////////////////
+void intakeControl () {
+  static int active_ingress = 0;
+  static int not_idle = 1;
 
-void liftControl () {
-   // TBD add code
-}
+  if (joystickGetDigital(BTN_INTAKE_EGRESS)) {
+    motorSet(INTAKE_MOTOR, INTAKE_EGRESS_POWER);
+    active_ingress = 0;
+    not_idle = 1;
+  } else if (joystickGetDigital(BTN_INTAKE_INGRESS)) {
+    motorSet(INTAKE_MOTOR, INTAKE_INGRESS_POWER);
+    active_ingress = 1;
+  } else if (active_ingress) {
+    motorSet(INTAKE_MOTOR, INTAKE_INGRESS_HOLD_POWER);
+    active_ingress = 1;
+    not_idle = 1;
+  } else if (not_idle){
+    motorSet(INTAKE_MOTOR,0);
+    not_idle = 0;
+  }
+} // end intakeControl()
 
+//////////////////////////////////////////////////////////////////////
+// Arm Control (cone intake) - raise and lower arm holding cone intake
+// Arm Down - to pick up cone
+// Arm Up - get to near stack position fast
+// Arm decel - soften the stop so not to knock cone out
+// Arm Idle - allows fastack to control arm if not actively used
+// //////////////////////////////////////////////////////////////////
+// to work with fastack armControl cannot actively drive the motor
+// to 0 when it is idle. it must only set the motor to idle after the
+// button is released and then not call motorSet until the next time
+// an arm button is released
+/////////////////////////////////////////////////////////////////////
 void armControl () {
-   // TBD add code
-   // create defines for quadrants and power values
+   static int not_idle = 1;
+   int armPotValue = analogRead(ARM_POT);
+
+   if (joystickGetDigital(BTN_ARM_DOWN) && (armPotValue < ARM_DEPLOYED)) {
+     motorSet(ARM_MOTOR, ARM_DOWN_POWER);
+     not_idle = 1;
+   } else if (joystickGetDigital(BTN_ARM_UP) && (armPotValue > ARM_DECEL_POINT)) {
+     motorSet(ARM_MOTOR, ARM_UP_POWER);
+     not_idle = 1;
+   } else if (joystickGetDigital(BTN_ARM_UP) && (armPotValue > ARM_STOWED)) {
+     motorSet(ARM_MOTOR, ARM_DECEL_POWER);
+     not_idle = 1;
+   } else if (not_idle) {
+     motorSet(ARM_MOTOR,0);
+     not_idle = 0;
+   }
+} // end armControl()
+
+//////////////////////////////////////////////////////////////////////
+// Lift Control - raise and lower lift
+// Lift Down
+// Lift Up
+// Lift Idle - allows fastack to control lift if not actively used
+/////////////////////////////////////////////////////////////////////
+void liftControl () {
+  static int not_idle = 1;
+
+  if (joystickGetDigital(BTN_LIFT_DOWN)) {
+    motorSet(LIFT_MOTOR, LIFT_DOWN_POWER);
+    not_idle = 1;
+  } else if (joystickGetDigital(BTN_LIFT_UP)) {
+    motorSet(LIFT_MOTOR, LIFT_UP_POWER);
+    not_idle = 1;
+  } else if (not_idle) {
+    motorSet(LIFT_MOTOR,0);
+    not_idle = 0;
+  }
+} // end liftControl()
+
+//////////////////////////////////////////////////////////////////////
+// Mobile Goal Lift Control - pickup and place MoGo
+// Mogo Lift Egress
+// Mogo Lift Ingress
+// Mogo Lift AutoScore - soft placement so cones are not knocked off
+// Mogo Lift Idle - not implemented - fastack doesn't use mogo
+//////////////////////////////////////////////////////////////////////
+void mogoControl () {
+  int mogoPotValue = analogRead(MOGO_POT);
+  static int mogoAutoScore = 0;
+  char lcdTextLine2[16];
+
+  // test the non-autoscore joystick buttons first.
+  // if they are pressed during autoscore,
+  // exit autoscore and perform active user selection
+  if (joystickGetDigital(BTN_MOGO_EGRESS) && (mogoPotValue < MOGO_DEPLOYED)) {
+    motorSet(MOGO_MOTOR, MOGO_EGRESS_POWER);
+    mogoAutoScore = 0;
+  } else if (joystickGetDigital(BTN_MOGO_INGRESS) && (mogoPotValue > MOGO_STOWED)) {
+    motorSet(MOGO_MOTOR, MOGO_INGRESS_POWER);
+    mogoAutoScore = 0;
+  } else if (joystickGetDigital(BTN_MOGO_AUTOSCORE) || mogoAutoScore) {
+    // set stacked mogo gently
+    // power mogo lift until weight of stacked mogo pulls it down
+    // when mogo hit tile, apply a little power so it slide off easier
+    mogoAutoScore = 1;
+    if (mogoPotValue < MOGO_GRAVITY_POINT) {
+      motorSet(MOGO_MOTOR, MOGO_EGRESS_POWER);
+
+      if (LCD_DEBUG_LEVEL == LCD_DEBUG_MOGO) {
+        sprintf(lcdTextLine2, "MPot %d", mogoPotValue);
+        lcdSetText(uart2, 1, "Mogo AutoScore");
+        lcdSetText(uart2, 2, lcdTextLine2);
+      }
+    } else if (mogoPotValue < MOGO_PLACE_POINT) {
+      motorSet(MOGO_MOTOR, 0);
+
+      if (LCD_DEBUG_LEVEL == LCD_DEBUG_MOGO) {
+        sprintf(lcdTextLine2, "MPot %d", mogoPotValue);
+        lcdSetText(uart2, 1, "Mogo AutoScore");
+        lcdSetText(uart2, 2, lcdTextLine2);
+      }
+    } else if (mogoPotValue < MOGO_DEPLOYED) {
+      motorSet(MOGO_MOTOR, -30);
+
+      if (LCD_DEBUG_LEVEL == LCD_DEBUG_MOGO) {
+        sprintf(lcdTextLine2, "MPot %d", mogoPotValue);
+        lcdSetText(uart2, 1, "Mogo AutoScore");
+        lcdSetText(uart2, 2, lcdTextLine2);
+      }
+    } else {
+      motorSet(MOGO_MOTOR, 0);
+      mogoAutoScore = 0;
+
+      if (LCD_DEBUG_LEVEL == LCD_DEBUG_MOGO) {
+        sprintf(lcdTextLine2, "MPot %d", mogoPotValue);
+        lcdSetText(uart2, 1, "Mogo AutoScore");
+        lcdSetText(uart2, 2, lcdTextLine2);
+      }
+    }
+  } else {
+    motorSet(MOGO_MOTOR, 0);
+  }
 }
 
-// drivecontrol reads the analog stick value and assigns it to the drive motors
+//////////////////////////////////////////////////////////////////////
+// Drive Control
+// reads the analog stick value and assigns it to the drive motors
+// via a lookup table to map to linear speed
 // the left stick controls left drive and right stick controls right drive
 // If the stick's Y-axis is greater than the threshold
 //  ...the motors are assigned the stick's analog value
 // Else the readings are within the threshold, so
 // ...the motors are stopped with a power level of 0
+// note that threshold is built in to the trueSpeed lookup table
+//////////////////////////////////////////////////////////////////////
 void driveControl () {
-  int powerLeft = joystickGetAnalog(JOY_MASTER, STK3_LEFT_Y);
-  if (abs(powerLeft) > STICK_THRESHOLD) {
-    motorLeftDriveSet(powerLeft);
-  } else {
-    motorLeftDriveSet(0);
-  }
+  int leftPower = joystickGetAnalog(STICK_LEFT_DRIVE);
+  motorLeftDriveSet(sign(leftPower)*trueSpeed[abs(leftPower)]);
 
-  int powerRight = joystickGetAnalog(JOY_MASTER, STK2_RIGHT_Y);
-  if (abs(powerRight) > STICK_THRESHOLD) {
-    motorRightDriveSet(powerRight);
-  } else {
-    motorRightDriveSet(0);
-  }
+  int rightPower = joystickGetAnalog(STICK_RIGHT_DRIVE);
+  motorRightDriveSet(sign(rightPower)*trueSpeed[abs(rightPower)]);
 }
-
 
 void operatorControl() {
   while (1) {
     driveControl();
     armControl();
     liftControl();
-    clawControl();
+    intakeControl();
+    mogoControl();
+
+    displayRobotStatus();
     delay(20);
-
-
-    // If any LCD button is pressed from operatorControl, display Robot status.
-    // This is useful since operatorControl is run if not in competition mode.
-    while (lcdReadButtons(uart2))
-    {
-      displayRobotStatus();
-      delay(200);
-    }
   }
 }

@@ -1,0 +1,10 @@
+# don't ignore files in the firmware dir they are not generated
+# this includs libpros.a - they don't changes so no much space needed.
+
+# ignore all files in the bin directory - these are auto generated
+bin/
+
+# ingore *.o, *.elf, *.bin
+*.o
+*.elf
+*.bin
