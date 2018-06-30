@@ -111,7 +111,7 @@
 #define INTAKE_INGRESS_HOLD_POWER -15
 
 // Mogo Lift Positions
-#define MOGO_STOWED 5
+#define MOGO_STOWED 10
 #define MOGO_GRAVITY_POINT 950
 #define MOGO_PLACE_POINT 1300
 #define MOGO_DEPLOYED 1500
