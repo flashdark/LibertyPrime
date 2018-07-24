@@ -18,6 +18,7 @@
 // Global Variable Initialization
 ///////////////////////////////////////////////////////////////////////////////
 unsigned g_selectedAutonomous = 0;
+void (*auton_p)();
 
 ///////////////////////////////////////////////////////////////////////////////
 // Read Select Mode Pot
@@ -27,52 +28,56 @@ unsigned g_selectedAutonomous = 0;
 void getAutonMode() {
   int modePotValue = analogRead(SELECT_MODE_POT);
   lcdSetBacklight(uart2, true);
-  g_selectedAutonomous = 0;
+
 
   // 1st choice
   if (modePotValue <= 100) {
     lcdSetText(uart2, 1, STRING_AUTON_1);
-    g_selectedAutonomous = 1;
+    auton_p = &auton1;
   }
   // 2nd choice
   else if (modePotValue <= 700) {
     lcdSetText(uart2, 1, STRING_AUTON_2);
-    g_selectedAutonomous = 2;
+    auton_p = &auton2;
   }
   // 3rd choice
   else if (modePotValue <= 1250) {
     lcdSetText(uart2, 1, STRING_AUTON_3);
-    g_selectedAutonomous = 3;
+    auton_p = &auton3;
   }
   // 4th choice
   else if (modePotValue <= 1700) {
     lcdSetText(uart2, 1, STRING_AUTON_4);
-    g_selectedAutonomous = 4;
+    auton_p = &auton4;
   }
   // 5th choice
   else if (modePotValue <= 2250) {
     lcdSetText(uart2, 1, STRING_AUTON_5);
-    g_selectedAutonomous = 5;
+    auton_p = &auton5;
   }
   // 6th choice
   else if (modePotValue <= 2800) {
     lcdSetText(uart2, 1, STRING_AUTON_6);
-    g_selectedAutonomous = 6;
+    auton_p = &auton6;
   }
   // 7th choice
   else if (modePotValue <= 3450) {
     lcdSetText(uart2, 1, STRING_AUTON_7);
-    g_selectedAutonomous = 7;
+    auton_p = &auton7;
   }
   // 8th choice
   else if (modePotValue <= 3950) {
     lcdSetText(uart2, 1, STRING_AUTON_8);
-    g_selectedAutonomous = 8;
+    auton_p = &auton8;
   }
   // 9th choice
   else if (modePotValue > 4075) {
     lcdSetText(uart2, 1, STRING_AUTON_9);
-    g_selectedAutonomous = 9;
+    auton_p = &auton9;
+  }
+  else
+  {
+    return;
   }
 } // end getAutonMode
 
@@ -165,37 +170,38 @@ void displayRobotStatus() {
 */
 
 void autonomous() {
-  switch (g_selectedAutonomous) {
-  case 1:
-    auton1();
-    break;
-  case 2:
-    auton2();
-    break;
-  case 3:
-    auton3();
-    break;
-  case 4:
-    auton4();
-    break;
-  case 5:
-    auton5();
-    break;
-  case 6:
-    auton6();
-    break;
-  case 7:
-    auton7();
-    break;
-  case 8:
-    auton8();
-    break;
-  case 9: // Skills Auton
-    auton9();
-    break;
-  default:
-    lcdSetText(uart2, 1, "No Valid Choice");
-    lcdSetText(uart2, 2, "   Was Made");
-    break;
-  } // switch
+  (*auton_p)();
+  // switch (g_selectedAutonomous) {
+  // case 1:
+  //   auton1();
+  //   break;
+  // case 2:
+  //   auton2();
+  //   break;
+  // case 3:
+  //   auton3();
+  //   break;
+  // case 4:
+  //   auton4();
+  //   break;
+  // case 5:
+  //   auton5();
+  //   break;
+  // case 6:
+  //   auton6();
+  //   break;
+  // case 7:
+  //   auton7();
+  //   break;
+  // case 8:
+  //   auton8();
+  //   break;
+  // case 9: // Skills Auton
+  //   auton9();
+  //   break;
+  // default:
+  //   lcdSetText(uart2, 1, "No Valid Choice");
+  //   lcdSetText(uart2, 2, "   Was Made");
+  //   break;
+  // } // switch
 }
